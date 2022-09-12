@@ -5,16 +5,16 @@
 - Team Name: The Asians
 
 - Team Members:
-  - Ashmitha Kanagiah
-  - Md Saqliyan Islam
-  - Andy-Tason Nguyen-Chao
+  - [Ashmitha Kanagiah](https://github.com/ashmyytaa)
+  - [Md Saqliyan Islam](https://github.com/SaqSaq815)
+  - [Andy-Tason Nguyen-Chao](https://github.com/DHay10)
   
 ## Clientele
 
 ### Description
 
 - We will make a Storefront Web Application where a seller can list products and buyers can purchase said products online.
-- We will model our solution based on Walmart online web application.
+- We will model our solution based on Walmart's online web application.
 - We estimate that we will spend a total of 210 hours building this products, which would be 70 hours per team member
 
 ### Features
@@ -49,4 +49,3 @@
 - All these features brings a total of 24 features per team member
 
 [^1]: In need of approval from the teacher.
-
