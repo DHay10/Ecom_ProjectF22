@@ -28,9 +28,9 @@
 - As a seller, I can add tracking information to shipped items
 - As a seller, I can view client service requests on sales and respond
 - As a seller, I can showcased products in the 'Featured Section'
-- As a seller, I can add FAQ to my Web Application*
+- As a seller, I can add FAQ to my Web Application[^1]
 - As a seller, I can send an email to all of registered users
-- As a seller, I can put choose advertisement for my Web Application*
+- As a seller, I can put choose advertisement for my Web Application[^1]
 - As a user, I can register, login, and logout (Not New)
 - As a user, I can change my personal information
 - As a user, I can search the product catalog
@@ -40,11 +40,13 @@
 - As a user, I can modify the quantities of products in my shopping cart
 - As a user, I can checkout
 - As a user, I can add products to my Wish Lists
-- As a user, I can leave a raiting on a product
+- As a user, I can leave a rating on a product
 - As a user, I can write a review on a product
 - As a user, I can have multiple Shipping Addresses saved
 - As a user, I can choose multiple payment methods
-- As a user, I can change the language of the web applications*
-- As a user, I can change the type of currency of the web applications*
+- As a user, I can change the language of the web applications[^1]
+- As a user, I can change the type of currency of the web applications[^1]
 - All these features brings a total of 24 features per team member
+
+[^1]: In need of approval from the teacher.
 
