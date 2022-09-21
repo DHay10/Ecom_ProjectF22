@@ -6,7 +6,7 @@
 
 - Team Members:
   - [Ashmitha Kanagiah](https://github.com/ashmyytaa)
-  - [Md Saqliyan Islam](https://github.com/SaqSaq815)
+  - [Md Saqliyan Islam](https://github.com/SaqSaq815)  **(Refer to Saqliyan's repo for comments on this project.)**
   - [Andy-Tason Nguyen-Chao](https://github.com/DHay10)
   
 ## Clientele
@@ -49,3 +49,5 @@
 - All these features brings a total of 24 features per team member
 
 [^1]: In need of approval from the teacher.
+
+
