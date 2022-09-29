@@ -6,9 +6,21 @@ In order to sell preferred products
 As a seller
 Has to display their products
 
-Scenario: 
+Scenario: List the product on web server
 Given I have a product that I want to sell
 And I want to list my product
-When
-Then
-And my product will be listed
+When I go in the seller platform
+Then I list my product
+And my product will be added
+
+
+//2. As a seller, I can modify products for sale
+
+Feature: Modify listed product
+
+Scenario: Modify content of a product
+Given that there is a lsited product
+And I want to modify its content
+When I go in the seller platform
+Then I have the option to edit
+
