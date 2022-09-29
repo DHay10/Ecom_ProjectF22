@@ -17,6 +17,8 @@ And my product will be added
 //2. As a seller, I can modify products for sale
 
 Feature: Modify listed product
+In order to modify a product
+
 
 Scenario: Modify content of a product
 Given that there is a lsited product
