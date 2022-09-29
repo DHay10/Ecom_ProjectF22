@@ -18,11 +18,50 @@ And my product will be added
 
 Feature: Modify listed product
 In order to modify a product
-
+As a seller
+Has to change the content of the already displayed product
 
 Scenario: Modify content of a product
-Given that there is a lsited product
+Given that there is a listed product
 And I want to modify its content
 When I go in the seller platform
 Then I have the option to edit
+
+
+//3.As a seller, I can categorize my products
+
+Feature: Categorize products in a preferred order
+In order to categorize a product
+As a seller
+Has to edit the layout of how they want to categorize their products
+
+
+Scenario: Categorize products in a list of low to high cost
+Given that there are displayed products
+And I want to categorize them in a specifc way
+When I go in the settings of the layout
+Then I have the option to view my products in my preffered choice
+
+
+//4.As a seller, I can track sales of my products
+
+Feature: Track sales of my listed products
+In order to track sales
+As a seller
+Has to view the data
+
+Scenario: See the amount 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
