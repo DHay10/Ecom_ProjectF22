@@ -26,6 +26,7 @@ Given that there is a listed product
 And I want to modify its content
 When I go in the seller platform
 Then I have the option to edit
+And  my product content will be edited
 
 
 //3.As a seller, I can categorize my products
@@ -41,6 +42,7 @@ Given that there are displayed products
 And I want to categorize them in a specifc way
 When I go in the settings of the layout
 Then I have the option to view my products in my preffered choice
+And I can see my prodcuts in the preffered order
 
 
 //4.As a seller, I can track sales of my products
@@ -48,9 +50,221 @@ Then I have the option to view my products in my preffered choice
 Feature: Track sales of my listed products
 In order to track sales
 As a seller
-Has to view the data
+Has to view the data of their sales
 
-Scenario: See the amount 
+Scenario: See the amount of buys a product has made
+Given that there is a listed product
+And I want to view how many times it has been bought
+When I go on the product's core data
+Then I have the ability to view how many times it has been purchased
+And I can track how well a product is doing
+
+//5.As a seller, I can view product purchases and mark them as shipped
+
+Feature: Label the staus of a buyer's product as shipped
+In order to advise a product as shipped
+As a seller
+Has to label the product as shipped to the buyer
+
+Scenario: A buyer is going on their order status to see the status of their order
+Given that there is a item that is bought by a customer
+And they want to view the status of their order
+When the product has been shipped
+Then the seller can mark the status as shipped
+And the buyer is able to see that their order has been shipped
+
+//6.As a seller, I can add tracking information to shipped items
+
+Feature: See how far a product is to its destination
+In order to track shipping information
+As a seller
+Has to add the locations of the product each time its being moved from a place to another
+
+Scenario: Wanting to see when a product will arrive to their buyer
+Given that there is an item that is in the shipping phase
+And we want to view how far it is from the destination location
+When the product is in movement
+Then the seller is able to add the location in the order status
+And the buyer is able to track their product
+
+
+//7.As a seller, I can view client service requests on sales and respond
+
+//8. As a seller, I can showcased products in the 'Featured Section'
+
+Feature: Implement a 'Feature Section'
+In order to show product in the section
+As a seller
+Has to add desired products in the 'Fetaure Section' view
+
+Scenario: Navigate through the 'Feature Section' page
+Given that there is a 'Feature Section' view
+And we want to showcase selected products
+When the seller goes in the settings on the page
+Then they can add desired products
+And there would be a fully implemented 'Feature Section' page
+
+
+
+//9. As a seller, I can add FAQ to my Web Application
+
+Feature: Implement a FAQ view
+In order to have a view that has the ability to send questions to the seller
+As a seller
+Has to implement a page that can take in questions from customers
+
+Scenario: Send a question to seller
+Given that there is a question that I want to ask the seller about a specific product
+And I want to answer to their question
+When the customer will send their inquiry in the FAQ view
+Then I can view the data and be able to respond to the inquiry
+And the customer will have a response to their question 
+
+//10. As a seller, I can send an email to all of registered users
+
+Feature: Send an email to registered users
+In order to send an email to all the buyers that the seller is in hold of
+As a seller
+Has to send an email to them via email services.
+
+Scenario: Send a message regarding a product sale
+Given that there is a product on sale
+And I want to notify my registered buyers about this new sale
+When I retrieve all the email from them
+Then I can send a collective email
+And the users will be notified via email of the sale for one of the products
+
+//11. As a seller, I can put choose advertisement for my Web Application
+
+Feature: Display an advertisement in the Web Application
+In order to display an advertisement about a promotion to my viewers
+As a seller
+Has to implement an advertisement to be displayed for a temporary moment
+
+Scenario: Display a Black Friday discount as an advertisement in my Web Application
+Given that there is a Black Friday discount that customers can get a hold of
+And I want to display it in a significant way on my Web Application
+When implementing an advertisement
+Then I can precise for which event it is for as well as make it visually pleasing
+And the viwers that will browse the Web Application will notice the advertisement
+
+//12. As a user, I can register, login, and logout (Not New)
+
+//13. As a user, I can change my personal information
+
+Feature: Modify personal data
+In order to alter a profile's personal information 
+As a user
+Has to click the edit button to them modify the desired information and then submitting the changes
+
+Scenario: Change the address informationt
+Given that I have a new address in where I reside
+And I want to update that information in my profile
+When editing my user profile
+Then I can navigate to the address field to change the old address to the new address
+And I will be able to see the updated information once i've submitted my changed
+
+
+//14. As a user, I can search the product catalog
+
+Feature: Searching in the product catalog
+In order to search for a specific element in the product catalog 
+As a user
+Has to search in the search bar for their desired product and enter
+
+Scenario: Search an item in the product catalog
+Given that I want to search a specific item through the product catalog
+And I want to use the search bar to search
+When putting in my search
+Then I can see a list of retrieved items that correspond to my search
+And I can navigate through the items displayed that corresponds to my needs
+
+
+//15. As a user, I can see product details / description
+
+Feature: View product description
+In order to see the details of a desired product
+As a user
+Has to navigate to the 'Product Detail' section of the page
+
+Scenario: View product dimensions
+Given that there is a product that I am intersted in buying
+And I want to see the dimensions of the product
+When navigating in the page
+Then I click on the 'Product Detail' section
+And a detailed description of mt product will be displayed
+
+//16. As a user, I can add products to my shopping cart
+
+Feature: Add products to shopping cart
+In order to add selected products in my cart
+As a user
+Has to click the 'Add to cart' button
+
+Sceenario: User wants to buy a product
+Given that there is a product that peeks my attention
+And I want to buy it
+When navugating the product page
+Then I click the 'Add to cart' button
+And my product will be added to the shopping cart for it to be purchased
+
+//17. As a user, I can remove products from my shopping cart
+
+Feature: Remove a product from shopping cart
+In order to remove a product from my cart
+As a user
+Has to click the 'Remove from cart' button
+
+Scenario: User wants to no longer buy a product
+Given that there is a product that I added to my cart 
+And I dont want it anymore
+When navigating the shopping cart page
+Then I click the 'Remove from cart' button
+And my product will be discarded from my shopping cart
+
+//18. As a user, I can modify the quantities of products in my shopping cart
+
+Feature: Add or remove quantity of a product in my shopping cart
+In order to modify the quantity of a specific product
+As a user
+Has to click the '+' or '-' button according to their preference
+
+Scenario: Add another quantity of a product
+Given that there is a product on my product cart
+And there is already a defined quantity to it
+When I want to add another one of the product
+Then I click the '+' button
+And another quanity of my product will be added to my shopping cart
+
+
+//19. As a user, I can checkout
+
+Feature: User checkout
+In order to checkout and proceed to payment
+As a user
+Has to click the 'Proceed to payment' button 
+
+Scenario: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
