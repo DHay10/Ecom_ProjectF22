@@ -19,7 +19,7 @@
 
 ### Features
 
-- As a seller, I can register, login, and logout (Not New)
+- As a seller, I can login and logout (Not New)
 - As a seller, I can add products for sale
 - As a seller, I can modify products for sale
 - As a seller, I can remove products for sale
@@ -40,8 +40,8 @@
 - As a user, I can checkout
 - As a user, I can add products to my Wish Lists
 - As a user, I can remove products from my Wish Lists
-- As a user, I can leave a rating on a product that was purchased
-- As a user, I can write a review on a product that was purchased
+- As a user, I can leave a rating on a product
+- As a user, I can write a review on a product
 - As a user, I can modify the rating and review of a purchased product
 - As a user, I can add, delete, modify my Shipping Addresses saved
 - As a user, I can change the language of the web applications (Not New)
