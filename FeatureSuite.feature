@@ -115,34 +115,19 @@ Feature: Send an email to all registered users
         And the customer will have a response to their question 
 
 
-//10. As a seller, I can send an email to all of registered users
-
-Feature: Send an email to registered users
-In order to send an email to all the buyers that the seller is in hold of
-As a seller
-Has to send an email to them via email services.
-
-Scenario: Send a message regarding a product sale
-Given that there is a product on sale
-And I want to notify my registered buyers about this new sale
-When I retrieve all the email from them
-Then I can send a collective email
-And the users will be notified via email of the sale for one of the products
-
-
 //11. As a seller, I can put choose advertisement for my Web Application
 
 Feature: Display an advertisement in the Web Application
-In order to display an advertisement about a promotion to my viewers
-As a seller
-Has to implement an advertisement to be displayed for a temporary moment
+    In order to display an advertisement about a promotion to my viewers
+    As a seller
+    I want to implement an advertisement to be displayed for a temporary moment
 
-Scenario: Display a Black Friday discount as an advertisement in my Web Application
-Given that there is a Black Friday discount that customers can get a hold of
-And I want to display it in a significant way on my Web Application
-When implementing an advertisement
-Then I can precise for which event it is for as well as make it visually pleasing
-And the viwers that will browse the Web Application will notice the advertisement
+    Scenario: 
+        Given that there is a Black Friday discount that customers can get a hold of
+        And I want to display it in a significant way on my Web Application
+        When implementing an advertisement
+        Then I can precise for which event it is for as well as make it visually pleasing
+        And the viwers that will browse the Web Application will notice the advertisement
 
 
 //12. As a user, I can register, login, and logout (Not New)
