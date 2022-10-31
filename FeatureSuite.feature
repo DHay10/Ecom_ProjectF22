@@ -111,7 +111,7 @@ Feature: Send an email to all registered users
     Scenario:
         Given that I want to send an email to all registered users
         When I access the emailing page
-        Then I can view the data and be able to respond to the inquiry
+        Then I can write 
         And the customer will have a response to their question 
 
 Feature: Display an advertisement in the Web Application
