@@ -135,7 +135,7 @@ Feature: Modify personal data
     As a user
     I want to click the edit button to them modify the desired information and then submitting the changes
 
-    Scenario: Change the address informationt
+    Scenario: 
         Given that I have a new address in where I reside
         And I want to update that information in my profile
         When editing my user profile
@@ -145,9 +145,9 @@ Feature: Modify personal data
 Feature: Searching in the product catalog
     In order to search for a specific element in the product catalog 
     As a user
-    I haveto search in the search bar for their desired product and enter
+    I have to search in the search bar for their desired product and enter
 
-    Scenario: Search an item in the product catalog
+    Scenario: 
         Given that I want to search a specific item through the product catalog
         And I want to use the search bar to search
         When putting in my search
@@ -159,7 +159,7 @@ Feature: View product description
     As a user
     I have to navigate to the 'Product Detail' section of the page
 
-    Scenario: View product dimensions
+    Scenario: 
          Given that there is a product that I am intersted in buying
          And I want to see the dimensions of the product
          When navigating in the page
@@ -171,7 +171,7 @@ Feature: Add products to shopping cart
     As a user
     I have to click the 'Add to cart' button
 
-    Scenario: User wants to buy a product
+    Scenario: 
          Given that there is a product that peeks my attention
          And I want to buy it
          When navugating the product page
@@ -183,7 +183,7 @@ Feature: Remove a product from shopping cart
     As a user
     I have to click the 'Remove from cart' button
 
-    Scenario: User wants to no longer buy a product
+    Scenario: 
          Given that there is a product that I added to my cart 
          And I dont want it anymore
          When navigating the shopping cart page
@@ -195,7 +195,7 @@ Feature: Add or remove quantity of a product in my shopping cart
     As a user
     I have to click the '+' or '-' button according to their preference
 
-    Scenario: Add another quantity of a product
+    Scenario: 
          Given that there is a product in my shopping cart
          And there is already a defined quantity to it
          When I want to add another one of the product
@@ -207,7 +207,7 @@ Feature: User checkout
     As a user
     I have to click the 'Proceed to payment' button 
 
-    Scenario: User proceeding to checkout
+    Scenario: 
         Given that an I have a shopping cart
         And that I have products in it
         When I am ready to pay
@@ -219,7 +219,7 @@ Feature: Add a product to 'Wish List'
     As a user
     I have to click the 'Add to Wishlist' button
 
-    Scenario: User wants to buy something for themselve but dont have the money in the momment
+    Scenario: 
          Given that there is a product that I really want
          And I want to buy it
          When I will have the financial ressources for it
@@ -231,7 +231,7 @@ Feature: Leave a rating
      As a user
      I have to click on the desired amount of stars out of 5
 
-     Scenario: Leaving a 5 star on a product
+     Scenario: 
          Given that there is a purchased product that I liked
          And I want to let the seller know of it
          When I will navigate the product page
@@ -243,7 +243,7 @@ Feature: Leave a review
      As a user
      I have to input their review in the 'Leave a review' text box
 
-     Scenario: Comment about the bad quality of a product
+     Scenario: 
          Given that there is a purchased product that has a bad quality
          And I want to let the seller know of it
          When I will navigate the product page
@@ -255,7 +255,7 @@ Feature: Add, delete, modify Shipping Address saved
     As a user
     I have to go on user profile and update the 'Shipping Information' section
 
-    Scenario: Add another shipping address
+    Scenario: 
         Given that I have another location where I reside in
         And I want to add that address to my shipping information
         When I will navigate through the 'User Profile'
@@ -275,23 +275,23 @@ Feature: Modify the rating and review of a purchased product
         And I will click 'Submit' to post my modified review to the public
 
 Feature: Globalization of web application
-    In order to be able to see the web application in another language
+    In order to be able to view the web application in another language
     As a user
-    I have to choose a different language in the 'Settings' of the web application under 'Language Settings'
+    I have to choose a different language in the 'Settings' under 'Language Settings'
 
-    Scenario: Wanting to convert the web application from English to French
+    Scenario:
         Given that the web application is in English
         And I want it to be in French
         When I navigate in the 'Settings' section
-        Then I have the ability to choose another viwewing language by clicking 'Change language' under 'Language Settings'
+        Then I have the ability to choose another language by clicking 'Change language' under 'Language Settings'
         And my web application will be redirected in my desired language
 
 Feature: Change the currency
     In order to view the store in another currecny
     As a user
-    I have to choose a different currency in the 'Settings' of the web application under 'Currency Settings' 
+    I have to choose a different currency in the 'Settings' under 'Currency Settings' 
 
-    Scenario: Wanting to convert the storefront currency from Dollars($) to Euros(€)
+    Scenario:
         Given that the products from the web application are displayed in Dollars($)
         And I want the prices of the products to be displayed in Euros(€)
         When I navigate in the 'Settings' section
