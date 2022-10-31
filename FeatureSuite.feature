@@ -136,209 +136,209 @@ Feature: Display an advertisement in the Web Application
 //13. As a user, I can change my personal information
 
 Feature: Modify personal data
-In order to alter a profile's personal information 
-As a user
-Has to click the edit button to them modify the desired information and then submitting the changes
+    In order to alter a profile's personal information 
+    As a user
+    I want to click the edit button to them modify the desired information and then submitting the changes
 
-Scenario: Change the address informationt
-Given that I have a new address in where I reside
-And I want to update that information in my profile
-When editing my user profile
-Then I can navigate to the address field to change the old address to the new address
-And I will be able to see the updated information once i've submitted my changed
+    Scenario: Change the address informationt
+        Given that I have a new address in where I reside
+        And I want to update that information in my profile
+        When editing my user profile
+        Then I can navigate to the address field to change the old address to the new address
+        And I will be able to see the updated information once i've submitted my changed
 
 
 //14. As a user, I can search the product catalog
 
 Feature: Searching in the product catalog
-In order to search for a specific element in the product catalog 
-As a user
-Has to search in the search bar for their desired product and enter
+    In order to search for a specific element in the product catalog 
+    As a user
+    I haveto search in the search bar for their desired product and enter
 
-Scenario: Search an item in the product catalog
-Given that I want to search a specific item through the product catalog
-And I want to use the search bar to search
-When putting in my search
-Then I can see a list of retrieved items that correspond to my search
-And I can navigate through the items displayed that corresponds to my needs
+    Scenario: Search an item in the product catalog
+        Given that I want to search a specific item through the product catalog
+        And I want to use the search bar to search
+        When putting in my search
+        Then I can see a list of retrieved items that correspond to my search
+        And I can navigate through the items displayed that corresponds to my needs
 
 
 //15. As a user, I can see product details / description
 
 Feature: View product description
-In order to see the details of a desired product
-As a user
-Has to navigate to the 'Product Detail' section of the page
+    In order to see the details of a desired product
+    As a user
+    I have to navigate to the 'Product Detail' section of the page
 
-Scenario: View product dimensions
-Given that there is a product that I am intersted in buying
-And I want to see the dimensions of the product
-When navigating in the page
-Then I click on the 'Product Detail' section
-And a detailed description of mt product will be displayed
+    Scenario: View product dimensions
+         Given that there is a product that I am intersted in buying
+         And I want to see the dimensions of the product
+         When navigating in the page
+         Then I click on the 'Product Detail' section
+         And a detailed description of mt product will be displayed
 
 
 //16. As a user, I can add products to my shopping cart
 
 Feature: Add products to shopping cart
-In order to add selected products in my cart
-As a user
-Has to click the 'Add to cart' button
+    In order to add selected products in my cart
+    As a user
+    I have to click the 'Add to cart' button
 
-Sceenario: User wants to buy a product
-Given that there is a product that peeks my attention
-And I want to buy it
-When navugating the product page
-Then I click the 'Add to cart' button
-And my product will be added to the shopping cart for it to be purchased
+    Scenario: User wants to buy a product
+         Given that there is a product that peeks my attention
+         And I want to buy it
+         When navugating the product page
+         Then I click the 'Add to cart' button
+         And my product will be added to the shopping cart for it to be purchased
 
 
 //17. As a user, I can remove products from my shopping cart
 
 Feature: Remove a product from shopping cart
-In order to remove a product from my cart
-As a user
-Has to click the 'Remove from cart' button
+    In order to remove a product from my cart
+    As a user
+    I have to click the 'Remove from cart' button
 
-Scenario: User wants to no longer buy a product
-Given that there is a product that I added to my cart 
-And I dont want it anymore
-When navigating the shopping cart page
-Then I click the 'Remove from cart' button
-And my product will be discarded from my shopping cart
+    Scenario: User wants to no longer buy a product
+         Given that there is a product that I added to my cart 
+         And I dont want it anymore
+         When navigating the shopping cart page
+         Then I click the 'Remove from cart' button
+         And my product will be discarded from my shopping cart
 
 
 //18. As a user, I can modify the quantities of products in my shopping cart
 
 Feature: Add or remove quantity of a product in my shopping cart
-In order to modify the quantity of a specific product
-As a user
-Has to click the '+' or '-' button according to their preference
+    In order to modify the quantity of a specific product
+    As a user
+    I have to click the '+' or '-' button according to their preference
 
-Scenario: Add another quantity of a product
-Given that there is a product in my shopping cart
-And there is already a defined quantity to it
-When I want to add another one of the product
-Then I click the '+' button
-And another quanity of my product will be added to my shopping cart
+    Scenario: Add another quantity of a product
+         Given that there is a product in my shopping cart
+         And there is already a defined quantity to it
+         When I want to add another one of the product
+         Then I click the '+' button
+         And another quanity of my product will be added to my shopping cart
 
 
 //19. As a user, I can checkout
 
 Feature: User checkout
-In order to checkout and proceed to payment
-As a user
-Has to click the 'Proceed to payment' button 
+    In order to checkout and proceed to payment
+    As a user
+    I have to click the 'Proceed to payment' button 
 
-Scenario: User proceeding to checkout
-Given that an I have a shopping cart
-And that I have products in it
-When I am ready to pay
-Then I click the 'Proceed payment' button
-And I will redirected to the payment page
+    Scenario: User proceeding to checkout
+        Given that an I have a shopping cart
+        And that I have products in it
+        When I am ready to pay
+        Then I click the 'Proceed payment' button
+        And I will redirected to the payment page
 
 
 //20. As a user, I can add products to my Wish Lists
 
 Feature: Add a product to 'Wish List'
-In order to add desired products saved for future purposes
-As a user
-Has to click the 'Add to Wishlist' button
+    In order to add desired products saved for future purposes
+    As a user
+    I have to click the 'Add to Wishlist' button
 
-Scenario: User wants to buy something for themselve but dont have the money in the momment
-Given that there is a product that I really want
-And I want to buy it
-When I will have the financial ressources for it
-Then I can go back to my Wishlist
-And I can view the products that were saved there
-
+    Scenario: User wants to buy something for themselve but dont have the money in the momment
+         Given that there is a product that I really want
+         And I want to buy it
+         When I will have the financial ressources for it
+         Then I can go back to my Wishlist
+         And I can view the products that were saved there
+ 
 
 //21. As a user, I can leave a rating on a product
 
 Feature: Leave a rating
-In order to leave a rating about a product
-As a user
-Has to click on the desired amount of stars out of 5
+     In order to leave a rating about a product
+     As a user
+     I have to click on the desired amount of stars out of 5
 
-Scenario: Leaving a 5 star on a product
-Given that there is a purchased product that I liked
-And I want to let the seller know of it
-When I will navigate the product page
-Then I click on the number of stars out of 5 that correspond on how much I like the product
-And my rating if left for the seller
+     Scenario: Leaving a 5 star on a product
+         Given that there is a purchased product that I liked
+         And I want to let the seller know of it
+         When I will navigate the product page
+         Then I click on the number of stars out of 5 that correspond on how much I like the product
+         And my rating if left for the seller
 
 
 //22. As a user, I can write a review on a product
 
 Feature: Leave a review
-In order to leave a review on a product
-As a user
-Has to input their review in the 'Leave a review' text box
+     In order to leave a review on a product
+     As a user
+     I have to input their review in the 'Leave a review' text box
 
 Scenario: Comment about the bad quality of a product
-Given that there is a purchased product that has a bad quality
-And I want to let the seller know of it
-When I will navigate the product page
-Then I type my complaint in the textbook and click 'Submit'
-And my review will be pasted on the product page 
+    Given that there is a purchased product that has a bad quality
+    And I want to let the seller know of it
+    When I will navigate the product page
+    Then I type my complaint in the textbook and click 'Submit'
+    And my review will be pasted on the product page 
 
 
 //23. As a user, I can have multiple Shipping Addresses saved
 
 Feature: Save a secondary shipping address
-In order to save another shipping address
-As a user
-Has to go on user profile and update the 'Shipping Information' section
+    In order to save another shipping address
+    As a user
+    I have to go on user profile and update the 'Shipping Information' section
 
-Scenario: Add another shipping address
-Given that I have another location where I reside in
-And I want to add that address to my shipping information
-When I will navigate through the 'User Profile'
-Then I will click 'Add' in the 'Shipping Information' section under the 'Shipping address' element
-And I can add the secondary address
+    Scenario: Add another shipping address
+        Given that I have another location where I reside in
+        And I want to add that address to my shipping information
+        When I will navigate through the 'User Profile'
+        Then I will click 'Add' in the 'Shipping Information' section under the 'Shipping address' element
+        And I can add the secondary address
 
 
 //24. As a user, I can choose multiple payment methods
 
 Feature: Ability to choose from multiple payment methods
-In order to browse through a range of payment methods
-As a user
-Has to click 'Select another payment method' when checkout
+    In order to browse through a range of payment methods
+    As a user
+    I have to click 'Select another payment method' when checkout
 
-Scenario: Chosoe another card as payment
-Given that there is a product I am willing to buy
-And I am in the checkout process
-When I will arrive at the payment
-Then I have to click 'Select another payment method'
-And I can choose from a range of payment methods that I've presaved to choose from
+    Scenario: Chosoe another card as payment
+        Given that there is a product I am willing to buy
+        And I am in the checkout process
+        When I will arrive at the payment
+        Then I have to click 'Select another payment method'
+        And I can choose from a range of payment methods that I've presaved to choose from
 
 
 //25. As a user, I can change the language of the web applications
 
 Feature: Globalization of web application
-In order to be able to see the web application in another language
-As a user
-Has to choose a different language in the 'Settings' of the web application under 'Language Settings'
+    In order to be able to see the web application in another language
+    As a user
+    I have to choose a different language in the 'Settings' of the web application under 'Language Settings'
 
-Scenario: Wanting to convert the web application from English to French
-Given that the web application is in English
-And I want it to be in French
-When I navigate in the 'Settings' section
-Then I have the ability to choose another viwewing language by clicking 'Change language' under 'Language Settings'
-And my web application will be redirected in my desired language
+    Scenario: Wanting to convert the web application from English to French
+        Given that the web application is in English
+        And I want it to be in French
+        When I navigate in the 'Settings' section
+        Then I have the ability to choose another viwewing language by clicking 'Change language' under 'Language Settings'
+        And my web application will be redirected in my desired language
 
 
 //26. As a user, I can change the type of currency of the web applications1
 
 Feature: Change the currency
-In order to view the store in another currecny
-As a user
-Has to choose a different currency in the 'Settings' of the web application under 'Currency Settings' 
+    In order to view the store in another currecny
+    As a user
+    I have to choose a different currency in the 'Settings' of the web application under 'Currency Settings' 
 
-Scenario: Wanting to convert the storefront currency from Dollars($) to Euros(€)
-Given that the products from the web application are displayed in Dollars($)
-And I want the prices of the products to be displayed in Euros(€)
-When I navigate in the 'Settings' section
-Then I have the ability to choose another currency by clicking 'Change currency' under 'Currency Settings'
-And my web application will be redirected in my desired language
+    Scenario: Wanting to convert the storefront currency from Dollars($) to Euros(€)
+        Given that the products from the web application are displayed in Dollars($)
+        And I want the prices of the products to be displayed in Euros(€)
+        When I navigate in the 'Settings' section
+        Then I have the ability to choose another currency by clicking 'Change currency' under 'Currency Settings'
+        And my web application will be redirected in my desired language
 
