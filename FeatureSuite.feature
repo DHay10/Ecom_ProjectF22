@@ -114,9 +114,6 @@ Feature: Send an email to all registered users
         Then I can view the data and be able to respond to the inquiry
         And the customer will have a response to their question 
 
-
-//11. As a seller, I can put choose advertisement for my Web Application
-
 Feature: Display an advertisement in the Web Application
     In order to display an advertisement about a promotion to my viewers
     As a seller
@@ -133,8 +130,6 @@ Feature: Display an advertisement in the Web Application
 //12. As a user, I can register, login, and logout (Not New)
 
 
-//13. As a user, I can change my personal information
-
 Feature: Modify personal data
     In order to alter a profile's personal information 
     As a user
@@ -146,9 +141,6 @@ Feature: Modify personal data
         When editing my user profile
         Then I can navigate to the address field to change the old address to the new address
         And I will be able to see the updated information once i've submitted my changed
-
-
-//14. As a user, I can search the product catalog
 
 Feature: Searching in the product catalog
     In order to search for a specific element in the product catalog 
@@ -162,9 +154,6 @@ Feature: Searching in the product catalog
         Then I can see a list of retrieved items that correspond to my search
         And I can navigate through the items displayed that corresponds to my needs
 
-
-//15. As a user, I can see product details / description
-
 Feature: View product description
     In order to see the details of a desired product
     As a user
@@ -176,9 +165,6 @@ Feature: View product description
          When navigating in the page
          Then I click on the 'Product Detail' section
          And a detailed description of mt product will be displayed
-
-
-//16. As a user, I can add products to my shopping cart
 
 Feature: Add products to shopping cart
     In order to add selected products in my cart
@@ -192,9 +178,6 @@ Feature: Add products to shopping cart
          Then I click the 'Add to cart' button
          And my product will be added to the shopping cart for it to be purchased
 
-
-//17. As a user, I can remove products from my shopping cart
-
 Feature: Remove a product from shopping cart
     In order to remove a product from my cart
     As a user
@@ -206,9 +189,6 @@ Feature: Remove a product from shopping cart
          When navigating the shopping cart page
          Then I click the 'Remove from cart' button
          And my product will be discarded from my shopping cart
-
-
-//18. As a user, I can modify the quantities of products in my shopping cart
 
 Feature: Add or remove quantity of a product in my shopping cart
     In order to modify the quantity of a specific product
@@ -222,9 +202,6 @@ Feature: Add or remove quantity of a product in my shopping cart
          Then I click the '+' button
          And another quanity of my product will be added to my shopping cart
 
-
-//19. As a user, I can checkout
-
 Feature: User checkout
     In order to checkout and proceed to payment
     As a user
@@ -236,9 +213,6 @@ Feature: User checkout
         When I am ready to pay
         Then I click the 'Proceed payment' button
         And I will redirected to the payment page
-
-
-//20. As a user, I can add products to my Wish Lists
 
 Feature: Add a product to 'Wish List'
     In order to add desired products saved for future purposes
@@ -252,9 +226,6 @@ Feature: Add a product to 'Wish List'
          Then I can go back to my Wishlist
          And I can view the products that were saved there
  
-
-//21. As a user, I can leave a rating on a product
-
 Feature: Leave a rating
      In order to leave a rating about a product
      As a user
@@ -267,23 +238,17 @@ Feature: Leave a rating
          Then I click on the number of stars out of 5 that correspond on how much I like the product
          And my rating if left for the seller
 
-
-//22. As a user, I can write a review on a product
-
 Feature: Leave a review
      In order to leave a review on a product
      As a user
      I have to input their review in the 'Leave a review' text box
 
-Scenario: Comment about the bad quality of a product
-    Given that there is a purchased product that has a bad quality
-    And I want to let the seller know of it
-    When I will navigate the product page
-    Then I type my complaint in the textbook and click 'Submit'
-    And my review will be pasted on the product page 
-
-
-//23. As a user, I can have multiple Shipping Addresses saved
+     Scenario: Comment about the bad quality of a product
+         Given that there is a purchased product that has a bad quality
+         And I want to let the seller know of it
+         When I will navigate the product page
+         Then I type my complaint in the textbook and click 'Submit'
+         And my review will be pasted on the product page 
 
 Feature: Add, delete, modify Shipping Address saved
     In order to add, delete or modify my saved shipping address
@@ -297,23 +262,17 @@ Feature: Add, delete, modify Shipping Address saved
         Then I will click 'Add' in the 'Shipping Information' section under the 'Shipping address' element
         And I can add the secondary address
 
-
-//24. As a user, I can choose multiple payment methods
-
-Feature: Ability to choose from multiple payment methods
-    In order to browse through a range of payment methods
+Feature: Modify the rating and review of a purchased product
+    In order to modify a rating or a review from a product I purchased
     As a user
-    I have to click 'Select another payment method' when checkout
+    I have to click 'Modify' under my submitted rating or review
 
-    Scenario: Chosoe another card as payment
-        Given that there is a product I am willing to buy
-        And I am in the checkout process
-        When I will arrive at the payment
-        Then I have to click 'Select another payment method'
-        And I can choose from a range of payment methods that I've presaved to choose from
-
-
-//25. As a user, I can change the language of the web applications
+    Scenario: 
+        Given that I posted a review for a purchased product
+        And I want to modify it
+        When I will navigate the product page I will see the 'Modify' option under my posted review
+        Then I have to click 'Modify' to modify my review
+        And I will click 'Submit' to post my modified review to the public
 
 Feature: Globalization of web application
     In order to be able to see the web application in another language
@@ -326,9 +285,6 @@ Feature: Globalization of web application
         When I navigate in the 'Settings' section
         Then I have the ability to choose another viwewing language by clicking 'Change language' under 'Language Settings'
         And my web application will be redirected in my desired language
-
-
-//26. As a user, I can change the type of currency of the web applications1
 
 Feature: Change the currency
     In order to view the store in another currecny
