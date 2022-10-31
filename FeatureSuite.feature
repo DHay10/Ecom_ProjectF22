@@ -285,8 +285,8 @@ Scenario: Comment about the bad quality of a product
 
 //23. As a user, I can have multiple Shipping Addresses saved
 
-Feature: Save a secondary shipping address
-    In order to save another shipping address
+Feature: Add, delete, modify Shipping Address saved
+    In order to add, delete or modify my saved shipping address
     As a user
     I have to go on user profile and update the 'Shipping Information' section
 
