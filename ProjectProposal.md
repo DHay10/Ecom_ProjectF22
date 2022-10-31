@@ -22,10 +22,10 @@
 - As a seller, I can register, login, and logout (Not New)
 - As a seller, I can add products for sale
 - As a seller, I can modify products for sale
-- As a seller, I can remove products fro sale
+- As a seller, I can remove products for sale
 - As a seller, I can track sales of my products
-- As a seller, I can view product purchases
-- As a seller, I can mark customer's order as shipped and add tracking information to shipped items
+- As a seller, I can view customers' orders
+- As a seller, I can mark customers' orders as shipped and add tracking information to shipped items
 - As a seller, I can view client service requests on sales
 - As a seller, I can respond to client service requests on sales
 - As a seller, I can showcase products in the 'Featured Section'
@@ -47,4 +47,4 @@
 - As a user, I can change the language of the web applications (Not New)
 - As a user, I can change the type of currency of the web applications ([Fixer.io](https://fixer.io/))
 
-All these features brings a total of ~9 features per team member
+All these features brings a total of 9 features per team member

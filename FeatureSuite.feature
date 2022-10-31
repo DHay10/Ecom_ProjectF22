@@ -1,125 +1,118 @@
+Feature: Add product for sale
+    In order to put a product for sale
+    As a seller
+    I want to be able to put up my product for sale
 
-//1.As a seller, I can add products for sale
-
-Feature: Add products for sale
-In order to sell preferred products
-As a seller
-Has to display their products
-
-Scenario: List the product on web server
-Given I have a product that I want to sell
-And I want to list my product
-When I go in the seller platform
-Then I list my product
-And my product will be added
-
-
-//2. As a seller, I can modify products for sale
+    Scenario:
+        Given I have "product" that I want to sell
+        And I want to list that "product"
+        When I go in "add product" page
+        Then I can add my "product" and its "details"
+        And the "product" will be added
 
 Feature: Modify listed product
-In order to modify a product
-As a seller
-Has to change the content of the already displayed product
+    In order to modify a lised product
+    As a seller
+    I want to able to edit the details of my products for sell
 
-Scenario: Modify content of a product
-Given that there is a listed product
-And I want to modify its content
-When I go in the seller platform
-Then I have the option to edit
-And  my product content will be edited
+    Scenario: 
+        Given that there is a listed "product"
+        And I want to modify its "details"
+        When I choose that "product"
+        Then I can change its "details"
+        And my "product" details will be updated
 
+Feature: Remove listed product
+    In order to remove a listed product
+    As a seller
+    I want to be able to remove a listed product
 
-//3.As a seller, I can categorize my products
-
-Feature: Categorize products in a preferred order
-In order to categorize a product
-As a seller
-Has to edit the layout of how they want to categorize their products
-
-Scenario: Categorize products in a list of low to high cost
-Given that there are displayed products
-And I want to categorize them in a specifc way
-When I go in the settings of the layout
-Then I have the option to view my products in my preffered choice
-And I can see my prodcuts in the preffered order
-
-
-//4.As a seller, I can track sales of my products
+    Scenario:
+        Given that there is a listed "product"
+        And I want to remove that "product"
+        When I choose that "product"
+        Then I can remove the "product"
+        And the "product" will be removed
 
 Feature: Track sales of my listed products
-In order to track sales
-As a seller
-Has to view the data of their sales
+    In order to track the sales of my products
+    As a seller
+    I want to be able to view the data of their sales
 
-Scenario: See the amount of buys a product has made
-Given that there is a listed product
-And I want to view how many times it has been bought
-When I go on the product's core data
-Then I have the ability to view how many times it has been purchased
-And I can track how well a product is doing
+    Scenario:
+        Given that there is a listed "product"
+        And I want to view how many times it has been bought
+        When I choose that "product"
+        Then I can view how many times it has been purchased
 
+Feature: View customer order
+    In order to view a customer order
+    As a seller
+    I want to be able to view customer order
 
-//5.As a seller, I can view product purchases and mark them as shipped
+    Scenario:
+        Given that there is an "order"
+        And I want to view that "order"
+        When I choose that "order"
+        Then I can view the details of that "order"
 
-Feature: Label the staus of a buyer's product as shipped
-In order to advise a product as shipped
-As a seller
-Has to label the product as shipped to the buyer
+Feature: Mark customer order as shipped and add tracking information
+    In order to mark a customer order as shipped 
+    And add tracking information
+    As a seller
+    I want to be able to mark the order as shipped and add tracking information
 
-Scenario: A buyer is going on their order status to see the status of their order
-Given that there is a item that is bought by a customer
-And they want to view the status of their order
-When the product has been shipped
-Then the seller can mark the status as shipped
-And the buyer is able to see that their order has been shipped
+    Scenario:
+        Given that there is an "order"
+        And I want to mark that "order" as shipped
+        When I choose that "order"
+        Then I can mark that "order" as shipped
+        And add tracking information
 
+Feature: View client service request
+    In order to view a client service request
+    As a seller
+    I want to be able to view the client service request
 
-//6.As a seller, I can add tracking information to shipped items
+    Scenario:
+        Given that there is an "request"
+        And I want to see that "request"
+        When I choose that "request"
+        Then I can view the details of that "request"
 
-Feature: See how far a product is to its destination
-In order to track shipping information
-As a seller
-Has to add the locations of the product each time its being moved from a place to another
+Feature: Respond client service request
+    In order to respond to a client service requests 
+    As a seller
+    I want to be able to respond the client service request
 
-Scenario: Wanting to see when a product will arrive to their buyer
-Given that there is an item that is in the shipping phase
-And we want to view how far it is from the destination location
-When the product is in movement
-Then the seller is able to add the location in the order status
-And the buyer is able to track their product
+    Scenario:
+        Given that there is an "request"
+        And I want to respond to that "request"
+        When I choose that "request"
+        Then I can respond to that "request"
 
+Feature: Add a product to the featured Section
+    In order to add a product in the featured section
+    As a seller
+    I want to be able to add a product in the Featured Section
 
-//7.As a seller, I can view client service requests on sales and respond
+    Scenario:
+        Given that there is a "product"
+        And I want to add that "product" to the featured section
+        When I choose that "product"
+        Then I can add that "product" to the featured section
+        And that "product" will be added to the featured section
 
+Feature: Send an email to all registered users
+    In order to send an email to all registered users
+    As a seller
+    I want to be able to send an email to all registered users
 
-//8. As a seller, I can showcased products in the 'Featured Section'
-
-Feature: Implement a 'Feature Section'
-In order to show product in the section
-As a seller
-Has to add desired products in the 'Fetaure Section' view
-
-Scenario: Navigate through the 'Feature Section' page
-Given that there is a 'Feature Section' view
-And we want to showcase selected products
-When the seller goes in the settings on the page
-Then they can add desired products
-And there would be a fully implemented 'Feature Section' page
-
-
-//9. As a seller, I can add FAQ to my Web Application
-
-Feature: Implement a FAQ view
-In order to have a view that has the ability to send questions to the seller
-As a seller
-Has to implement a page that can take in questions from customers
-
-Scenario: Send a question to seller
-Given that there is a question that I want to ask the seller about a specific product
-And I want to answer to their question
-When the customer will send their inquiry in the FAQ view
-Then I can view the data and be able to respond to the inquiry
-And the customer will have a response to their question 
+    Scenario:
+        Given that I want to send an email to all registered users
+        When I access the emailing page
+        Then I can view the data and be able to respond to the inquiry
+        And the customer will have a response to their question 
 
 
 //10. As a seller, I can send an email to all of registered users
