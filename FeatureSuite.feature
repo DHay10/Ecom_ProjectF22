@@ -126,10 +126,6 @@ Feature: Display an advertisement in the Web Application
         Then I can precise for which event it is for as well as make it visually pleasing
         And the viwers that will browse the Web Application will notice the advertisement
 
-
-//12. As a user, I can register, login, and logout (Not New)
-
-
 Feature: Modify personal data
     In order to alter a profile's personal information 
     As a user
