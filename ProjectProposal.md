@@ -25,7 +25,7 @@
 - As a seller, I can remove products for sale
 - As a seller, I can track sales of my products
 - As a seller, I can view customers' orders
-- As a seller, I can mark customers' orders as shipped and add tracking information to shipped items
+- As a seller, I can mark customers' orders as shipped and add tracking information of shipped order
 - As a seller, I can view client service requests on sales
 - As a seller, I can respond to client service requests on sales
 - As a seller, I can showcase products in the 'Featured Section'
