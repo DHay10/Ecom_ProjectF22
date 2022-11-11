@@ -6,7 +6,7 @@ class Model{
 
 	public function __construct(){
 		$server = 'localhost';
-		$dbname = ''; // chose a name for database later
+		$dbname = 'ecom_project';
 		$username = 'root';
 		$password = '';
 
