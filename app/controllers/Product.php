@@ -46,6 +46,30 @@ class Product extends \app\core\Controller {
         } 
         */
         $this->view('delete', $product);
+    }
+
+    // Add to shopping cart
+    public function addToCart($product_id) {
+        //TODO
+        
+    }
+
+    // Add to wishlist
+    public function addToWishlist($product_id) {
+        //TODO
+    }
+
+    // Review Product
+    // Need to see if review and rate should be combined
+    public function reviewProduct($product_id) {
 
     }
+
+    // Modify Review
+    public function modifyReview($review_id) {
+        
+    }
+
+
+
 }
