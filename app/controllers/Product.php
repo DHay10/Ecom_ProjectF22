@@ -70,8 +70,18 @@ class Product extends \app\core\Controller {
 
     // Add to wishlist
     public function addToWishlist($product_id) {
-        //TODO
+        $wishlist = new \app\models\Wishlist();
+        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+        $wishlist->addProduct($product_id);
     }
+
+    // Remove from wishlist
+    public function removeFromWishlist($product_id) {
+        $wishlist = new \app\models\Wishlist();
+        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+        $wishlist->removeProduct($product_id);
+    }
+
 
     // Review Product
     // Need to see if review and rate should be combined
