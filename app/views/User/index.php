@@ -25,8 +25,8 @@
                             <h2 class="card-title text-center">Login as User</a></h2>
                             
                             <div class="navbar">
-                                <a class="active" href="\Main\Login">Customer</a>
-                                <a href="\Main\index">Admin</a>
+                                <a class="active" href="\Main\login">Customer</a>
+                                <a href="\Main\adminLogin">Admin</a>
                             </div>
 
                             <hr >
