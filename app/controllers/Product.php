@@ -18,34 +18,48 @@ class Product extends \app\core\Controller {
 
     // Add Product
 	public function add() {
-        //TODO
-		$this->view('Product/add');
+        if(isset($_POST['action'])) {
+            $newProduct = new \app\models\Product();
+            $newProduct->product_name = $_POST['product_name'];
+            $newProduct->price = $_POST['price'];
+            $newProduct->description = $_POST['description'];
+            $newProduct->category_id = $_POST['category_id'];
+
+            $newProduct->insert();
+            header('location:/Admin/Dashboard');
+        } else {
+            $this->view('Product/add');
+        }
 	}
 
     // Edit Product
     public function modify($product_id) {
-        //TODO
-        $this->view('Product/edit');
+        if(isset($_POST['action'])) {
+            $product = new \app\models\Product();
+            $product = product->get($product_id);
+            $product->product_name = $_POST['product_name'];
+            $product->price = $_POST['price'];
+            $product->description = $_POST['description'];
+            $product->category_id = $_POST['category_id'];
+
+            $product->update();
+            header('location:/Admin/Dashboard');
+        } else {
+            $this->view('Product/edit');
+        }
     }
 
     // Remove Product
     public function delete($product_id) {
-        $product = new \app\models\Product();
-        $product = $product->get($product_id);
-        //TODO
-        /*
         if(isset($_POST['action'])) {
-            if(password_verify($_POST['password'], $post->password_hash)) {
-                $post->delete();
-                header('location:/index');
-            } else {
-                header('location:/User/register?error=Password is wrong.');
-            }
+            $product = new \app\models\Product();
+            $product->product_id = $product_id;
+            
+            $product->delete();
+            header('location:/Admin/Dashboard');
         } else {
-            $this->view('delete', $post);
-        } 
-        */
-        $this->view('delete', $product);
+            $this->view('Product/remove');
+        }
     }
 
     // Add to shopping cart
