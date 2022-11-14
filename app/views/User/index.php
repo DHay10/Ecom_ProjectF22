@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
                                             <a href="\Main\index">Back</a>
-                                            <a href="\Main\userRegister">Register</a>
+                                            <a href="\User\register">Register</a>
                                             <button name="login" type="submit" class="btn btn-primary">Login</button>
                                         </div>
                                     </form>

@@ -25,7 +25,13 @@
 
                                     <form _lpchecked="1" action='' method='post'>
                                         <div class="form-group">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
                                             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control" id="password" name="password_input" placeholder="Password">

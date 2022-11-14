@@ -28,8 +28,11 @@ class User extends \app\core\Controller {
 				$user = new \app\models\User();
 				$check = $user->get($_POST['username']);
 				if(!$check) {
+					$user->name = $_POST['name'];
 					$user->username = $_POST['username'];
+					$user->email = $_POST['email'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
 					$user->insert();
 					header('location:/User/index');
 				} else {
@@ -38,6 +41,8 @@ class User extends \app\core\Controller {
 			} else {
 				header('location:/User/register?error=Passwords do not match.');
 			}
+		}else{
+			$this->view('User/register');
 		}
 	}
 }
