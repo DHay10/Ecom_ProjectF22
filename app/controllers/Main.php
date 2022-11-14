@@ -23,5 +23,4 @@
 			$this->view('Admin/login');
 		}
 
-		
 	}
