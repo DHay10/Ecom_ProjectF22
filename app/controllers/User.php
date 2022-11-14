@@ -42,7 +42,7 @@ class User extends \app\core\Controller {
 			} else {
 				header('location:/User/register?error=Passwords do not match.');
 			}
-		}else{
+		} else {
 			$this->view('User/register');
 		}
 	}
