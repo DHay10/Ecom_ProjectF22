@@ -22,7 +22,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         <div class="card">
-                            <h2 class="card-title text-center">Login as User</a></h2>
+                            <h2 class="card-title text-center">Login as User</h2>
                             
                             <div class="navbar">
                                 <a class="active" href="\Main\login">Customer</a>
@@ -39,6 +39,7 @@
                                             <input type="password" class="form-control" id="password" name="password_input" placeholder="Password">
                                         </div>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
+                                            <a href="\Main\index">Back</a>
                                             <a href="\Main\userRegister">Register</a>
                                             <button name="login" type="submit" class="btn btn-primary">Login</button>
                                         </div>

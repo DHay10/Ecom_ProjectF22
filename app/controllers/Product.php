@@ -92,7 +92,7 @@ class Product extends \app\core\Controller {
             $review->date = date();
             $review->insert();
         } else {
-            this->view('Review/create');
+            $this->view('Review/create');
         }
     }
 
@@ -104,8 +104,15 @@ class Product extends \app\core\Controller {
             $review->rating = $_POST['rating'];
             $review->update();
         } else {
-            this->view('Review/create');
+            $this->view('Review/create');
         }
+    }
+
+    // Catalog View
+    public function catalog() {
+		$product = new \app\models\Product();
+        $products = $product->getAll();
+        $this->view('Product/catalog', $products);
     }
 
 }

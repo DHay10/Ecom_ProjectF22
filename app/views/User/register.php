@@ -2,10 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link
-        rel="canonical"
-        href="https://getbootstrap.com/docs/5.2/examples/carousel/"
-        />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/"/>
         <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -37,6 +34,7 @@
                                             <input type="password" class="form-control" id="password_confirm" name="password_input_confirm" placeholder="Confirm Password">
                                         </div>
 										<div class="d-flex flex-row align-items-center justify-content-between">
+                                            <a href="\Main\index">Back</a>
                                             <a href="\Main\Login">Already a Member?</a>
                                             <button name="action" type="submit" class="btn btn-primary">Register</button>
                                         </div>
