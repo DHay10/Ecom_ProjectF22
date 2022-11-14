@@ -6,7 +6,7 @@ Feature: Add product for sale
     Scenario:
         Given I have "product" that I want to sell
         And I want to list that "product"
-        When I go in "add product" page
+        When I am in /Product/add product
         Then I can add my "product" and its "details"
         And the "product" will be added
 
@@ -18,9 +18,9 @@ Feature: Modify listed product
     Scenario: 
         Given that there is a listed "product"
         And I want to modify its "details"
-        When I choose that "product"
-        Then I can change its "details"
-        And my "product" details will be updated
+        When I click that "product"
+        Then I can click "Modify"
+        And my "product" can be updated
 
 Feature: Remove listed product
     In order to remove a listed product
@@ -30,8 +30,8 @@ Feature: Remove listed product
     Scenario:
         Given that there is a listed "product"
         And I want to remove that "product"
-        When I choose that "product"
-        Then I can remove the "product"
+        When I am in /Product
+        Then I can click "Delete"
         And the "product" will be removed
 
 Feature: Track sales of my listed products
@@ -42,7 +42,7 @@ Feature: Track sales of my listed products
     Scenario:
         Given that there is a listed "product"
         And I want to view how many times it has been bought
-        When I choose that "product"
+        When I am on Product/sales
         Then I can view how many times it has been purchased
 
 Feature: View customer order
@@ -53,8 +53,8 @@ Feature: View customer order
     Scenario:
         Given that there is an "order"
         And I want to view that "order"
-        When I choose that "order"
-        Then I can view the details of that "order"
+        When I am on /Order
+        Then I can view the "details" of that "order"
 
 Feature: Mark customer order as shipped and add tracking information
     In order to mark a customer order as shipped 
@@ -64,10 +64,10 @@ Feature: Mark customer order as shipped and add tracking information
 
     Scenario:
         Given that there is an "order"
-        And I want to mark that "order" as shipped
-        When I choose that "order"
-        Then I can mark that "order" as shipped
-        And add tracking information
+        And I want to mark that "order" as "Shipped"
+        When I am in /Order
+        Then I can mark that "order" as "shipped"
+        And add "tracking information" in Order/tracking
 
 Feature: View client service request
     In order to view a client service request
@@ -77,8 +77,8 @@ Feature: View client service request
     Scenario:
         Given that there is an "request"
         And I want to see that "request"
-        When I choose that "request"
-        Then I can view the details of that "request"
+        When I am on /Request
+        Then I can view the "details" of that "request"
 
 Feature: Respond client service request
     In order to respond to a client service requests 
@@ -88,7 +88,7 @@ Feature: Respond client service request
     Scenario:
         Given that there is an "request"
         And I want to respond to that "request"
-        When I choose that "request"
+        When I am on that /Request
         Then I can respond to that "request"
 
 Feature: Add a product to the featured Section
@@ -98,10 +98,10 @@ Feature: Add a product to the featured Section
 
     Scenario:
         Given that there is a "product"
-        And I want to add that "product" to the featured section
+        And I want to add that "product" to the "Featured Section"
         When I choose that "product"
-        Then I can add that "product" to the featured section
-        And that "product" will be added to the featured section
+        Then I can add that "product" to /Product/Featured Section
+        And that "product" will be displayed in /Featured Section
 
 Feature: Send an email to all registered users
     In order to send an email to all registered users
@@ -109,10 +109,10 @@ Feature: Send an email to all registered users
     I want to be able to send an email to all registered users
 
     Scenario:
-        Given that I want to send an email to all registered users
-        When I access the emailing page
-        Then I can write 
-        And the customer will have a response to their question 
+        Given that I want to send an "email" to all "registered users"
+        When I am in /Email/send an email
+        Then I can compose an "email" 
+        And click "Send" to send "email" to "registered users"
 
 Feature: Display an advertisement in the Web Application
     In order to display an advertisement about a promotion to my viewers
@@ -120,35 +120,35 @@ Feature: Display an advertisement in the Web Application
     I want to implement an advertisement to be displayed for a temporary moment
 
     Scenario: 
-        Given that there is a Black Friday discount that customers can get a hold of
-        And I want to display it in a significant way on my Web Application
-        When implementing an advertisement
-        Then I can precise for which event it is for as well as make it visually pleasing
-        And the viwers that will browse the Web Application will notice the advertisement
+        Given that there is "discount" that customers can get a hold of
+        And I want to display it in on my Web Application
+        When I am in /Advertisement 
+        Then I can create an "advertisement" and its "details"
+        And my "advertisement" will be displayed
 
 Feature: Modify personal data
     In order to alter a profile's personal information 
     As a user
-    I want to click the edit button to them modify the desired information and then submitting the changes
+    I want to click the "edit" button to modify the desired information and then click "save"
 
     Scenario: 
-        Given that I have a new address in where I reside
-        And I want to update that information in my profile
-        When editing my user profile
-        Then I can navigate to the address field to change the old address to the new address
-        And I will be able to see the updated information once i've submitted my changed
+        Given that I have a new address that I want to add
+        And I want to update my "profile"
+        When I am on /Profile
+        Then I click "edit" to modify the address field
+        And I click "save" to have my new address updated
 
 Feature: Searching in the product catalog
-    In order to search for a specific element in the product catalog 
+    In order to search for a specific element in the "product catalog"
     As a user
-    I have to search in the search bar for their desired product and enter
+    I have to search in the "Search Bar" for the desired product
 
     Scenario: 
-        Given that I want to search a specific item through the product catalog
-        And I want to use the search bar to search
-        When putting in my search
+        Given that I want to search a "product" 
+        And I am on /Product/catalog
+        When I enter my search in the "Search Bar"
         Then I can see a list of retrieved items that correspond to my search
-        And I can navigate through the items displayed that corresponds to my needs
+        And I can navigate through /Product/catalog
 
 Feature: View product description
     In order to see the details of a desired product
