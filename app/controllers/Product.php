@@ -82,18 +82,37 @@ class Product extends \app\core\Controller {
         $wishlist->removeProduct($product_id);
     }
 
-
     // Review Product
     // Need to see if review and rate should be combined
     public function reviewProduct($product_id) {
-
+        if(isset($_POST['action'])) {
+            $review = new \app\models\Review();
+            $review->comment = $_POST['comment'];
+            $review->rating = $_POST['rating'];
+            $review->date = date();
+            $review->insert();
+        } else {
+            $this->view('Review/create');
+        }
     }
 
     // Modify Review
     public function modifyReview($review_id) {
-        
+        if(isset($_POST['action'])) {
+            $review = new \app\models\Review();
+            $review->comment = $_POST['comment'];
+            $review->rating = $_POST['rating'];
+            $review->update();
+        } else {
+            $this->view('Review/create');
+        }
     }
 
-
+    // Catalog View
+    public function catalog() {
+		$product = new \app\models\Product();
+        $products = $product->getAll();
+        $this->view('Product/catalog', $products);
+    }
 
 }
