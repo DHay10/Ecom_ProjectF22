@@ -28,7 +28,7 @@ class Product extends \app\core\Controller {
             $newProduct->insert();
             header('location:/Admin/Dashboard');
         } else {
-            $this->view('Product/add');
+            $this->view('Admin/addProduct');
         }
 	}
 

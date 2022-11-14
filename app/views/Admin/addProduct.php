@@ -20,10 +20,15 @@
                 <label for="product_desc">Description:</label>
                 <input type="textarea" id="product_desc" name="product_desc" placeholder="Enter the Product's Description" required><br>
 
-                <label for="product_desc">Category:</label>
-                <input type="textarea" id="product_desc" name="product_desc" placeholder="Enter the Product's Description" required><br>
+                <label for="product_cate">Category:</label>
+                <select id="product_cate" name="product_cate" required>
+                    <!-- Find which category to add -->
+                    <option value="Test1">test1</option>
+                    <option value="Test2">test2</option>
+                    <option value="Test3">test3</option>
+                </select><br>
 
-                <input type="submit" name="action" value="Send"/>
+                <input type="submit" name="action" value="Add"/>
             </form>
         </div>
     </body>
