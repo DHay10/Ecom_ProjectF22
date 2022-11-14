@@ -31,6 +31,7 @@ class User extends \app\core\Controller {
 					$user->name = $_POST['name'];
 					$user->username = $_POST['username'];
 					$user->email = $_POST['email'];
+					$user->phone = $_POST['phone'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 					$user->insert();

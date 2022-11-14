@@ -2,7 +2,7 @@
 namespace app\core;
 
 class Model{
-	protected stati $_connection;
+	protected static $_connection;
 
 	public function __construct(){
 		$server = 'localhost';

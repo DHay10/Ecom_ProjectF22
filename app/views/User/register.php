@@ -34,11 +34,15 @@
                                             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" name="password_input" placeholder="Password">
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password_confirm" name="password_input_confirm" placeholder="Confirm Password">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                         </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirm Password">
+                                        </div>
+                                        
 										<div class="d-flex flex-row align-items-center justify-content-between">
                                             <a href="\Main\index">Back</a>
                                             <a href="\Main\Login">Already a Member?</a>
