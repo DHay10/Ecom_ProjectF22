@@ -1,0 +1,12 @@
+Feature: Mark customer order as shipped and add tracking information
+    In order to mark a customer order as shipped 
+    And add tracking information
+    As a seller
+    I want to be able to mark the order as shipped and add tracking information
+
+    Scenario:
+        Given that there is an "order"
+        And I want to mark that "order" as "Shipped"
+        When I am in /Order
+        Then I can mark that "order" as "shipped"
+        And add "tracking information" in Order/tracking
