@@ -156,119 +156,119 @@ Feature: View product description
     I have to navigate to the 'Product Detail' section of the page
 
     Scenario: 
-         Given that there is a product that I am intersted in buying
-         And I want to see the dimensions of the product
-         When navigating in the page
-         Then I click on the 'Product Detail' section
-         And a detailed description of mt product will be displayed
+         Given that there is a "product" that I am intersted in 
+         And I want to see the "dimensions" of the "product"
+         When I am on /Product
+         Then I click on the "Product Detail" section
+         And will have a description of the "product"
 
 Feature: Add products to shopping cart
     In order to add selected products in my cart
     As a user
-    I have to click the 'Add to cart' button
+    I have to click "Add to cart" 
 
     Scenario: 
-         Given that there is a product that peeks my attention
+         Given that there is a "product"
          And I want to buy it
-         When navugating the product page
-         Then I click the 'Add to cart' button
-         And my product will be added to the shopping cart for it to be purchased
+         When I am on /Product
+         Then I click "Add to cart"
+         And my "product" will be added to the "cart"
 
 Feature: Remove a product from shopping cart
     In order to remove a product from my cart
     As a user
-    I have to click the 'Remove from cart' button
+    I have to click "Remove from cart"
 
     Scenario: 
-         Given that there is a product that I added to my cart 
-         And I dont want it anymore
-         When navigating the shopping cart page
-         Then I click the 'Remove from cart' button
-         And my product will be discarded from my shopping cart
+         Given that there is a "product" in my "cart"
+         And I dont want to remove it
+         When I am on Product/cart
+         Then I click "Remove from cart"
+         And my product will be discarded from my "cart"
 
 Feature: Add or remove quantity of a product in my shopping cart
-    In order to modify the quantity of a specific product
+    In order to modify the quantity of a "product"
     As a user
-    I have to click the '+' or '-' button according to their preference
+    I have to click the '+' or '-' button
 
     Scenario: 
-         Given that there is a product in my shopping cart
-         And there is already a defined quantity to it
-         When I want to add another one of the product
-         Then I click the '+' button
-         And another quanity of my product will be added to my shopping cart
+         Given that there is a "product" in my "cart"
+         And I am on /Product
+         When I want to add another quantity of the "product"
+         Then I click "+"
+         And another quanity of my "product" will be added to my "cart"
 
 Feature: User checkout
     In order to checkout and proceed to payment
     As a user
-    I have to click the 'Proceed to payment' button 
+    I have to click 'Proceed to payment'  
 
     Scenario: 
-        Given that an I have a shopping cart
-        And that I have products in it
+        Given that an I have a "cart"
+        And that I have "products" in it
         When I am ready to pay
-        Then I click the 'Proceed payment' button
-        And I will redirected to the payment page
+        Then I click "Proceed payment"
+        And I will redirected to /Product/checkout
 
 Feature: Add a product to 'Wish List'
-    In order to add desired products saved for future purposes
+    In order to add products saved for future purposes
     As a user
-    I have to click the 'Add to Wishlist' button
+    I have to click 'Add to Wishlist' 
 
     Scenario: 
-         Given that there is a product that I really want
-         And I want to buy it
-         When I will have the financial ressources for it
-         Then I can go back to my Wishlist
-         And I can view the products that were saved there
+         Given that there is a "product"
+         And I want to buy it later
+         When I am on /Product
+         Then I click "Add to Wishlist"
+         And I can view the "product" in /Product/Wishlist
  
 Feature: Leave a rating
      In order to leave a rating about a product
      As a user
-     I have to click on the desired amount of stars out of 5
+     I have to click on the desired amount of "stars" out of 5
 
      Scenario: 
-         Given that there is a purchased product that I liked
-         And I want to let the seller know of it
-         When I will navigate the product page
-         Then I click on the number of stars out of 5 that correspond on how much I like the product
-         And my rating if left for the seller
+         Given that there is a "product" that I like
+         And I want to leave a "rating"
+         When I am on /Product
+         Then I click on the number of "stars"
+         And it will correspond out of 5 how much I like the "product"
 
 Feature: Leave a review
      In order to leave a review on a product
      As a user
-     I have to input their review in the 'Leave a review' text box
+     I have to leave a review in the "Leave a review" field
 
      Scenario: 
-         Given that there is a purchased product that has a bad quality
-         And I want to let the seller know of it
-         When I will navigate the product page
-         Then I type my complaint in the textbook and click 'Submit'
-         And my review will be pasted on the product page 
+         Given that there is a "product" that has a bad quality
+         And I want to leave a "review"
+         When I am on /Product
+         Then I type my "review"
+         And I click "Submit" for my review to be posted on /Product
 
 Feature: Add, delete, modify Shipping Address saved
-    In order to add, delete or modify my saved shipping address
+    In order to "add", "delete" or "update" my saved shipping address
     As a user
-    I have to go on user profile and update the 'Shipping Information' section
+    I have to go on my profile and update the 'Shipping Information'
 
     Scenario: 
-        Given that I have another location where I reside in
-        And I want to add that address to my shipping information
-        When I will navigate through the 'User Profile'
-        Then I will click 'Add' in the 'Shipping Information' section under the 'Shipping address' element
-        And I can add the secondary address
+        Given that I have shipping address
+        And I want to "update" it
+        When I am in /Profile
+        Then I will click "Update" in /Profile/Shipping Information
+        And I can "update" my shipping address
 
-Feature: Modify the rating and review of a purchased product
-    In order to modify a rating or a review from a product I purchased
+Feature: Edit the rating and review of a purchased product
+    In order to edit a rating or a review from a product I purchased
     As a user
-    I have to click 'Modify' under my submitted rating or review
+    I have to click "Edit" under my submitted rating or review
 
     Scenario: 
-        Given that I posted a review for a purchased product
+        Given that I posted a "review" for a "product"
         And I want to modify it
-        When I will navigate the product page I will see the 'Modify' option under my posted review
-        Then I have to click 'Modify' to modify my review
-        And I will click 'Submit' to post my modified review to the public
+        When I am in /Product i can see my posted "review"
+        Then I have to click "Edit"
+        And I will click 'Submit' to post my editted review
 
 Feature: Globalization of web application
     In order to be able to view the web application in another language
@@ -283,14 +283,14 @@ Feature: Globalization of web application
         And my web application will be redirected in my desired language
 
 Feature: Change the currency
-    In order to view the store in another currecny
+    In order to view the storefront in another currecny
     As a user
-    I have to choose a different currency in the 'Settings' under 'Currency Settings' 
+    I have to choose a different currency in the "Settings"
 
     Scenario:
-        Given that the products from the web application are displayed in Dollars($)
-        And I want the prices of the products to be displayed in Euros(€)
-        When I navigate in the 'Settings' section
-        Then I have the ability to choose another currency by clicking 'Change currency' under 'Currency Settings'
-        And my web application will be redirected in my desired language
+        Given that the "product" are displayed in Dollars($)
+        And I want the products to be displayed in Euros(€)
+        When I am on /Profile/Settings
+        Then I click "Change currency" in /Settings/currency settings
+        And my page will be redirected in my desired currency
 
