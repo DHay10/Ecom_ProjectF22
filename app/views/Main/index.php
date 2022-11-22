@@ -11,11 +11,11 @@
 	<body>
 		<div class="navbar">
 			<ul>
-				<li><a class="active" href="/Main/Index">Home</a></li>
-				<li><a href="/Product/Catalog">Product</a></li>
-				<li><a href="/Main/AboutUs">About Us</a></li>
-				<li><a href="/Main/Service">Customer Service</a></li>
-				<li><a href="/Main/Login">Sign In</a></li>
+				<li><a class="active" href="/Main/index">Home</a></li>
+				<li><a href="/Product/catalog">Product</a></li>
+				<li><a href="/Main/aboutUs">About Us</a></li>
+				<li><a href="/Main/service">Customer Service</a></li>
+				<li><a href="/User/index">Sign In</a></li>
 			</ul>
 		</div>
 

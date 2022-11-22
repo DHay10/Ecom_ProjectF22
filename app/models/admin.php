@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-class admin extends \app\core\Model{
+class Admin extends \app\core\Model {
     public function insert(){
 		$SQL = "INSERT INTO admin(username, password_hash) VALUES (:username, :password_hash)";
 		$STMT = self::$_connection->prepare($SQL);

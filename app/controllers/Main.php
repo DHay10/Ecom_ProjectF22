@@ -1,6 +1,6 @@
 <?php
 	namespace app\controllers;
-	class Main extends \app\core\Controller{
+	class Main extends \app\core\Controller {
 		
 		// Home Page
 		public function index(){

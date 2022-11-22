@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Database: `ecom_project`
 --
 
+CREATE DATABASE IF NOT EXISTS `ecom_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ecom_project`;
+
 -- --------------------------------------------------------
 
 --
