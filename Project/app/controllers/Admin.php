@@ -4,7 +4,7 @@
 		
 		// Dashboard
 		public function index() {
-			$this->view('Admin/dashboard');
+			$this->view('Admin/index');
 		}
 
 		// Send Email Page
@@ -19,11 +19,12 @@
 		// Admin Login Page
 		public function login() {
 			if(isset($_POST['action'])) {
+				echo "pp"; // TO DELETE TEST
 				$admin = new \app\models\Admin();
 				$admin = $admin->get($_POST['username']);
 
-				if(password_verify($_POST['password'], $user->password_hash)) {
-					$_SESSION['admin_id'] = $user->user_id;
+				if(password_verify($_POST['password'], $admin->password_hash)) {
+					$_SESSION['admin_id'] = $admin->admin_id;
 					header('location:/Admin/index');
 				} else {
 					header('location:/Admin/login?error=Wrong username/password combination!');

@@ -13,6 +13,24 @@
     </head>
 
     <body>
+        <?php
+            if(isset($_GET['error'])){
+        ?>
+            <div class="alert alert-danger" role="alert">
+                <?=$_GET['error']?>
+            </div>
+        <?php
+            }
+        ?>
+        <?php
+            if(isset($_GET['message'])){
+        ?>
+            <div class="alert alert-success" role="alert">
+                <?=$_GET['message']?>
+            </div>
+        <?php
+            }
+        ?>
         <main>
             <div class="container">
                 <div class="row justify-content-center">
@@ -21,26 +39,25 @@
                             <h2 class="card-title text-center">Login as Admin</h2>
                             
                             <div class="navbar">
-                                <a href="\Main\Login">Customer</a>
-                                <a class="active" href="\Main\adminLogin">Admin</a>
+                                <a href="\User\index">Customer</a>
+                                <a class="active" href="\Admin\login">Admin</a>
                             </div>
 
-                            <hr >
+                            <hr>
                                 <div class="card-body py-md-4">
-                                    <form _lpchecked="1" action='' method='post'>
+                                    <form action='' method='post'>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" name="password_input" placeholder="Password">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                         </div>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
                                             <a href="\Main\index">Back</a>
-                                            <a href="\Main\adminRegister">Register</a>
-                                            <button name="login" type="submit" class="btn btn-primary">Login</button>
+                                            <button name="action" type="submit" class="btn btn-primary">Login</button>
                                         </div>
                                     </form>
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
