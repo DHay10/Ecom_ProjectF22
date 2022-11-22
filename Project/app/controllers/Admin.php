@@ -19,7 +19,6 @@
 		// Admin Login Page
 		public function login() {
 			if(isset($_POST['action'])) {
-				echo "pp"; // TO DELETE TEST
 				$admin = new \app\models\Admin();
 				$admin = $admin->get($_POST['username']);
 
@@ -27,7 +26,7 @@
 					$_SESSION['admin_id'] = $admin->admin_id;
 					header('location:/Admin/index');
 				} else {
-					header('location:/Admin/login?error=Wrong username/password combination!');
+					header('location:/Admin/login?error=Wrong Username/Password Combination!');
 				}
 			} else {
 				$this->view('Admin/login');

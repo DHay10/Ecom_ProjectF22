@@ -3,6 +3,7 @@ namespace app\controllers;
 
 class User extends \app\core\Controller {
 
+	// User Login Page
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
@@ -13,7 +14,7 @@ class User extends \app\core\Controller {
 				$_SESSION['username'] = $user->username;
 				header('location:/User/profile');
 			} else {
-				header('location:/User/index?error=Wrong username/password combination!');
+				header('location:/User/index?error=Wrong Username/Password Combination!');
 			}
 		} else {
 			$this->view('User/index');
