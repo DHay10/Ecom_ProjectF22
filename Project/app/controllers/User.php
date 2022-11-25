@@ -27,12 +27,12 @@ class User extends \app\core\Controller {
 
 	public function register(){
 		if(isset($_POST['action'])) {
-			if($_POST['password'] == $_POST['password_confirm']) {
+			if($_POST['password'] == $_POST['password_conf']) {
 				$user = new \app\models\User();
 				$check = $user->get($_POST['username']);
 				if(!$check) {
-					$user->name = $_POST['name'];
 					$user->username = $_POST['username'];
+					$user->name = $_POST['name'];
 					$user->email = $_POST['email'];
 					$user->phone = $_POST['phone'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);

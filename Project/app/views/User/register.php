@@ -20,37 +20,21 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="" required>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="" required>
                             <label for="username">Username</label>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="fName" placeholder="" required>
-                            <label for="fname">First Name</label>
-                        </div>
-                    </div>
 
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="lName" placeholder="" required>
-                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                            <label for="name">Name</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" name="phone" placeholder="" required>
-                            <label for="phone">Phone</label>
-                            <div id="phoneHelp" class="form-text">I.e. (XXX)XXX-XXXX</div>
-                        </div>
-                    </div>
-                    
+
                     <div class="col">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" name="email" placeholder="" required>
@@ -58,6 +42,15 @@
                             <div id="emailHelp" class="form-text">example@example.com</div>
                         </div>
                     </div>
+
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" name="phone" placeholder="" minlength="10" maxlength="10" required>
+                            <label for="phone">Phone</label>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
 
                 <div class="row">
