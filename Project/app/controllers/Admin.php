@@ -46,10 +46,13 @@
 				$newProduct->product_name = $_POST['product_name'];
 				$newProduct->price = $_POST['price'];
 				$newProduct->description = $_POST['description'];
+				$newProduct->is_featured = $_POST['is_featured'];
 				$newProduct->category_id = $_POST['category_id'];
+				$filename = $this->saveFile($_FILES['product_image']);
+				$newProduct->product_image = $filename;
 	
 				$newProduct->insert();
-				header('location:/Admin/Dashboard');
+				header('location:/Admin/productList');
 			} else {
 				$this->view('Admin/addProduct');
 			}

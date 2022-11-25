@@ -30,8 +30,8 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Product List</a>
-                        <a class="dropdown-item" href="">Add Product</a>
+                        <a class="dropdown-item" href="/Admin/productList">Product List</a>
+                        <a class="dropdown-item" href="/Admin/addProduct">Add Product</a>
                     </ul>
                 </li>
 
