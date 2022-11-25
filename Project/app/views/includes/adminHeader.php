@@ -2,7 +2,12 @@
     <!-- Container -->
     <div class="container-fluid">
         <!-- Brand -->
-        <a class="navbar-brand" href="/Admin/index">MartWall</a>
+        <?php if(isset($_SESSION['admin_id'])) { ?>
+            <a class="navbar-brand" href="/Admin/index">MartWall</a>
+        <?php } else { ?>
+            <a class="navbar-brand" href="/Admin/login">MartWall</a>
+        <?php } ?>
+        
         <span class="navbar-text">
             Admin
         </span>
@@ -45,7 +50,7 @@
                 <?php } else { ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/User/login">Sign In</a>
+                    <a class="nav-link" href="/Admin/login">Sign In</a>
                 </li>
 
                 <?php } ?>

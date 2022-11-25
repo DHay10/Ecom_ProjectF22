@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Profile Page</title>
+        <title>your Profile</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,90 +11,16 @@
     </head>
 
     <body>
-        <h1>Test 01</h1>
-    </body>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=PT+Sans');
-
-        body{
-            background: #fff;
-            font-family: 'PT Sans', sans-serif;
-        }
-
-        h2{
-            padding-top: 1.5rem;
-        }
-
-        .card{
-            border: 0.40rem solid #f8f9fa;
-            top: 10%;
-        }
-
-        .form-control{
-            background-color: #f8f9fa;
-            padding: 20px;
-            padding: 25px 15px;
-            margin-bottom: 1.3rem;
-        }
-
-        .form-control:focus {
-            color: #000000;
-            background-color: #ffffff;
-            border: 3px solid #da5767;
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .btn{
-            padding: 0.6rem 1.2rem;
-            background: #50c2d1;
-            border: 2px solid #50c2d1;
-        }
+        <?php include 'app\views\includes\userHeader.php'; ?>
+        <?php include 'app\views\includes\error.php'; ?>
         
-        .btn-primary:hover {
-            background-color: #00D100;
-            border-color: #00D100;
-            transition: .3s;
-        }
+        <div class='container mb-4'>
+            <h2 class="h1-responsive font-weight-bold text-center my-4">Register</h2>
 
-        /* Style the navigation menu */
-        .navbar {
-            width: 100%;
-            background-color: rgb(255, 255, 255);
-            overflow: auto;
-        }
+            <div class="row">
 
-        /* Navigation links */
-        .navbar a {
-            float: left;
-            padding: 10px;
-            color: black;
-            text-decoration: none;
-            font-size: 17px;
-            width: 50%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
-            text-align: center; /* If you want the text to be centered */
-        }
+            </div>
+        </div>
 
-        /* Add a background color on mouse-over */
-        .navbar a:hover {
-            background-color: rgb(240, 240, 240);
-        }
-
-        /* Style the current/active link */
-        .navbar a.active {
-            background-color: rgb(230, 230, 230);
-        }
-
-        /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-        @media screen and (max-width: 500px) {
-        .navbar a {
-            float: none;
-            display: block;
-            width: 100%;
-            text-align: left; /* If you want the text to be left-aligned on small screens */
-        }
-        }
-
-    </style>
+    </body>
 </html>
