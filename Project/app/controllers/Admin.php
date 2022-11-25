@@ -91,7 +91,7 @@
 		// View Products List
 		public function viewProducts() {
 			$product = new \app\models\Product();
-			$product = $product->get($product_id);
+			$products = $product->getAll();
 			$this->view('Admin/viewProducts', $products);
 		}
 

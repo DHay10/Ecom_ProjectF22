@@ -1,7 +1,7 @@
 <?php
 namespace app\filters;
 
-#[/Attribute]
+#[\Attribute]
 class User extends \app\core\AccessFilter{
 	public function execute(){
 		if(isset($_SESSION['user_id'])){
