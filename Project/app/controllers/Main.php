@@ -7,10 +7,17 @@
 			$this->view('Main/index');
 		}
 
-		// User Login Page
-		// saq's page load test functions!! can delete at the end
+		public function aboutUs() {
+            $this->view('Main/aboutUs');
+        }
 
+        public function faq() {
+            $this->view('Main/faq');
+        }
 
-		
+        public function contactUs() {
+            $this->view('Main/contactUs');
+        }
+
 
 	}

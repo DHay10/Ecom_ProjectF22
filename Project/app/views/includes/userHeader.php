@@ -42,9 +42,9 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About Us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
-                        <a class="dropdown-item" href="#">Contact Us</a>
+                        <a class="dropdown-item" href="/Main/aboutUs">About Us</a>
+                        <a class="dropdown-item" href="/Main/faq">FAQ</a>
+                        <a class="dropdown-item" href="/Main/contactUs">Contact Us</a>
                     </ul>
                 </li>
 
@@ -65,7 +65,7 @@
                 </li>
 
                 <?php } ?>
-                
+
             </ul>
         </div>
     </div>
