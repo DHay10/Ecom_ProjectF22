@@ -17,26 +17,25 @@
         <div class='container mb-4'>
             <h2 class="h1-responsive font-weight-bold text-center my-4">Register</h2>
             <form action="" method="post">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="text" class="form-control" id="username" name="username" placeholder="" required>
                             <label for="username">Username</label>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="text" class="form-control" id="name" name="name" placeholder="" required>
                             <label for="name">Name</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-
+                <div class="row mb-3">
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="email" class="form-control" name="email" placeholder="" required>
                             <label for="email">Email</label>
                             <div id="emailHelp" class="form-text">example@example.com</div>
@@ -44,18 +43,16 @@
                     </div>
 
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="tel" class="form-control" name="phone" placeholder="" minlength="10" maxlength="10" required>
                             <label for="phone">Phone</label>
                         </div>
                     </div>
-                    
-                    
                 </div>
 
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="password" class="form-control" name="password" placeholder="" minlength="8" required>
                             <label for="password">Password</label>
                             <div id="passwordHelp" class="form-text">At least 8 characters</div>
@@ -63,7 +60,7 @@
                     </div>
 
                     <div class="col">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <input type="password" class="form-control" name="password_conf" placeholder="" required>
                             <label for="passwordConf">Password Confirmation</label>
                             <div id="passwordConfHelp" class="form-text">Re-enter your Password</div>

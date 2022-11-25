@@ -18,43 +18,64 @@
             <h2 class="h1-responsive font-weight-bold text-center my-4">Your Profile</h2>
 
             <form id="userProfile-form" action="" method="post">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col">
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="text" value="Username" readonly disabled>
+                        <div class="form-floating">
+                            <?php echo "<input class=\"form-control\" type=\"text\" value=$_SESSION[username] readonly disabled>";?>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     
                     <div class="col">
-                        <div class="form-floating mb-3">
-                            <?php echo "<input class=\"form-control\" type=\"text\" value='$_SESSION->name' readonly disabled>";?>
+                        <div class="form-floating">
+                            <?php echo "<input class=\"form-control\" type=\"text\" value=$_SESSION[name] readonly disabled>";?>
                             <label for="username">Name</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" value="Email" required>
+                        <div class="form-floating">
+                            <?php echo "<input class=\"form-control\" type=\"email\" value=$_SESSION[email] required >";?>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     
                     <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" value="Phone" required>
+                        <div class="form-floating">
+                        <?php echo "<input class=\"form-control\" type=\"tel\" value=$_SESSION[phone] minlength=\"10\" maxlength=\"10\" required >";?>
                             <label for="phone">Phone</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="text-center text-md-right">
-                    <button type="submit" class="btn btn-dark w-50" name="action">Edit</button>
+                <div class="row">
+                    <div class="text-center text-md-right">
+                        <button type="submit" class="btn btn-dark w-50" name="action">Edit</button>
+                    </div>
+                </div>
+            </form>
+
+        
+            
+        </div>
+
+        <div class="container mb-4">
+            <h3 class="h2-responsive font-weight-bold text-center my-4">Options</h3>
+            
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-dark w-100" href="/User/orders" role="button">Orders</a>
                 </div>
 
-            </form>
+                <div class="col">
+                    <a class="btn btn-dark w-100" href="/User/wishlist" role="button">Wishlist</a>
+                </div>
+                
+                
+            </div>
+
         </div>
 
     </body>
