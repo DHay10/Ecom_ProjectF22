@@ -12,7 +12,10 @@ class User extends \app\core\Controller {
 			if(password_verify($_POST['password'], $user->password_hash)) {
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
-				header('location:/User/profile');
+				$_SESSION['name'] = $user->name;
+				$_SESSION['email'] = $user->email;
+				$_SESSION['phone'] = $user->phone;
+				$this->view('User/profile', $_SESSION);
 			} else {
 				header('location:/User/index?error=Wrong Username/Password Combination!');
 			}

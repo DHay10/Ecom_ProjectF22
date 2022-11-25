@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>your Profile</title>
+        <title>Your Profile</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,11 +15,46 @@
         <?php include 'app\views\includes\error.php'; ?>
         
         <div class='container mb-4'>
-            <h2 class="h1-responsive font-weight-bold text-center my-4">Register</h2>
+            <h2 class="h1-responsive font-weight-bold text-center my-4">Your Profile</h2>
 
-            <div class="row">
+            <form id="userProfile-form" action="" method="post">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" value="Username" readonly disabled>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <?php echo "<input class=\"form-control\" type=\"text\" value='$_SESSION->name' readonly disabled>";?>
+                            <label for="username">Name</label>
+                        </div>
+                    </div>
+                </div>
 
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" value="Email" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" value="Phone" required>
+                            <label for="phone">Phone</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center text-md-right">
+                    <button type="submit" class="btn btn-dark w-50" name="action">Edit</button>
+                </div>
+
+            </form>
         </div>
 
     </body>
