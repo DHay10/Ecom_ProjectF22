@@ -12,7 +12,44 @@
 
     <body>
         <?php include 'app\views\includes\userHeader.php'; ?>
-        <h1>About Us Page</h1>
+        <h1><center>About Us Page</center></h1>
+
+
+
+        <div class = "main">
+
+       
+        <br>
+        <h2>Welcome to our store!</h2>
+        <br>
+        <h2>Feel free too navigate around and purchase from our wide selection of products.</hr>
+        <br>
+        <h2>Do you have a product to sell? Register an account with us where you can promote your products and get feedback from our beloved clientele.</h2>
+        <br>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </body>
 </html>
