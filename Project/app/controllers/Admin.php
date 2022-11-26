@@ -46,20 +46,22 @@
 				$newProduct->product_name = $_POST['product_name'];
 				$newProduct->price = $_POST['price'];
 				$newProduct->description = $_POST['description'];
-				$newProduct->is_featured = $_POST['is_featured'];
+				if(isset($_POST['is_featured']) == "on"){
+					$newProduct->is_featured = 1;
+				}else{
+					$newProduct->is_featured = 0;
+				}
 				$newProduct->category_id = $_POST['category_id'];
 				$filename = $this->saveFile($_FILES['product_image']);
 				$newProduct->product_image = $filename;
-	
 				$newProduct->insert();
 				header('location:/Admin/productList');
 			} else {
-				$this->view('Admin/addProduct');
+				$category = new \app\models\Category();
+				$category = $category->getCategories();
+				$this->view('Admin/addProduct', $category);
 			}
 		}
-
-		
-	
 
 		// Edit Product
 		public function modify($product_id) {
@@ -70,7 +72,6 @@
 				$product->price = $_POST['price'];
 				$product->description = $_POST['description'];
 				$product->category_id = $_POST['category_id'];
-
 				$product->update();
 				header('location:/Admin/Dashboard');
 			} else {

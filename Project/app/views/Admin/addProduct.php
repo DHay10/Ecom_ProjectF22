@@ -39,12 +39,20 @@
                 <div class="row mb-3">
                     <label for="product_cate" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-10">
+
+
                         <select id="category_id" class="form-control" name="category_id" required>
                             <!-- Find which category to add -->
-                            <option value="0">test1</option>
-                            <option value="1">test2</option>
-                            <option value="2">test3</option>
+
+                            <?php foreach ($data as $category) {   ?>
+                            
+                            <option value="<?= $category->category_id?>"> <?=$category->category_name?> </option>
+                            <?php } ?>
+
+
                         </select>
+
+
                     </div>
                 </div>
 

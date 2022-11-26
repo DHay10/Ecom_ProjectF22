@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2022 at 04:22 AM
+-- Generation Time: Nov 27, 2022 at 12:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecom_project`
 --
-
-CREATE DATABASE IF NOT EXISTS `ecom_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ecom_project`;
 
 -- --------------------------------------------------------
 
@@ -68,6 +65,14 @@ CREATE TABLE `category` (
   `category_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Electronics'),
+(2, 'Toys');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +106,19 @@ CREATE TABLE `product` (
   `category_id` int(5) NOT NULL,
   `product_image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
+(5, 'product1', 10, 'test', 0, 1, ''),
+(6, 'product2', 32, 'asd', 0, 2, '6381806a03041.png'),
+(7, 'product3', 213, 'sd', 0, 2, '638180810ac9c.png'),
+(8, 'product1asd', 213, 'ad', 0, 1, '638180a71a527.png'),
+(9, 'test1', 345, 'sdfsd', 1, 1, '638182774e50b.png'),
+(10, 'test1sdf', 43, 'sdf', 0, 1, '6381829137c19.png'),
+(11, 'test23423', 2147483647, 'test', 1, 2, '6382a69092b2a.png');
 
 -- --------------------------------------------------------
 
@@ -211,7 +229,7 @@ ALTER TABLE `order_table`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
-  ADD KEY `product_category_id` (`category_id`);
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `review`
@@ -269,7 +287,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_table`
@@ -281,7 +299,7 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -322,7 +340,7 @@ ALTER TABLE `order_table`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
+  ADD CONSTRAINT `product_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `review`
