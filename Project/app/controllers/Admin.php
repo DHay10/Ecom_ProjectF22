@@ -107,7 +107,7 @@
 		// View Products List
 		public function productList() {
 			$product = new \app\models\Product();
-			$product = $product->getProducts();
+			$product = $product->getAll();
 			$this->view('Admin/productList', $product);
 		}
 

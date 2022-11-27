@@ -15,7 +15,7 @@ class User extends \app\core\Controller {
 				$_SESSION['name'] = $user->name;
 				$_SESSION['email'] = $user->email;
 				$_SESSION['phone'] = $user->phone;
-				$this->view('User/profile', $_SESSION);
+				header('location:/User/profile');
 			} else {
 				header('location:/User/index?error=Wrong Username/Password Combination!');
 			}

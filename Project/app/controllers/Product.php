@@ -16,8 +16,6 @@ class Product extends \app\core\Controller {
         $this->view('Product/adminProductDetail', $product);
 	}
 
-    
-
     // Add to wishlist
     public function addToWishlist($product_id) {
         $wishlist = new \app\models\Wishlist();
@@ -65,6 +63,13 @@ class Product extends \app\core\Controller {
         $this->view('Product/catalog', $products);
     }
 
+    public function byCategory($category_id) {
+        $category = new \app\models\Category();
+        $category = $category->getByID($category_id);
+        $product = new \app\models\Product();
+        $products = $product->getByCategory($category_id);
 
+        $this->view('Product/byCategory', ['category'=>$category, 'products'=>$products]);
+    }
 
 }
