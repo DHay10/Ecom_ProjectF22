@@ -16,10 +16,10 @@
         
         <!-- PHP to get the Category -->
         <div class='container mb-4'>
-            <?php ?>
-            <h2 class="h1-responsive font-weight-bold text-center my-4"></h2>
+            <h2 class='h1-responsive font-weight-bold text-center my-4'><?php echo $data['category']->category_name;?></h2> 
             
             <div class='row'>
+
                 
             </div>
 

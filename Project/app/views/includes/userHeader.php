@@ -23,8 +23,13 @@
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href="/Product/catalog">All</a>
                         <div class="dropdown-divider"></div>
-                        <!-- Import Category Tables -->
-                        <a class="dropdown-item" href="/Product/categories">Categories</a>
+                        <a class="dropdown-item" href="/Product/byCategory/0">Automotive</a>
+                        <a class="dropdown-item" href="/Product/byCategory/1">Baby</a>
+                        <a class="dropdown-item" href="/Product/byCategory/2">Beauty</a>
+                        <a class="dropdown-item" href="/Product/byCategory/3">Electronics</a>
+                        <a class="dropdown-item" href="/Product/byCategory/4">Home</a>
+                        <a class="dropdown-item" href="/Product/byCategory/5">Pets</a>
+                        <a class="dropdown-item" href="/Product/byCategory/6">Toys</a>
                     </ul>
                 </li>
 
