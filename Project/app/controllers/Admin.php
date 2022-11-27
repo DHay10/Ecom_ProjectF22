@@ -65,31 +65,43 @@
 
 		// Edit Product
 		public function modify($product_id) {
+			$product = new \app\models\Product();
+			$product = $product->getProductbyId($product_id);
+			$category = new \app\models\Category(); 
+			$category = $category->getcategories();
 			if(isset($_POST['action'])) {
-				$product = new \app\models\Product();
-				$product = product->get($product_id);
 				$product->product_name = $_POST['product_name'];
 				$product->price = $_POST['price'];
 				$product->description = $_POST['description'];
 				$product->category_id = $_POST['category_id'];
+				$filename = $this->saveFile($_FILES['profile_pic']);
+					if($filename){
+						//delete the old picture
+						unlink("images/$product->product_image");
+						//save the reference to the new one
+						$product->product_image = $filename;
+					}
 				$product->update();
 				header('location:/Admin/productList');
 			} else {
-				$this->view('Product/editDetails');
+				$this->view('Product/editDetails', ['category'=>$category, 'product'=>$product]);
 			}
 		}
 
 		// Remove Product
 		public function delete($product_id) {
-			if(isset($_POST['action'])) {
-				$product = new \app\models\Product();
-				$product->product_id = $product_id;
-				
-				$product->delete();
-				header('location:/Admin/Dashboard');
-			} else {
-				$this->view('Product/remove');
-			}
+			$product = new \app\models\Product();
+			$product = $product->getProductbyId($product_id);
+			unlink("images/$product->product_image");
+
+			$product->product_id = $product_id;
+			
+			$product->delete();
+			header('location:/Admin/productList');
+	
+			// $product = new \app\models\Product();
+			// $product = $product->getProductbyId($product_id);
+
 		}
 		
 		// View Products List

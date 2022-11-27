@@ -22,7 +22,7 @@
                         <td type=name>$item->price</td>
                         <td type=action>
                         <a href='/Product/details/$item->product_id'>details</a> |
-                        <a href='/Animal/delete/$item->product_id'>delete</a>
+                        <a href='/Admin/delete/$item->product_id'>delete</a>
                         </td><br>
                         </tr>";
                 }

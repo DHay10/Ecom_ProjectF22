@@ -23,10 +23,9 @@
         <h2 class="h1-responsive font-weight-bold text-center">Edit</h2>
             <form action='' method='post' enctype='multipart/form-data'>
                 <div class="row mb-3">
-                    <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
+                    <label for="product_name" class="col-sm-2 col-form-label">Product Name</label>
                     <div class="col-sm-10">
-                        <input type='text' class='form-control' name='product_name'
-                        <?php echo "<input class='form-control' type='text' name='product_name' value='$_SESSION[product_name]' readonly disabled>";?>
+                        <?php echo "<input class='form-control' type='text' name='product_name' value='$data[product]->product_name'>"; ?>
                     </div>
                 </div>
 
@@ -86,7 +85,7 @@
                 </div>
             
                 <div class="text-center text-md-right">
-                    <button name="action" type="submit" class="btn btn-primary">Add Product</button>   
+                    <button name="action" type="submit" class="btn btn-primary">update</button>   
                     <button name="cancel" type="submit" class="btn btn-primary">Cancel</button>
                 </div>
             </form>
