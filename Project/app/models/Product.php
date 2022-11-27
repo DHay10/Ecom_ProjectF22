@@ -16,14 +16,22 @@ class Product extends \app\core\Model {
                         'product_image' =>$this->product_image]);
     }
 
+    public function getProducts(){
+		$SQL = "SELECT * FROM product";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
+		return $STMT->fetchAll();
+	}
 
-    public function getCategoryId(){
-        $SQL = "SELECT * FROM category WHERE category_id = :category_id";
-        $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['category_id'=>$this->category_id]);
-        $STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
+  public function getProductbyId($product_id){
+		$SQL = "SELECT * FROM product WHERE product_id=:product_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['product_id'=>$product_id]);
+		//run some code to return the results
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
 		return $STMT->fetch();
-    }
+	}
 
 
 

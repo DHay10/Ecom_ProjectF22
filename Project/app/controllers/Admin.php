@@ -73,9 +73,9 @@
 				$product->description = $_POST['description'];
 				$product->category_id = $_POST['category_id'];
 				$product->update();
-				header('location:/Admin/Dashboard');
+				header('location:/Admin/productList');
 			} else {
-				$this->view('Product/edit');
+				$this->view('Product/editDetails');
 			}
 		}
 
@@ -93,10 +93,10 @@
 		}
 		
 		// View Products List
-		public function viewProducts() {
+		public function productList() {
 			$product = new \app\models\Product();
-			$products = $product->getAll();
-			$this->view('Admin/viewProducts', $products);
+			$product = $product->getProducts();
+			$this->view('Admin/productList', $product);
 		}
 
 		// Track Sales

@@ -12,8 +12,8 @@ class Product extends \app\core\Controller {
     // Product Detail Page
 	public function details($product_id) {
 		$product = new \app\models\Product();
-        $product = $product->get($product_id);
-        $this->view('Product/details', $product);
+        $product = $product->getProductbyId($product_id);
+        $this->view('Product/adminProductDetail', $product);
 	}
 
     

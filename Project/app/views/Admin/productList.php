@@ -19,12 +19,11 @@
                     echo "<tr>
                         <td type=name>$item->product_id</td>
                         <td type=name>$item->product_name</td>
-                        <td type=name>$item->product_price</td>
+                        <td type=name>$item->price</td>
                         <td type=action>
-                        <a href='/Product/edit/$item->animal_id'>edit</a> | 
-                        <a href='/Animal/details/$item->animal_id'>details</a> |
-                        <a href='/Animal/delete/$item->animal_id'>delete</a>
-                        </td>
+                        <a href='/Product/details/$item->product_id'>details</a> |
+                        <a href='/Animal/delete/$item->product_id'>delete</a>
+                        </td><br>
                         </tr>";
                 }
             ?>
