@@ -21,10 +21,10 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#">All</a>
+                        <a class="dropdown-item" href="/Product/catalog">All</a>
                         <div class="dropdown-divider"></div>
                         <!-- Import Category Tables -->
-                        <a class="dropdown-item" href="">Categories</a>
+                        <a class="dropdown-item" href="/Product/categories">Categories</a>
                     </ul>
                 </li>
 

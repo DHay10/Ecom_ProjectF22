@@ -13,7 +13,7 @@ class Category extends \app\core\Model{
 	}
 
 
-	public function getbyproductId($category_id){
+	public function getByID($category_id){
 		$SQL = "SELECT * FROM category WHERE category_id=:category_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['category_id'=>$category_id]);

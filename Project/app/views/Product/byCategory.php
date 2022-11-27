@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Catalog</title>
+        <title>Categories</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +14,10 @@
         <?php include 'app\views\includes\userHeader.php'; ?>
         <?php include 'app\views\includes\error.php'; ?>
         
+        <!-- PHP to get the Category -->
         <div class='container mb-4'>
-            <h2 class="h1-responsive font-weight-bold text-center my-4">Catalog</h2>
+            <?php ?>
+            <h2 class="h1-responsive font-weight-bold text-center my-4"></h2>
             
             <div class='row'>
                 

@@ -16,7 +16,7 @@ class Product extends \app\core\Model {
                         'product_image' =>$this->product_image]);
     }
 
-    public function getProducts(){
+    public function getAll(){
 		$SQL = "SELECT * FROM product";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
@@ -33,6 +33,14 @@ class Product extends \app\core\Model {
 		return $STMT->fetch();
 	}
 
+    public function getByCategory($category_id) {
+        $SQL = "SELECT * FROM product WHERE category_id=:category_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category_id'=>$category_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
+		return $STMT->fetch();
+    }
 
+    
 
 }
