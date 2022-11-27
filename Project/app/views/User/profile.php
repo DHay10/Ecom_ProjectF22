@@ -21,15 +21,15 @@
                 <div class="row mb-3">
                     <div class="col">
                         <div class="form-floating">
-                            <?php echo "<input class=\"form-control\" type=\"text\" value=$_SESSION[username] readonly disabled>";?>
+                            <?php echo "<input class='form-control' type='text' name='username' value='$_SESSION[username]' readonly disabled>";?>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     
                     <div class="col">
                         <div class="form-floating">
-                            <?php echo "<input class=\"form-control\" type=\"text\" value=$_SESSION[name] readonly disabled>";?>
-                            <label for="username">Name</label>
+                            <?php echo "<input class='form-control' name='name' type='text' value='$_SESSION[name]' readonly disabled>";?>
+                            <label for="name">Name</label>
                         </div>
                     </div>
                 </div>

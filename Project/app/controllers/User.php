@@ -69,4 +69,13 @@ class User extends \app\core\Controller {
 		session_destroy();
 		header('location:/User/index');
 	}
+
+	public function orders() {
+		$this->view('User/orders');
+	}
+
+	public function wishlist() {
+		$this->view('User/wishlist');
+	}
+
 }
