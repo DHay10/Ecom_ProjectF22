@@ -9,6 +9,14 @@ class User extends \app\core\Model{
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\User');
 		return $STMT->fetch();
 	}
+
+	public function getByID($user_id){
+		$SQL = "SELECT * FROM user WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$user_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\User');
+		return $STMT->fetch();
+	}
 	
 	public function insert(){
 		$SQL = "INSERT INTO user(name, username, password_hash, email, phone) VALUES (:name, :username, :password_hash, :email, :phone)";
@@ -19,6 +27,15 @@ class User extends \app\core\Model{
 						'email'=>$this->email,
 						'phone'=>$this->phone,
 						]);
+	}
+
+	public function updateProfile() {
+		$SQL = "UPDATE user SET email=:email, phone=:phone WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['email'=>$this->email,
+						'phone'=>$this->phone,
+						'user_id'=>$this->user_id]);
+
 	}
 
 	

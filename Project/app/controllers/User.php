@@ -25,7 +25,18 @@ class User extends \app\core\Controller {
 	}
 
 	public function profile() {
-		$this->view('User/profile');
+		$user = new \app\models\User();
+		$user = $user->getByID($_SESSION['user_id']);
+		if (isset($_POST['action'])) {
+			$user->email = $_POST['email'];
+			$user->phone = $_POST['phone'];
+			$user->updateProfile();
+			$_SESSION['email'] = $user->email;
+			$_SESSION['phone'] = $user->phone;
+			header('location:/User/profile?message=Profile has been Updated!');
+		} else {
+			$this->view('User/profile');
+		}
 	}
 
 	public function register(){
