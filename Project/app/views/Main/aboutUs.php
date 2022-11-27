@@ -12,19 +12,7 @@
 
     <body>
         <?php include 'app\views\includes\userHeader.php'; ?>
-        <h1><center>About Us Page</center></h1>
-
-
-
-        <div class = "main">
-
-       
-        <br>
-        <h2>Welcome to our store!</h2>
-        <br>
-        <h2>Feel free too navigate around and purchase from our wide selection of products.</hr>
-        <br>
-        <h2>Do you have a product to sell? Register an account with us where you can promote your products and get feedback from our beloved clientele.</h2>
+        <h1><center>About Us</center></h1>
         <br>
 
 
@@ -32,23 +20,28 @@
 
 
 
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<center><div class="col-md-3 text-center">
+<ul class="list-unstyled mb-0">
+ <hr>
+ <center><li><i class="fas fa-map-marker-alt fa-2x"></i>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, doloremque in? Reprehenderit iusto quis adipisci cum fugiat vero, consequuntur possimus eveniet deserunt et saepe quasi voluptate perspiciatis totam, sunt tempora!</p>
+</li>
+</center>
+<hr>
+<center><li><i class="fas fa-phone mt-4 fa-2x"></i>
+<p>Maiores ipsum reiciendis adipisci fugiat quisquam ea non, veniam animi, qui, distinctio quas minima facilis alias harum! A, veritatis. Omnis distinctio ipsam eligendi. Iste praesentium unde cumque est suscipit provident?</p>
+</li></center>
+ <hr>
+<center><li><i class="fas fa-envelope mt-4 fa-2x"></i>
+<p>Tempore, ipsam atque omnis vero nulla exercitationem dignissimos quas velit, maiores quod voluptate incidunt deserunt, nobis quidem magni asperiores sed inventore molestiae dolores cumque pariatur ut ullam. A, perferendis beatae.</p>
+ </li></center>
+<hr>
+<center><li><i class="fas fa-envelope mt-4 fa-2x"></i>
+<p>Pariatur nesciunt doloribus sapiente, ratione error voluptatem officiis consectetur in, labore earum facere deleniti sunt? Deserunt sapiente veritatis qui quos inventore ipsam ad libero placeat quod, quo ab molestias in.</p>
+</li></center>
+<hr>
+</ul>
+</div></center>
 
 
     </body>

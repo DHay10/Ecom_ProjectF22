@@ -97,7 +97,7 @@
                             <p>821 Sainte Croix Ave, Saint-Laurent, Quebec H4L 3X9</p>
                         </li>
                         <hr>
-
+                        
                         <li><i class="fas fa-phone mt-4 fa-2x"></i>
                             <p>(514) 744-7500</p>
                         </li>
