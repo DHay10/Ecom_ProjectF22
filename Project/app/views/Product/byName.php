@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Dashboard</title>
+        <title>Categories</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,24 +11,29 @@
     </head>
 
     <body>
-        <div class="main">
-            <h1>Message History</h1>
+        <?php include 'app\views\includes\userHeader.php'; ?>
+        <?php include 'app\views\includes\error.php'; ?>
+        
+        <!-- PHP to get the Category -->
+        <div class='container mb-4'>
+            <h2 class='h1-responsive font-weight-bold text-center my-4'><?php echo $data['search'];?></h2> 
+            
+            <div class='row'>
             
             <?php
-                foreach ($data as $item) {
+                foreach ($data['products'] as $item) {
                     echo "<tr>
                         <td type=name>$item->product_id</td>
                         <td type=name>$item->product_name</td>
                         <td type=name>$item->price</td>
                         <td type=action>
-                        <a href='/Product/details/$item->product_id'>details</a>
                         </td><br>
                         </tr>";
                 }
             ?>
+                
+            </div>
 
         </div>
-        
     </body>
-
 </html>

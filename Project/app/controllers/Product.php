@@ -79,4 +79,20 @@ class Product extends \app\core\Controller {
         $this->view('Product/byCategory', ['category'=>$category, 'products'=>$products]);
     }
 
+    public function searchByName() {
+        if(isset($_POST['search'])) {
+            if (!$_POST['search']=="") {
+                $product = new \app\models\Product();
+                $search = $_POST['search'];
+                $search = ltrim($search);
+                $search = rtrim($search);
+                $products = $product->searchByName($search);
+                $this->view('Product/byName', ['products'=>$products, 'search'=>$search]);
+            } else {
+                header('location:/Product/index');
+            }
+            
+        }
+    }
+
 }
