@@ -21,7 +21,7 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="/Product/catalog">All</a>
+                        <a class="dropdown-item" href="/Product/index">All</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/Product/byCategory/0">Automotive</a>
                         <a class="dropdown-item" href="/Product/byCategory/1">Baby</a>

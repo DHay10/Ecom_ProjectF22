@@ -9,11 +9,18 @@ class Product extends \app\core\Controller {
 		$this->view('Product/index', $products);
 	}
 	
-    // Product Detail Page
+    // Product Detail Page for admin
 	public function details($product_id) {
 		$product = new \app\models\Product();
         $product = $product->getProductbyId($product_id);
         $this->view('Product/adminProductDetail', $product);
+	}
+
+    // Product Detail Page for user
+	public function userProductDetails($product_id) {
+		$product = new \app\models\Product();
+        $product = $product->getProductbyId($product_id);
+        $this->view('Product/userProductDetails', $product);
 	}
 
     // Add to wishlist

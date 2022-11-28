@@ -13,6 +13,7 @@
     <?php include 'app\views\includes\adminHeader.php'; ?>
         <div class="container mt-5">
         <h2 class="h1-responsive font-weight-bold text-center">edit detail</h2>
+            
             <form action='' method='post' enctype='multipart/form-data'>
                 <div class="row mb-3">
                     <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
