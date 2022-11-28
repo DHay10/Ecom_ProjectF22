@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Customer Requests</a>
+                    <a class="nav-link" href="/Admin/serviceRequests">Customer Requests</a>
                 </li>
 
                 <li class="nav-item">

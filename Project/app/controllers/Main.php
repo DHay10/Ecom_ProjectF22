@@ -20,4 +20,19 @@
         }
 
 
+        // contact us page
+        public function sendMessage(){
+            if(isset($_POST['action'])){
+                $user = new \app\models\User();
+                $user = $user->getById($_SESSION['user_id']);
+                $message = new \app\models\Service_Request();
+                $message->user_id = $user->user_id;
+                $message->subject = $_POST['subject'];
+                $message->content = $_POST['content'];
+                $message->insert();
+                header('location:/Main/contactUs?error=Message has been sent!.');
+            }
+        }
+
+
 	}

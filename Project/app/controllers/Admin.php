@@ -130,4 +130,22 @@
 			$this->view('Admin/viewOrders', $orders);
 		}
 
+
+		//service request
+		public function serviceRequests(){
+			$message = new \app\models\Service_Request();
+			$message = $message->getAll();
+			$this->view('Admin/serviceRequests', $message);
+		}
+
+
+		public function deleteSE($request_id) {
+			$request = new \app\models\Service_Request();
+			$request = $request->getByID($request_id);
+			$request->request_id = $request_id;
+			$request->delete();
+			header('location:/Admin/serviceRequests');
+		}
+
+
 	}

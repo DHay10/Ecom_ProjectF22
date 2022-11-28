@@ -11,22 +11,42 @@
     </head>
 
     <body>
+    <?php include 'app\views\includes\adminHeader.php'; ?>
         <div class="main">
-            <h1>Message History</h1>
-            
-            <?php
-                foreach ($data as $item) {
-                    echo "<tr>
-                        <td type=name>$item->product_id</td>
-                        <td type=name>$item->product_name</td>
-                        <td type=name>$item->price</td>
-                        <td type=action>
-                        <a href='/Product/details/$item->product_id'>details</a>
-                        </td><br>
-                        </tr>";
-                }
-            ?>
 
+        <div class="container mt-5">
+        <h1>Message History</h1>
+            <div class="table-responsive">
+                <h5>Customer Service Requests</h5>
+
+                <table class="table table-striped">
+                    <thead>
+                        <th>Product Id</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Action<th>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach ($data as $item)
+                                echo"
+                                <tr>
+                                    <td>$item->product_id</td>
+                                    <td>$item->product_name</td>
+                                    <td>$item->price</td>
+                                    <td>
+                                        <a href='/Product/details/$item->product_id'>details</a>
+                                    </td>
+                                </tr>
+                                
+                                ";
+
+                                
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
     </body>

@@ -12,6 +12,8 @@
 
     <body>
         <?php include 'app\views\includes\userHeader.php'; ?>
+        <?php include 'app\views\includes\error.php'; ?>
+
 
         <main class="container">
         <!--Section: Contact v.2-->
@@ -27,30 +29,7 @@
 
                 <!--Grid column-->
                 <div class="col-md-9 mb-md-0 mb-5">
-                    <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                        <!--Grid row-->
-                        <div class="row">
-
-                            <!--Grid column-->
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <label for="name" class="">Your name</label>
-                                    <input type="text" id="name" name="name" class="form-control">
-                                </div>
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">                                    
-                                    <label for="email" class="">Your email</label>
-                                    <input type="text" id="email" name="email" class="form-control">
-                                </div>
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
+                    <form id="contact-form" name="contact-form" action="/Main/sendMessage/" method="POST">
                         <!--Grid row-->
 
                         <!--Grid row-->
@@ -72,7 +51,7 @@
 
                                 <div class="md-form">
                                     <label for="message">Your message</label>
-                                    <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                    <textarea type="text" id="content" name="content" rows="2" class="form-control md-textarea"></textarea>
                                     
                                 </div>
 
@@ -80,11 +59,14 @@
                         </div>
                         <!--Grid row-->
 
+                        <div class="text-center text-md-right">
+                        <button class="btn btn-warning w-50" type="submit" name="action">Send</a>
+                        <!-- <a class="btn btn-warning w-50" onclick="alert('message sent!')">Send</a> -->
+                    </div>
+
                     </form>
 
-                    <div class="text-center text-md-right">
-                        <a class="btn btn-warning w-50" onclick="alert('message sent!')">Send</a>
-                    </div>
+                    
                     <div class="status"></div>
                 </div>
                 <!--Grid column-->
