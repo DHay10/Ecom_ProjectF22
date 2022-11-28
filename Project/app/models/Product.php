@@ -38,15 +38,23 @@ class Product extends \app\core\Model {
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['category_id'=>$category_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
-		return $STMT->fetch();
+		return $STMT->fetchAll();
+    }
+
+	public function searchByName($search) {
+        $SQL = "SELECT * FROM product WHERE product_name like :product_name";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['product_name'=>'%'.$search.'%']);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
+		return $STMT->fetchAll();
     }
 
     
-  public function delete(){
-    $SQL = "DELETE FROM product WHERE product_id=:product_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['product_id'=>$this->product_id]);
-  }
+	public function delete(){
+		$SQL = "DELETE FROM product WHERE product_id=:product_id";
+			$STMT = self::$_connection->prepare($SQL);
+			$STMT->execute(['product_id'=>$this->product_id]);
+	}
 
 
 }

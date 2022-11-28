@@ -21,7 +21,7 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="/Product/catalog">All</a>
+                        <a class="dropdown-item" href="/Product/index">All</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/Product/byCategory/0">Automotive</a>
                         <a class="dropdown-item" href="/Product/byCategory/1">Baby</a>
@@ -33,8 +33,8 @@
                     </ul>
                 </li>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" action='/Product/searchByName' method='post'>
+                    <input class="form-control me-2" name='search' type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
