@@ -19,25 +19,24 @@
             
             <div class="row mb-4">
                 <?php
-                    for($i = 0; $i<5; $i++){
-                        foreach ($data as $item) {
-                            echo "
-                            <div class='col'>
-                            <div class='card' style='width: 18rem;'>
-                                <img src='' class='card-img-top' alt='' name='product_img_preview' id='product_img_preview'>
-                                <div class='card-body'>
-                                    <div class='col-sm-10'>
-                                        <h5 class='card-title'>$item->product_name</h5>
-                                        <p>$$item->price</p>
-                                    </div>
-                                    <p class='card-text'>$item->description</p>
-                                    <a href='/Product/userProductDetails/$item->product_id' class='btn btn-primary'>View Product</a>
+                    
+                    foreach ($data as $item) {
+                        echo "
+                        <div class='col'>
+                        <div class='card' style='width: 18rem;'>
+                            <img src='' class='card-img-top' alt='' name='product_img_preview' id='product_img_preview'>
+                            <div class='card-body'>
+                                <div class='col-sm-10'>
+                                    <h5 class='card-title'>$item->product_name</h5>
+                                    <p>$$item->price</p>
                                 </div>
+                                <p class='card-text'>$item->description</p>
+                                <a href='/Product/userProductDetails/$item->product_id' class='btn btn-primary'>View Product</a>
                             </div>
-                            </div>";
-                        }
-                        $i++;
+                        </div>
+                        </div>";
                     }
+                    
 
                 ?>
                 <script>
