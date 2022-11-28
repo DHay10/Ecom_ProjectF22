@@ -21,16 +21,32 @@
             <div class='row'>
             
             <?php
-                foreach ($data['products'] as $item) {
-                    echo "<tr>
-                        <td type=name>$item->product_id</td>
-                        <td type=name>$item->product_name</td>
-                        <td type=name>$item->price</td>
-                        <td type=action>
-                        </td><br>
-                        </tr>";
-                }
-            ?>
+                    
+                    foreach ($data['products'] as $item) {
+                        echo "
+                        <div class='col'>
+                        <div class='card' style='width: 18rem;'>
+                            <img src='' class='card-img-top' alt='' name='product_img_preview' id='product_img_preview'>
+                            <div class='card-body'>
+                                <div class='col-sm-10'>
+                                    <h5 class='card-title'>$item->product_name</h5>
+                                    <p>$$item->price</p>
+                                </div>
+                                <p class='card-text'>$item->description</p>
+                                <a href='/Product/userProductDetails/$item->product_id' class='btn btn-primary'>View Product</a>
+                            </div>
+                        </div>
+                        </div>";
+                    }
+                    
+
+                ?>
+                <script>
+                    file = "" + "<?= $data->product_image ?>"
+                    if (file != "") {
+                        document.getElementById("product_img_preview").src = "/images/" + file;
+                    }
+                </script>
                 
             </div>
 

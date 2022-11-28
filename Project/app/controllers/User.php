@@ -78,4 +78,19 @@ class User extends \app\core\Controller {
 		$this->view('User/wishlist');
 	}
 
+	public function cart() {
+		// $product = new \app\models\Product();
+		// $products = array();
+		// foreach ($_SESSION['cart'] as $product_id) {
+		// 	$product = $product->getByID($product_id);
+		// 	array_push($products, $product);
+		// }
+
+		if(isset($_POST['action'])) {
+
+		} else {
+			$this->view('User/cart', $_SESSION['cart']);
+		}
+	}
+
 }

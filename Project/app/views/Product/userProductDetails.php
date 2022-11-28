@@ -47,9 +47,9 @@
                 </div>
             
                 <div class="text-center text-md-right">
-                    <button name="action" type="submit" class="btn btn-primary">Buy Product</button>   
+                    <a href="/Product/addToCart/<?=$data->product_id?>" type="button" class="btn btn-primary">Add to cart</button>
                     <!-- <button name="cancel" id="cancel" type="submit" class="btn btn-primary">Cancel</button> -->
-                    <a class="btn btn-primary" href="/Product/index/" role="button">Cancel</a>
+                    <a class="btn btn-primary" href="/Product/index/" role="button">Back</a>
                 </div>
             </form>
 

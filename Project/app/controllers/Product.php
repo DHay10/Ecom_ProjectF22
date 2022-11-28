@@ -95,4 +95,13 @@ class Product extends \app\core\Controller {
         }
     }
 
+    public function addToCart($product_id) {
+        $product = new \app\models\Product();
+        $product = $product->getProductbyId($product_id);
+        // var_dump($product);
+        array_push($_SESSION['cart'], $product);
+        var_dump($_SESSION['cart']);
+        // header('location:/Product/userProductDetails/' . $product_id . '?message=Profile has been Updated!');
+    }
+
 }

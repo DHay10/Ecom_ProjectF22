@@ -29,7 +29,7 @@
 - As a seller, I can view client service requests on sales
 - As a seller, I can respond to client service requests on sales
 - As a seller, I can showcase products in the 'Featured Section'
-- As a seller, I can send an email to all of registered users
+- As a seller, I can send an email to all of registered users x
 - As a user, I can register, login, and logout (Not New)
 - As a user, I can change my personal information
 - As a user, I can search the product catalog
