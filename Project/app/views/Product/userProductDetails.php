@@ -17,6 +17,12 @@
         <div class='container mb-4'>
             <h2 class="h1-responsive font-weight-bold text-center my-4"><?= $data['product']->product_name;?></h2>
 
+            <div class="row text-center mb-3">
+                <div class="col">
+                    <img class="img-fluid rounded" id='product_img_preview' src='/images/<?=$data['product']->product_image?>' />
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <div class="col">
                     <form class="form-floating">
@@ -89,8 +95,18 @@
                     </p>
                 <?php } ?>    
             </div>
-            
         </div>
+
         
     </body>
+
+    <script>
+        product_image.onchange = evt => {
+            const [file] = product_image.files
+            if (file) {
+                product_img_preview.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+
 </html>
