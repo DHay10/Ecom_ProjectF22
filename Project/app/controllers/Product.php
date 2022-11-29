@@ -12,8 +12,10 @@ class Product extends \app\core\Controller {
     // Product Detail Page for admin
 	public function details($product_id) {
 		$product = new \app\models\Product();
+        $category = new \app\models\Category();
         $product = $product->getProductbyId($product_id);
-        $this->view('Product/adminProductDetail', $product);
+        $category = $category->getCategories();
+        $this->view('Product/adminProductDetail',  ['category'=>$category, 'product'=>$product]);
 	}
 
     // Product Detail Page for user

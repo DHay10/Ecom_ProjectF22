@@ -18,14 +18,14 @@
                 <div class="row mb-3">
                     <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
                     <div class="col-sm-10">
-                        <input type="text"  class="form-control" id="product_name" name="product_name" value="<?=$data->product_name?>" readonly disabled>
+                        <input type="text"  class="form-control" id="product_name" name="product_name" value="<?=$data['product']->product_name?>" >
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label for="product_price" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" min="0.01" step="0.01" id="price" name="price" value="<?=$data->price?>" readonly disabled>
+                        <input type="number" class="form-control" min="0.01" step="0.01" id="price" name="price" value="<?=$data['product']->price?>" >
                     </div>
                 </div>
 
@@ -33,13 +33,13 @@
                     <label for="product_cate" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-10">
 
-                        <input id="category_id" type="number" class="form-control" min="0.01" step="0.01" name="category_id" value="<?=$data->category_id?>" readonly disabled>
+                        <!-- <input id="category_id" type="number" class="form-control" min="0.01" step="0.01" name="category_id" value="<?=$data['product']->category_id?>" readonly disabled> -->
                         <select id="category_id" class="form-control" name="category_id" required>
                             <!-- Find which category to add -->
 
-                            <?php foreach ($data as $category) {   ?>
+                            <?php foreach ($data['category'] as $category) {   ?>
                             
-                            <option value="<?= $category->category_id?>"> <?=$category->category_name?> </option>
+                            <option value="<?= $category->category_name?>"></option>
                             <?php } ?>
 
 
@@ -52,7 +52,7 @@
                 <div class="row mb-3">
                     <label for="product_desc" class="col-sm-2 col-form-label">Description:</label>
                     <div class="col-sm-10">
-                        <textarea type="text" id="description" name="description" rows="2" class="form-control md-textarea" ><?=$data->description?></textarea>
+                        <textarea type="text" id="description" name="description" rows="2" class="form-control md-textarea" ><?=$data['product']->description?></textarea>
                     </div>
                 </div>
 
@@ -78,8 +78,8 @@
                 </div>
             
                 <div class="text-center text-md-right">
-                    <button name="action" type="submit" class="btn btn-primary">Add Product</button>   
-                    <button name="cancel" type="submit" class="btn btn-primary">Cancel</button>
+                    <a class="btn btn-primary" href="/Admin/modify/<?= $data['product']->product_id ?>">Edit</a>
+                    <a class="btn btn-primary" href='/Admin/productList/'>Back</a>
                 </div>
             </form>
 
@@ -94,52 +94,14 @@
         </div>
 
 
-
-
-
-
-        <dl>
-            <dt>
-                product name:
-            </dt>
-            <dd>
-                <?= $data->product_name ?>
-            </dd>
-            <dt>
-                price:
-            </dt>
-            <dd>
-                <?= $data->price ?>
-            </dd>
-            <dt>
-                description:
-            </dt>
-            <dd>
-                <?= $data->description ?>
-            </dd>
-            <dt>
-                category:
-            </dt>
-            <dd>
-                <?= $data->category_id ?>
-            </dd>
-            <dt>
-                image:
-            </dt>
-            <dd>
-		        <img src="/images/blank.jpg" style="max-width:200px;max-height:200px" id="product_img_preview" />
-	        </dd>   
-        </dl>
-
         <!-- image does not load properly -->
         <script>
-            file = "" + "<?= $data->product_image ?>"
+            file = "" + "<?= $data['product']->product_image ?>"
             if (file != "") {
                 document.getElementById("product_img_preview").src = "/images/" + file;
             }
         </script>
-        <a href="/Admin/modify/<?= $data->product_id ?>">Edit</a>
-        <a href='/Admin/productList/'>Back</a>
+        
         
     </body>
 </html>

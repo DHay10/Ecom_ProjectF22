@@ -24,7 +24,8 @@
                         echo "
                         <div class='col'>
                         <div class='card' style='width: 18rem;'>
-                            <img src='' class='card-img-top' alt='' name='product_img_preview' id='product_img_preview'>
+                            <img src='/images/$item->product_image' class='card-img-top' name='product_img_preview' id='product_img_preview' style='max-width:200px;max-height:200px'>
+                            
                             <div class='card-body'>
                                 <div class='col-sm-10'>
                                     <h5 class='card-title'>$item->product_name</h5>
@@ -39,6 +40,7 @@
                     
 
                 ?>
+                
                 <script>
                     file = "" + "<?= $data->product_image ?>"
                     if (file != "") {

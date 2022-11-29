@@ -19,7 +19,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Product Image:</label>
                     <div class="col-sm-10">
-                        <img id='product_img_preview' src='<?=$data->product_img_preview?>' style="max-width:200px;max-height:200px" />
+                        <img id='product_img_preview' src='/images/<?=$data->product_image?>' style="max-width:200px;max-height:200px" />
                     </div>
                 </div>
 
