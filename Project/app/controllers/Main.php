@@ -30,7 +30,7 @@
                 $message->subject = $_POST['subject'];
                 $message->content = $_POST['content'];
                 $message->insert();
-                header('location:/Main/contactUs?error=Message has been sent!.');
+                header('location:/Main/contactUs?message=Message has been sent!.');
             }
         }
 
