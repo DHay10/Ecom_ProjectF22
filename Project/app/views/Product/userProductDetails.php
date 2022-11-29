@@ -23,8 +23,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="row mb-3">
                     <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
                     <div class="col-sm-10">
@@ -48,7 +46,7 @@
             
                 <div class="text-center text-md-right">
                     <a href="/Product/addToCart/<?=$data->product_id?>" type="button" class="btn btn-primary">Add to cart</button>
-                    <!-- <button name="cancel" id="cancel" type="submit" class="btn btn-primary">Cancel</button> -->
+                    <a href="/Product/addReview/<?=$data->product_id?>" type="button" class="btn btn-primary">Add a Review</button>
                     <a class="btn btn-primary" href="/Product/index/" role="button">Back</a>
                 </div>
             </form>

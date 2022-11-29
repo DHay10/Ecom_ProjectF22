@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="" required>
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
                             <label for="username">Username</label>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="" required>
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
