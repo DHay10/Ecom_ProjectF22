@@ -22,7 +22,11 @@ class Product extends \app\core\Controller {
 	public function userProductDetails($product_id) {
 		$product = new \app\models\Product();
         $product = $product->getProductbyId($product_id);
-        $this->view('Product/userProductDetails', $product);
+        $category = new \app\models\Category();
+        $category = $category->getByID($product->category_id);
+        $review = new \app\models\Review();
+        $reviews = $review->getAllByProductID($product_id); 
+        $this->view('Product/userProductDetails', ['product'=>$product, 'category'=>$category, 'reviews'=>$reviews]);
 	}
 
     // Add to wishlist
@@ -110,6 +114,7 @@ class Product extends \app\core\Controller {
     public function addReview($product_id) {
         if (isset($_POST['action'])) {
             $review = new \app\models\Review();
+            $review->user_id = $_SESSION['user_id'];
             $review->product_id = $product_id;
             $review->comment = $_POST['comment'];
             $review->date = date('Y-m-d H:i:s');
