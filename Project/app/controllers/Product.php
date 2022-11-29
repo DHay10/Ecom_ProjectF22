@@ -106,4 +106,31 @@ class Product extends \app\core\Controller {
         // header('location:/Product/userProductDetails/' . $product_id . '?message=Profile has been Updated!');
     }
 
+
+    public function addReview($product_id) {
+        if (isset($_POST['action'])) {
+            $review = new \app\models\Review();
+            $review->product_id = $product_id;
+            $review->comment = $_POST['comment'];
+            $review->date = date('Y-m-d H:i:s');
+            $review->rating = $_POST['rating'];
+            $review->insert();
+            header('location:/Product/userProductDetails/' . $product_id);
+        } else {
+            $this->view('Product/addReview');
+        }
+    }
+
+    public function review($review_id) {
+        $review = new \app\models\Review();
+        $review->get($review_id);
+        if (isset($_POST['action'])) {
+            $review->comment = $_POST['comment'];
+            $review->rating = $_POST['rating'];
+            $review->update();
+            header('location:/Product/userProductDetails/' . $review->product_id);
+        } else {
+            $this->view('Product/review');
+        }
+    }
 }
