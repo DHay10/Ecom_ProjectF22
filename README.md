@@ -1,9 +1,10 @@
-# Ecom_ProjectF22
+# E-Commerce Project F22
+
+Project for E-Commerce(420-411-VA) for Fall 2022
 
 ## Team Information
 
 - Team Name: The Asians
-
 - Team Members:
   - [Ashmitha Kanagiah](https://github.com/ashmyytaa)
   - [Md Saqliyan Islam](https://github.com/SaqSaq815)
@@ -13,7 +14,8 @@
 
 ### Description
 
-- We will make a Storefront Web Application where a seller can list products and buyers can purchase said products online.
+A prototype storefront web application to sell products where the Seller (Admin) can add products to the database and list them, while the Customers (User) can look, purchase, review, or wishlist said products.
+
 - We will model our solution based on Walmart's online web application.
 - We estimate that we will spend a total of 210 hours building this products, which would be 70 hours per team member
 
