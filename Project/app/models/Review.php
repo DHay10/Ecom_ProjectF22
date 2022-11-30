@@ -34,7 +34,8 @@
             $SQL = "UPDATE review SET comment=:comment, rating=:rating WHERE review_id=:review_id";
 		    $STMT = self::$_connection->prepare($SQL);
 		    $STMT->execute(['comment'=>$this->comment,
-                            'rating'=>$this->rating]);
+                            'rating'=>$this->rating,
+                            'review_id'=>$this->review_id]);
         }
 
         public function delete() {

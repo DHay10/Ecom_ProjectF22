@@ -80,12 +80,18 @@
                     foreach($data['reviews'] as $review) {
                         $user = new \app\models\User();
                         $user = $user->getByID($review->user_id);
+                        $editB = "";
+                        if (isset($_SESSION['user_id'])) {
+                            if ($review->user_id == $_SESSION['user_id']) {
+                                $editB = "<a href='/Product/editReview/$review->review_id'>Edit</a>";
+                            }
+                        }
                         echo "<figure class='text-center'>
                                 <blockquote class='blockquote'>
                                 <p>$review->comment</p>
                                 </blockquote>
                                 <figcaption class='blockquote-footer'>
-                                $user->name, $review->rating/5
+                                $user->name, $review->rating/5 $editB
                                 </figcaption>
                                 </figure>";
                     }

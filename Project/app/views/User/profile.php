@@ -37,14 +37,14 @@
                 <div class="row mb-3">
                     <div class="col">
                         <div class="form-floating">
-                            <?php echo "<input class='form-control' name='email' type='email' value=$_SESSION[email] required >";?>
+                            <?php echo "<input class='form-control' name='email' type='email' value='$_SESSION[email]' required >";?>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     
                     <div class="col">
                         <div class="form-floating">
-                        <?php echo "<input class='form-control' type='tel' name='phone' value=$_SESSION[phone] minlength='10' maxlength='10' required >";?>
+                        <?php echo "<input class='form-control' type='tel' name='phone' value='$_SESSION[phone]' minlength='10' maxlength='10' required >";?>
                             <label for="phone">Phone</label>
                         </div>
                     </div>

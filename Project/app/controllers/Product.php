@@ -126,16 +126,16 @@ class Product extends \app\core\Controller {
         }
     }
 
-    public function review($review_id) {
+    public function editReview($review_id) {
         $review = new \app\models\Review();
-        $review->get($review_id);
+        $review = $review->get($review_id);
         if (isset($_POST['action'])) {
             $review->comment = $_POST['comment'];
             $review->rating = $_POST['rating'];
             $review->update();
             header('location:/Product/userProductDetails/' . $review->product_id);
         } else {
-            $this->view('Product/review');
+            $this->view('Product/editReview', $review);
         }
     }
 }
