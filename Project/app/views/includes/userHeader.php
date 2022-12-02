@@ -23,13 +23,9 @@
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href="/Product/index">All</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Product/byCategory/0">Automotive</a>
-                        <a class="dropdown-item" href="/Product/byCategory/1">Baby</a>
-                        <a class="dropdown-item" href="/Product/byCategory/2">Beauty</a>
-                        <a class="dropdown-item" href="/Product/byCategory/3">Electronics</a>
-                        <a class="dropdown-item" href="/Product/byCategory/4">Home</a>
-                        <a class="dropdown-item" href="/Product/byCategory/5">Pets</a>
-                        <a class="dropdown-item" href="/Product/byCategory/6">Toys</a>
+                        <a class="dropdown-item" href="/Product/byCategory/1">Electronics</a>
+                        <a class="dropdown-item" href="/Product/byCategory/2">Toys</a>
+                        <a class="dropdown-item" href="/Product/byCategory/3">Food</a>
                     </ul>
                 </li>
 
