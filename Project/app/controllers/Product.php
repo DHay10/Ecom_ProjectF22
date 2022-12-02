@@ -102,11 +102,24 @@ class Product extends \app\core\Controller {
     }
 
     public function addToCart($product_id) {
+        
         $product = new \app\models\Product();
         $product = $product->getProductbyId($product_id);
+        $user = new \app\models\User();
+        $user = $user->getByID($_SESSION['user_id']);
+        $order = new \app\models\Order_table();
+        $order->product_id = $product->product_id;
+        $order->user_id = $user->user_id;
+        $order->unit_price = $product->price;
+        $order->qty = $_POST['quantity'];
+        $order->total= $order->unit_Price*$order->qty;
+        $order->date = date("Y/m/d");
+        $order->insert();
+        //var_dump($order);
+
         // var_dump($product);
-        array_push($_SESSION['cart'], $product);
-        var_dump($_SESSION['cart']);
+        // array_push($_SESSION['cart'], $product);
+        // var_dump($_SESSION['cart']);
         // header('location:/Product/userProductDetails/' . $product_id . '?message=Profile has been Updated!');
     }
 

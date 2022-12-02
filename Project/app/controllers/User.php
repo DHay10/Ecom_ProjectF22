@@ -91,11 +91,13 @@ class User extends \app\core\Controller {
 		// 	array_push($products, $product);
 		// }
 
-		if(isset($_POST['action'])) {
+		$user = new \app\models\User();
+        $user = $user->getByID($_SESSION['user_id']);
+		$order = new \app\models\Order_table();
+		$order = $order->getAllOrder($user->user_id);
+		//var_dump($order);
+		$this->view('User/cart', $order);
 
-		} else {
-			$this->view('User/cart', $_SESSION['cart']);
-		}
 	}
 
 }
