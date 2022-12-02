@@ -44,8 +44,13 @@
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <p class="lead fw-normal mb-2"><?=$product->product_name?></p>
                             <p><?=$product->description?></p>
+                            <div class="col-md-3">
+                                <p>Price: $<?=$item->unit_price?></p>
+                            </div>
                         </div>
+                        
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+
                             <button class="btn btn-link px-2"
                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                             <i class="fas fa-minus"></i>
@@ -58,10 +63,11 @@
                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                             </button>
+                            
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            error with total, to check later
-                            <h5 class="mb-0">$<?=$item->unit_price?></h5>
+                            <p class="lead fw-normal mb-2">Total:</p>
+                            <h5 class="mb-0">$<?=$item->total?></h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>

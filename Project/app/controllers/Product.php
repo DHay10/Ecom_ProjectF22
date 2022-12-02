@@ -112,7 +112,7 @@ class Product extends \app\core\Controller {
         $order->user_id = $user->user_id;
         $order->unit_price = $product->price;
         $order->qty = $_POST['quantity'];
-        $order->total= $order->unit_Price*$order->qty;
+        $order->total= $product->price*$_POST['quantity'];
         $order->date = date("Y/m/d");
         $order->insert();
         //var_dump($order);
