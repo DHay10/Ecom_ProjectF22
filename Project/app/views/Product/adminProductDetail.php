@@ -37,9 +37,13 @@
                         <select id="category_id" class="form-control" name="category_id" required>
                             <!-- Find which category to add -->
 
-                            <?php foreach ($data['category'] as $category) {   ?>
                             
-                            <option value="<?= $category->category_name?>"></option>
+
+                            <?php foreach ($data as $item) { 
+                                $category = new \app\models\Category();
+                                $category = $category->getCategories();
+                            ?>
+                            <option value="<?= $category->category_id?>"><?= var_dump($category);?></option>
                             <?php } ?>
 
 

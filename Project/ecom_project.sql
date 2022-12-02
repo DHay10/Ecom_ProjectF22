@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 05:50 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 02, 2022 at 06:44 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecom_project`
 --
-CREATE DATABASE IF NOT EXISTS `ecom_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ecom_project`;
 
 -- --------------------------------------------------------
 
@@ -73,7 +71,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Electronics'),
-(2, 'Toys');
+(2, 'Toys'),
+(3, 'Food');
 
 -- --------------------------------------------------------
 
@@ -92,6 +91,15 @@ CREATE TABLE `order_table` (
   `date` date NOT NULL,
   `is_shipped` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_table`
+--
+
+INSERT INTO `order_table` (`order_id`, `product_id`, `user_id`, `unit_price`, `total`, `qty`, `tracking_info`, `date`, `is_shipped`) VALUES
+(1, 14, 2, 51, 51, 1, '', '2022-12-02', 0),
+(2, 13, 2, 360, 1442, 4, '', '2022-12-02', 0),
+(3, 16, 2, 124, 124, 1, '', '2022-12-02', 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +122,11 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
-(13, 'Test Kit', 360.40, 'LOREM IPSUM', 1, 1, '638584238e735.png');
+(13, 'Test Kit', 360.40, 'LOREM IPSUM', 1, 1, '638584238e735.png'),
+(14, 'dog', 51.00, 'good doggo', 0, 2, '638a2f1170548.jpg'),
+(15, 'Cat', 49.99, 'Freshly Slaughtered Kittens', 1, 3, '638a317f20767.jpg'),
+(16, 'Raccoons', 124.49, 'RARE delicacy! American Panda', 1, 3, '638a31b96c2bb.jpg'),
+(17, 'fish', 74.69, 'Fish with big head', 0, 3, '638a31df085e9.jpg');
 
 -- --------------------------------------------------------
 
@@ -138,7 +150,9 @@ CREATE TABLE `review` (
 INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `comment`, `date`, `rating`) VALUES
 (6, 13, 6, 'Test Review 01', '2022-11-29', '2.5'),
 (7, 13, 6, 'Test Review 02', '2022-11-29', '4.5'),
-(8, 13, 6, 'test3', '2022-12-02', '0.5');
+(8, 13, 6, 'test3', '2022-12-02', '0.5'),
+(10, 13, 2, 'did nothing', '2022-12-02', '1.5'),
+(11, 16, 2, 'good soup', '2022-12-02', '3');
 
 -- --------------------------------------------------------
 
@@ -301,25 +315,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `service_request`

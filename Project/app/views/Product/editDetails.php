@@ -43,9 +43,9 @@
                         <select id="category_id" class="form-control" name="category_id" required>
                             <!-- Find which category to add -->
 
-                            <?php foreach ($data as $category) {   ?>
+                            <?php foreach ($data as $item) {   ?>
                             
-                            <option value="<?= $category->category_id?>"> <?=$category->category_name?> </option>
+                            <option value="<?= $item->category_id?>"> <<?= $item->category_id?> </option>
 
                             <?php } ?>
 
