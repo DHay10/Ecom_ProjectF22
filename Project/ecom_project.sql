@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2022 at 12:54 AM
+-- Generation Time: Dec 02, 2022 at 05:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecom_project`
 --
-
 CREATE DATABASE IF NOT EXISTS `ecom_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `ecom_project`;
 
@@ -103,7 +102,7 @@ CREATE TABLE `order_table` (
 CREATE TABLE `product` (
   `product_id` int(5) NOT NULL,
   `product_name` varchar(20) NOT NULL,
-  `price` int(5) NOT NULL,
+  `price` double(5,2) NOT NULL,
   `description` varchar(150) NOT NULL,
   `is_featured` tinyint(1) NOT NULL,
   `category_id` int(5) NOT NULL,
@@ -115,13 +114,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
-(5, 'product1', 10, 'test', 0, 1, ''),
-(6, 'product2', 32, 'asd', 0, 2, '6381806a03041.png'),
-(7, 'product3', 213, 'sd', 0, 2, '638180810ac9c.png'),
-(8, 'product1asd', 213, 'ad', 0, 1, '638180a71a527.png'),
-(9, 'test1', 345, 'sdfsd', 1, 1, '638182774e50b.png'),
-(10, 'test1sdf', 43, 'sdf', 0, 1, '6381829137c19.png'),
-(11, 'test23423', 2147483647, 'test', 1, 2, '6382a69092b2a.png');
+(13, 'Test Kit', 360.40, 'LOREM IPSUM', 1, 1, '638584238e735.png');
 
 -- --------------------------------------------------------
 
@@ -132,11 +125,20 @@ INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is
 CREATE TABLE `review` (
   `review_id` int(5) NOT NULL,
   `product_id` int(5) NOT NULL,
-  `order_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
   `comment` varchar(200) NOT NULL,
   `date` date NOT NULL,
   `rating` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `comment`, `date`, `rating`) VALUES
+(6, 13, 6, 'Test Review 01', '2022-11-29', '2.5'),
+(7, 13, 6, 'Test Review 02', '2022-11-29', '4.5'),
+(8, 13, 6, 'test3', '2022-12-02', '0.5');
 
 -- --------------------------------------------------------
 
@@ -150,6 +152,13 @@ CREATE TABLE `service_request` (
   `subject` varchar(50) NOT NULL,
   `content` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service_request`
+--
+
+INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`) VALUES
+(1, 6, 'Test Request', 'Test Content');
 
 -- --------------------------------------------------------
 
@@ -172,7 +181,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
 (1, 'sa', 'asd', '$2y$10$uURncNVL2K8rBfh0Bmn5uOhP07xBQ0F0jjCQFfzdoVmA0smYwWk/m', 'asd@sad', 5115151),
-(2, 'saq', 'sad', '$2y$10$cAxwRkWo6RfuI7y13pA8A.3eGgraL3te0XZEE8lDuE.IMxje.blmm', 'asdsa@sad.gay', 2147483647);
+(2, 'saq', 'sad', '$2y$10$cAxwRkWo6RfuI7y13pA8A.3eGgraL3te0XZEE8lDuE.IMxje.blmm', 'asdsa@sad.gay', 2147483647),
+(6, 'Andy Nguyen-Chao', 'test', '$2y$10$bIUE1aePvZzkvs9jO41siO/WAoRwI4B5M3D0MU7BuWHyvnO.U0bIW', 'son-ta@hotmail.fr', 2147483647),
+(7, 'Andy Nguyen-Chao', 'test1', '$2y$10$p2yzrfT74skiaUVZiZ64NOrsTj03RlT/XaUPau5KJBEt9yDFPpVNS', 'son-ta@hotmail.fr', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -240,7 +251,7 @@ ALTER TABLE `product`
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`),
   ADD KEY `review_product_id` (`product_id`),
-  ADD KEY `review_order_id` (`order_id`);
+  ADD KEY `review_user_id` (`user_id`);
 
 --
 -- Indexes for table `service_request`
@@ -302,31 +313,31 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `service_request`
 --
 ALTER TABLE `service_request`
-  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -349,8 +360,8 @@ ALTER TABLE `product`
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `review_order_id` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`order_id`),
-  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `review_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `service_request`
