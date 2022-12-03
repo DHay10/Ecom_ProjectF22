@@ -25,8 +25,7 @@ class User extends \app\core\Model {
 						'username'=>$this->username,
 						'password_hash'=>$this->password_hash,
 						'email'=>$this->email,
-						'phone'=>$this->phone,
-						]);
+						'phone'=>$this->phone]);
 	}
 
 	public function updateProfile() {

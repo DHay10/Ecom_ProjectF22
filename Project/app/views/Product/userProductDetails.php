@@ -60,8 +60,6 @@
                 </div>
             </div>
 
-
-
             <div class="row mb-3">
                 <div class="col">
                     <form class="form-floating" method="post" action="">
@@ -71,24 +69,28 @@
                 </div>
             </div>
 
-
-
-
-
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col d-grid">
                     <a class="btn btn-dark w-2" href="/Product/index/" role="button">Back</a>
                 </div>
+
                 <div class="col d-grid">
                     <a class="btn btn-dark" role="button"  onclick="addToCart(<?=$data['product']->product_id?>);">Add to Cart</a>
                 </div>
+            </div>
+
+            <div class="row mb-3">
                 <div class="col d-grid">
                     <a href="/Product/addReview/<?=$data['product']->product_id?>" class="btn btn-dark" role="button" >Review</a>
                 </div>
+
+                <div class="col d-grid">
+                    <a href="/Product/addToWishlist/<?=$data['product']->product_id?>" class="btn btn-dark" role="button" >Add to Wishlist</a>
+                </div>
             </div>
 
-            <hr/>
-                
+            <hr>
+
             <h3 class="h2-responsive font-weight-bold text-center my-4">Reviews</h3>
 
             <div class="row">
