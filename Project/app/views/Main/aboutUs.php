@@ -12,13 +12,9 @@
 
     <body>
         <?php include 'app\views\includes\userHeader.php'; ?>
-        <h1><center>About Us</center></h1>
         <br>
-
-
-
-
-
+        <h3 class="text-center mb-4 pb-2 text-success fw-bold">About Us</h3>
+    
 
 <center><div class="col-md-3 text-center">
 <ul class="list-unstyled mb-0">

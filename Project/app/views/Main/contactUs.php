@@ -83,7 +83,7 @@
                     </form>
 
                     <div class="text-center text-md-right">
-                        <a class="btn btn-outline-success w-50" onclick="alert('message sent!')">Send</a>
+                        <a class="btn btn-success w-50" onclick="alert('message sent!')">Send</a>
                     </div>
                     <div class="status"></div>
                 </div>
@@ -99,12 +99,12 @@
                         <hr>
                         
                         <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                            <p>(514) 744-7500</p>
+                            <p>(514) 111-2323</p>
                         </li>
                         <hr>
 
                         <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                            <p>zawss@fakeemail.com</p>
+                            <p>team@martwall.com</p>
                         </li>
                         <hr>
                     </ul>
