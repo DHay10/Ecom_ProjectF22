@@ -29,6 +29,7 @@ class User extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\User]
 	public function profile() {
 		$user = new \app\models\User();
 		$user = $user->getByID($_SESSION['user_id']);
@@ -75,14 +76,17 @@ class User extends \app\core\Controller {
 		header('location:/User/index');
 	}
 
+	#[\app\filters\User]
 	public function orders() {
 		$this->view('User/orders');
 	}
 
+	#[\app\filters\User]
 	public function wishlist() {
 		$this->view('User/wishlist');
 	}
 
+	#[\app\filters\User]
 	public function cart() {
 		// $product = new \app\models\Product();
 		// $products = array();

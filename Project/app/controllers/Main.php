@@ -16,6 +16,7 @@
         }
 
         // Contact Us page
+        #[\app\filters\User]
         public function contactUs() {
             if(isset($_POST['action'])){
                 $user = new \app\models\User();
@@ -25,7 +26,7 @@
                 $message->subject = $_POST['subject'];
                 $message->content = $_POST['content'];
                 $message->insert();
-                header('location:/Main/contactUs?message=Message has been sent!.');
+                header('location:/Main/contactUs?message=Message has been sent!');
             } else {
                 $this->view('Main/contactUs');
             }
