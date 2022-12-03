@@ -83,7 +83,7 @@
                     </form>
 
                     <div class="text-center text-md-right">
-                        <a class="btn btn-warning w-50" onclick="alert('message sent!')">Send</a>
+                        <a class="btn btn-outline-success w-50" onclick="alert('message sent!')">Send</a>
                     </div>
                     <div class="status"></div>
                 </div>
