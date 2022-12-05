@@ -29,7 +29,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                     </div>
-                    <form action="" method="post">
+                    <form action="/User/checkout/" method="post">
                         <!-- have php for loop enclosed here -->
                         <?php foreach ($data as $item) { 
                             $product = new \app\models\product();

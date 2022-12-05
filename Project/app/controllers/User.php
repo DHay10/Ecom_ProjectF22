@@ -19,10 +19,10 @@ class User extends \app\core\Controller {
 
 				$wishlist = new \app\models\Wishlist();
 				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
-				if (!$wishlist) {
-					$wishlist->user_id = $_SESSION['user_id'];
-					$wishlist->insert();
-				}
+				// if (!$wishlist) {
+				// 	$wishlist->user_id = $_SESSION['user_id'];
+				// 	$wishlist->insert();
+				// }
 
 				header('location:/User/profile');
 			} else {
@@ -107,10 +107,18 @@ class User extends \app\core\Controller {
 	}
 
 	public function checkout() {
-		if(isset($_POST['action'])) {
 
+
+		if(isset($_POST['action'])) {
+		$user = new \app\models\User();
+        $user = $user->getByID($_SESSION['user_id']);
+		$order = new \app\models\Order_table();
+		$order = $order->getAllOrder($user->user_id);
+		var_dump($order);
 
 			
+		}else{
+			$this->view('User/cart');
 		}
 	}
 
