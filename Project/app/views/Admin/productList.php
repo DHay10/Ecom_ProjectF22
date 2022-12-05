@@ -35,7 +35,8 @@
                                     <td>$item->product_name</td>
                                     <td>$item->price</td>
                                     <td>
-                                        <a href='/Product/details/$item->product_id'>details</a>
+                                        <a href='/Product/details/$item->product_id'>Details</a> -
+                                        <a href='/Admin/delete/$item->product_id'>Delete</a>
                                     </td>
                                 </tr>
                                 

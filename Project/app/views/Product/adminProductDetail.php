@@ -39,7 +39,7 @@
 
                             <?php foreach ($data['category'] as $category) {   ?>
                             
-                            <option value="<?= $category->category_name?>"></option>
+                            <option value="<?= $category->category_id?>"><?= $category->category_name?></option>
                             <?php } ?>
 
 
@@ -78,7 +78,8 @@
                 </div>
             
                 <div class="text-center text-md-right">
-                    <a class="btn btn-primary" href="/Admin/modify/<?= $data['product']->product_id ?>">Edit</a>
+                <button type="submit" class="btn btn-dark" name="action">Edit test</button>
+                    <a class="btn btn-primary" href="/Admin/modify/<?=$data['product']->product_id?>">Edit</a>
                     <a class="btn btn-primary" href='/Admin/productList/'>Back</a>
                 </div>
             </form>

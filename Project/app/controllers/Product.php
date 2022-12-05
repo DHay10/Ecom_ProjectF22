@@ -15,6 +15,22 @@ class Product extends \app\core\Controller {
         $category = new \app\models\Category();
         $product = $product->getProductbyId($product_id);
         $category = $category->getCategories();
+        if (isset($_POST['action'])) {
+            $product->product_name = $_POST['product_name'];
+            $product->price = $_POST['price'];
+            $product->description = $_POST['description'];
+            $product->category_id = $_POST['category_id'];
+            $filename = $this->saveFile($_FILES['product_image']);
+                if($filename){
+                    //delete the old picture
+                    unlink("images/$product->product_image");
+                    //save the reference to the new one
+                    $product->product_image = $filename;
+                }
+            $product->update();
+            //echo"hi";
+            header('location:/Admin/productList');
+        }
         $this->view('Product/adminProductDetail',  ['category'=>$category, 'product'=>$product]);
 	}
 

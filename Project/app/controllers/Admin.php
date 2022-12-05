@@ -84,7 +84,7 @@
 				$product->update();
 				header('location:/Admin/productList');
 			} else {
-				$this->view('Product/editDetails', ['category'=>$category, 'product'=>$product]);
+				//$this->view('Product/details', ['category'=>$category, 'product'=>$product]);
 			}
 		}
 

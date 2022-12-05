@@ -97,7 +97,17 @@ class User extends \app\core\Controller {
 		$order = $order->getAllOrder($user->user_id);
 		//var_dump($order);
 		$this->view('User/cart', $order);
-
 	}
+
+	public function checkout() {
+		if(isset($_POST['action'])) {
+
+
+			
+		}
+	}
+
+
+
 
 }
