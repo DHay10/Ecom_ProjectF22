@@ -22,72 +22,59 @@
 
                 <!--Section: FAQ-->
             <section>
-            <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQ</h3>
+            <h3 class="text-center mb-4 pb-2 text-success fw-bold">FAQ</h3>
             <p class="text-center mb-5">
                 Find the answers for the most frequently asked questions below
             </p>
 
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="far fa-paper-plane text-primary pe-2"></i> What are the most popular travel destinations booked on zwass?</h6>
+                <h6 class="mb-3 text-success"><i class="far fa-paper-plane text-success pe-2"></i>Am I able to have multiple Shipping Addresses to choose from and ship my items to?</h6>
                 <p>
-                    <strong><u>We have plenty of popular travel destinations!</u></strong> 
-                    the travel agencies we book most often are to to southeastern Asia...
+                    <strong><u>Absolutely!</u></strong> 
+                    You are able to add as many Shipping Adresses you want depending on where you want to ship your products.
                 </p>
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="fas fa-pen-alt text-primary pe-2"></i> question here</h6>
+                <h6 class="mb-3 text-success"><i class="fas fa-pen-alt text-success pe-2"></i> Who is behind the MartWall web application? I love this platform to sell my products!</h6>
                 <p>
-                    <strong><u>good question</u></strong> this is a very good question Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.
+                    <strong><u>good question</u></strong> We are three intelligent and brilliant developpers who built MartWall for it to be
+                    accessible and easy to navigate for our users. We appreciate your love for us !
                 </p>
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="fas fa-user text-primary pe-2"></i> A simple
-                    question?
+                <h6 class="mb-3 text-success"><i class="fas fa-user text-success pe-2"></i> I want to contact MartWall about a specific inquiry.
                 </h6>
                 <p>
-                    this is also a very good question. Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.
+                    For any inquiries, comments or concerns, you can contact us via our <strong><u>Contact Us</u></strong> page that is under the
+                    <strong><u>More</u></strong> tab. There is either the option to write a message, or we have our phone number and email displayed
+                    for you to contact us as well.
                 </p>
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="fas fa-rocket text-primary pe-2"></i> Something is something
+                <h6 class="mb-3 text-success"><i class="fas fa-rocket text-success pe-2"></i> How long does shipping take when a product has been bought?
                 </h6>
                 <p>
-                    i don't know what to write here. Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.
+                   Products will be delivered at your door within 5 to 7 business days.
                 </p>
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="fas fa-home text-primary pe-2"></i> A simple
-                    question?
+                <h6 class="mb-3 text-success"><i class="fas fa-home text-success pe-2"></i> Can anyone sell their products on MartWall?
                 </h6>
-                <p><strong><u>Unfortunately,</u>.</strong> we ran out of questions to fill this example FAQ page . 
-                Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.
+                <p><strong><u>Of Course.</u>.</strong> Anyone can sell their products via MartWall. You simply need to have
+                an admin account and from there you can put to sale your desired products. 
                 </p>
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                <h6 class="mb-3 text-primary"><i class="fas fa-book-open text-primary pe-2"></i> this last question</h6>
+                <h6 class="mb-3 text-success"><i class="fas fa-book-open text-success pe-2"></i> Can I view the pricing of products in a different currency?</h6>
                 <p>
-                    very nice question indeed :D ! Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.
+                   Yes. We have a feature where you have the ability to change the currency of the products. You can
+                   view products in your desired currency.
                 </p>
                 </div>
             </div>
