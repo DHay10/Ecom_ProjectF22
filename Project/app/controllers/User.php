@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers;
-use app\models\Wishlist;
 
 class User extends \app\core\Controller {
 
@@ -8,6 +7,7 @@ class User extends \app\core\Controller {
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
+			
 			$user = $user->get($_POST['username']);
 
 			if(password_verify($_POST['password'], $user->password_hash)) {
@@ -18,11 +18,11 @@ class User extends \app\core\Controller {
 				$_SESSION['phone'] = $user->phone;
 
 				$wishlist = new \app\models\Wishlist();
-				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
-				// if (!$wishlist) {
-				// 	$wishlist->user_id = $_SESSION['user_id'];
-				// 	$wishlist->insert();
-				// }
+				$check = $wishlist->getByUserID($_SESSION['user_id']);
+				if (!$check) {
+					$wishlist->user_id = $_SESSION['user_id'];
+					$wishlist->insert();
+				}
 
 				header('location:/User/profile');
 			} else {
