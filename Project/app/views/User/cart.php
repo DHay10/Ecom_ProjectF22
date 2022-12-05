@@ -60,8 +60,8 @@
                                 </button>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                error with total, to check later
-                                <h5 class="mb-0">$<?=$item->unit_price?></h5>
+                            <p class="lead fw-normal mb-2">Total:</p>
+                                <h5 class="mb-0">$<?=$item->total?></h5>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>

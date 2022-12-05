@@ -12,6 +12,14 @@ class service_request extends \app\core\Model{
 						]);
 	}
 
+	public function update() {
+		$SQL = "UPDATE service_request SET content=:content, reply=:reply WHERE request_id=:request_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['request_id'=>$this->request_id,
+						'content'=>$this->content,
+						'reply'=>$this->reply]);
+	}
+
     public function getById($request_id){
 		$SQL = "SELECT * FROM service_request WHERE request_id=:request_id";
 		$STMT = self::$_connection->prepare($SQL);
@@ -20,6 +28,18 @@ class service_request extends \app\core\Model{
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Service_Request');
 		return $STMT->fetch();
 	}
+
+	public function getByUserId($user_id){
+		$SQL = "SELECT * FROM service_request WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$user_id]);
+		//run some code to return the results
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Service_Request');
+		return $STMT->fetchAll();
+	}
+
+
+
 
     public function getAll(){
         $SQL = "SELECT * FROM service_request";

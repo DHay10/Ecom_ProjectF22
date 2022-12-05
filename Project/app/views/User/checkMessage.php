@@ -9,7 +9,7 @@
     <title>Service Request</title>
 </head>
 <body>
-<?php include 'app\views\includes\adminHeader.php'; ?>
+<?php include 'app\views\includes\userHeader.php'; ?>
     
 
 <div class="container mt-5">
@@ -34,9 +34,8 @@
                             <td>$item->subject</td>
                             <td>$item->content</td>
                             <td>
-                                <a href='/Admin/SeDetail/$item->request_id'>Details</span></a>
-                                <a href='/Admin/SeReply/$item->request_id'>Reply</a>
-                                <a href='/Admin/deleteSE/$item->request_id'>Delete</a>
+                                <a href='/User/messageDetail/$item->request_id'>Details</span></a>
+                                <a href='/User/messageReply/$item->request_id'>Reply</a>
                             </td>
                         </tr>
                         

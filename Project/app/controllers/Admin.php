@@ -146,6 +146,34 @@
 			$this->view('Admin/serviceRequests', $message);
 		}
 
+		public function SeDetail($request_id){
+			$user = new \app\models\User();
+			$request = new \app\models\Service_Request();
+			$request = $request->getById($request_id);
+			$user = $user->getById($request->user_id);
+			//var_dump($user);
+			
+			$this->view('Admin/SeDetail',  ['request'=>$request, 'user'=>$user]);
+		}
+
+		public function SeReply($request_id){
+			$user = new \app\models\User();
+			$request = new \app\models\Service_Request();
+			$request = $request->getById($request_id);
+			$user = $user->getById($request->user_id);
+			//var_dump($user);
+			$userMessage = $request->content;
+			$spacingReply = "Admin Reply: ";
+			$spacingold = "         |                    Your Message: ";
+			if(isset($_POST['action'])){
+				$request->content = $spacingReply . $_POST['content'] . $spacingold . $userMessage;
+				$request->reply = 'Replied';
+				$request->update();
+				header('location:/Admin/serviceRequests');
+			}			
+			$this->view('Admin/SeReply',  ['request'=>$request, 'user'=>$user]);
+		}
+
 		#[\app\filters\Admin]
 		public function deleteSE($request_id) {
 			$request = new \app\models\Service_Request();
