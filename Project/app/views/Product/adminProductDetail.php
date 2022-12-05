@@ -38,7 +38,7 @@
                             <!-- Find which category to add -->
 
                             <?php foreach ($data['category'] as $category) {   ?>
-                            <option value="<?= $category->category_name?>"></option>
+                                <option value="<?= $category->category_id?>"><?= $category->category_name?></option>
                             <?php } ?>
 
 
