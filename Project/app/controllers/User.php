@@ -19,10 +19,10 @@ class User extends \app\core\Controller {
 
 				$wishlist = new \app\models\Wishlist();
 				$check = $wishlist->getByUserID($_SESSION['user_id']);
-				if (!$check) {
-					$wishlist->user_id = $_SESSION['user_id'];
-					$wishlist->insert();
-				}
+				// if (!$check) {
+				// 	$wishlist->user_id = $_SESSION['user_id'];
+				// 	$wishlist->insert();
+				// }
 
 				header('location:/User/profile');
 			} else {
@@ -115,6 +115,17 @@ class User extends \app\core\Controller {
 		$order = new \app\models\Order_table();
 		$order = $order->getAllOrder($user->user_id);
 		var_dump($order);
+		$checkout = new \app\models\Order_detail();
+		$checkout->order_id = $order->order_id;
+		$checkout->user_id = $user->user_id;
+
+		foreach ($data as $order){
+			$totalprice = $order->unit_price;
+			var_dump($totalprice);
+
+		}
+		//$checkout->total = 
+
 
 			
 		}else{
@@ -122,6 +133,43 @@ class User extends \app\core\Controller {
 		}
 	}
 
+	public function checkMessage(){
+		
+		$message = new \app\models\Service_Request();
+		$message = $message->getByUserID($_SESSION['user_id']);
+		$this->view('User/checkMessage', $message);
+	}
+
+	public function messageDetail($request_id){ 
+		$user = new \app\models\User();
+		$request = new \app\models\Service_Request();
+		$request = $request->getById($request_id);
+		$user = $user->getById($request->user_id);
+		//var_dump($user);
+		
+		$this->view('User/messageDetail',  ['request'=>$request, 'user'=>$user]);
+	}
+
+	public function messageReply($request_id){
+
+
+		$user = new \app\models\User();
+		$request = new \app\models\Service_Request();
+		$request = $request->getById($request_id);
+		$user = $user->getById($request->user_id);
+		//var_dump($user);
+		$userMessage = $request->content;
+		$spacingReply = "Your Reply: ";
+		$spacingold = "        |                    Admin Message: ";
+		if(isset($_POST['action'])){
+			$request->content = $spacingReply . $_POST['content'] . $spacingold . $userMessage;
+			$request->reply = 'Replied';
+			$request->update();
+			header('location:/User/checkMessage');
+		}
+		$this->view('User/messageReply',  ['request'=>$request, 'user'=>$user]);
+	}
+	
 
 
 

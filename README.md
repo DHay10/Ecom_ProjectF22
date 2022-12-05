@@ -31,6 +31,7 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a seller, I can view customers' orders |  |
 | As a seller, I can mark customers' orders as shipped and add tracking information of shipped order |  |
 | As a seller, I can view client service requests on sales | Finished |
+| As a seller, I can delete client service requests on sales | Finished |
 | As a seller, I can respond to client service requests on sales |  |
 | As a seller, I can showcase products in the 'Featured Section' |  |
 | As a seller, I can send an email to all of registered users |  |
