@@ -2,12 +2,13 @@
 	namespace app\controllers;
 	class Admin extends \app\core\Controller{
 		
-		// Dashboard
+		#[\app\filters\Admin]
 		public function index() {
 			$this->view('Admin/index');
 		}
 
 		// Send Email Page
+		#[\app\filters\Admin]
 		public function sendEmail() {
 			if(isset($_POST['action'])) {
 				
@@ -40,6 +41,7 @@
 		}
 
 		// Add Product
+		#[\app\filters\Admin]
 		public function addProduct() {
 			if(isset($_POST['action'])) {
 				$newProduct = new \app\models\Product();
@@ -64,6 +66,7 @@
 		}
 
 		// Edit Product
+		#[\app\filters\Admin]
 		public function modify($product_id) {
 			$product = new \app\models\Product();
 			$product = $product->getProductbyId($product_id);
@@ -89,6 +92,7 @@
 		}
 
 		// Remove Product
+		#[\app\filters\Admin]
 		public function delete($product_id) {
 			$product = new \app\models\Product();
 			$product = $product->getProductbyId($product_id);
@@ -105,6 +109,7 @@
 		}
 		
 		// View Products List
+		#[\app\filters\Admin]
 		public function productList() {
 			$product = new \app\models\Product();
 			$product = $product->getAll();
@@ -112,6 +117,7 @@
 		}
 
 		// Track Sales
+		#[\app\filters\Admin]
 		public function trackSales($product_id) {
 			$product = new \app\models\Product();
 			$product = $product->get($product_id);
@@ -124,6 +130,7 @@
 		}
 
 		// View Orders List
+		#[\app\filters\Admin]
 		public function viewOrders() {
 			$order = new \app\models\Order();
 			$orders = $order->getAll();
@@ -132,13 +139,14 @@
 
 
 		//service request
+		#[\app\filters\Admin]
 		public function serviceRequests(){
 			$message = new \app\models\Service_Request();
 			$message = $message->getAll();
 			$this->view('Admin/serviceRequests', $message);
 		}
 
-
+		#[\app\filters\Admin]
 		public function deleteSE($request_id) {
 			$request = new \app\models\Service_Request();
 			$request = $request->getByID($request_id);
