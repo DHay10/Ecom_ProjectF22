@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 08:41 AM
+-- Generation Time: Dec 05, 2022 at 08:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -159,18 +159,19 @@ CREATE TABLE `service_request` (
   `request_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `subject` varchar(50) NOT NULL,
-  `content` varchar(200) NOT NULL
+  `content` varchar(200) NOT NULL,
+  `reply` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `service_request`
 --
 
-INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`) VALUES
-(1, 2, 'hey there', 'this is first test message'),
-(2, 2, 'test 2', 'this is the second message test'),
-(3, 2, 'test 3?', 'test for alerts with messages!'),
-(9, 2, 'a', 'a');
+INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`, `reply`) VALUES
+(1, 2, 'hey there', 'Your Reply: sdsds        |                    Admin Message: this is first test message', 'Replied'),
+(2, 2, 'test 2', 'this is the second message test', NULL),
+(3, 2, 'test 3?', 'test for alerts with messages!', NULL),
+(9, 2, 'a', 'a', NULL);
 
 -- --------------------------------------------------------
 
@@ -223,19 +224,8 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
+(2, 2),
 (1, 6);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wishlist_items`
---
-
-CREATE TABLE `wishlist_items` (
-  `wishlist_items_id` int(9) NOT NULL,
-  `wishlist_id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -310,14 +300,6 @@ ALTER TABLE `wishlist`
   ADD KEY `wishlist_user_id` (`user_id`);
 
 --
--- Indexes for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  ADD PRIMARY KEY (`wishlist_items_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD KEY `wishlist_items_wishlist_id` (`wishlist_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -373,13 +355,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  MODIFY `wishlist_items_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -423,13 +399,6 @@ ALTER TABLE `user_address`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  ADD CONSTRAINT `wishlist_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `wishlist_items_wishlist_id` FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist` (`wishlist_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
