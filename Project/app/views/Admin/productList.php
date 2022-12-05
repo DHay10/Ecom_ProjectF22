@@ -15,9 +15,9 @@
         <div class="main">
 
         <div class="container mt-5">
-        <h1>Message History</h1>
+        <h1>Product List</h1>
             <div class="table-responsive">
-                <h5>Customer Service Requests</h5>
+                <h5></h5>
 
                 <table class="table table-striped">
                     <thead>

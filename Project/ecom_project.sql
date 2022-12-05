@@ -73,7 +73,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Electronics'),
-(2, 'Toys');
+(2, 'Toys'),
+(3, 'Food');
 
 -- --------------------------------------------------------
 
