@@ -16,6 +16,14 @@ class Product extends \app\core\Model {
                         'product_image' =>$this->product_image]);
     }
 
+	public function getAllFeatured() {
+		$SQL = "SELECT * FROM product WHERE is_featured=1";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
+		return $STMT->fetchAll();
+	}
+
     public function getAll(){
 		$SQL = "SELECT * FROM product";
 		$STMT = self::$_connection->prepare($SQL);

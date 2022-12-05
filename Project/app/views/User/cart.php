@@ -29,7 +29,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                     </div>
-                    <form action="" method="post">
+                    <form action="/User/checkout/" method="post">
                         <!-- have php for loop enclosed here -->
                         <?php foreach ($data as $item) { 
                             $product = new \app\models\product();
@@ -60,8 +60,8 @@
                                 </button>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                error with total, to check later
-                                <h5 class="mb-0">$<?=$item->unit_price?></h5>
+                            <p class="lead fw-normal mb-2">Total:</p>
+                                <h5 class="mb-0">$<?=$item->total?></h5>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>

@@ -31,8 +31,9 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a seller, I can view customers' orders |  |
 | As a seller, I can mark customers' orders as shipped and add tracking information of shipped order |  |
 | As a seller, I can view client service requests on sales | Finished |
-| As a seller, I can respond to client service requests on sales |  |
-| As a seller, I can showcase products in the 'Featured Section' |  |
+| As a seller, I can delete client service requests on sales | Finished |
+| As a seller, I can respond to client service requests on sales | Finished |
+| As a seller, I can showcase products in the 'Featured Section' | Finished |
 | As a seller, I can send an email to all of registered users |  |
 | As a user, I can register, login, and logout (Not New) | Finished |
 | As a user, I can change my personal information | Finished |
@@ -42,8 +43,8 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a user, I can remove products from my shopping cart | In Progress |
 | As a user, I can modify the quantities of products in my shopping cart | In Progress |
 | As a user, I can checkout |  |
-| As a user, I can add products to my Wish Lists | In Progress |
-| As a user, I can remove products from my Wish Lists | In Progress |
+| As a user, I can add products to my Wish Lists | Finished |
+| As a user, I can remove products from my Wish Lists | Finished |
 | As a user, I can leave a rating on a product | Finished |
 | As a user, I can write a review on a product | Finished |
 | As a user, I can modify the rating and review of a purchased product | Finished |

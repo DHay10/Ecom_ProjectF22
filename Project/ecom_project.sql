@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 06:44 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Dec 05, 2022 at 08:46 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecom_project`
 --
+CREATE DATABASE IF NOT EXISTS `ecom_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ecom_project`;
 
 -- --------------------------------------------------------
 
@@ -71,8 +73,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Electronics'),
-(2, 'Toys'),
-(3, 'Food');
+(2, 'Toys');
 
 -- --------------------------------------------------------
 
@@ -87,9 +88,9 @@ CREATE TABLE `order_table` (
   `unit_price` int(10) NOT NULL,
   `total` int(10) NOT NULL,
   `qty` int(4) NOT NULL,
-  `tracking_info` varchar(100) NOT NULL,
+  `tracking_info` varchar(100) DEFAULT NULL,
   `date` date NOT NULL,
-  `is_shipped` tinyint(1) NOT NULL
+  `is_shipped` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -97,9 +98,8 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`order_id`, `product_id`, `user_id`, `unit_price`, `total`, `qty`, `tracking_info`, `date`, `is_shipped`) VALUES
-(1, 14, 2, 51, 51, 1, '', '2022-12-02', 0),
-(2, 13, 2, 360, 1442, 4, '', '2022-12-02', 0),
-(3, 16, 2, 124, 124, 1, '', '2022-12-02', 0);
+(1, 16, 2, 420, 0, 1, NULL, '2022-12-02', NULL),
+(2, 21, 2, 11, 0, 1, NULL, '2022-12-02', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,8 +110,8 @@ INSERT INTO `order_table` (`order_id`, `product_id`, `user_id`, `unit_price`, `t
 CREATE TABLE `product` (
   `product_id` int(5) NOT NULL,
   `product_name` varchar(20) NOT NULL,
-  `price` double(5,2) NOT NULL,
-  `description` varchar(150) NOT NULL,
+  `price` int(5) NOT NULL,
+  `description` text NOT NULL,
   `is_featured` tinyint(1) NOT NULL,
   `category_id` int(5) NOT NULL,
   `product_image` varchar(50) NOT NULL
@@ -122,11 +122,17 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
-(13, 'Test Kit', 360.40, 'LOREM IPSUM', 1, 1, '638584238e735.png'),
-(14, 'dog', 51.00, 'good doggo', 0, 2, '638a2f1170548.jpg'),
-(15, 'Cat', 49.99, 'Freshly Slaughtered Kittens', 1, 3, '638a317f20767.jpg'),
-(16, 'Raccoons', 124.49, 'RARE delicacy! American Panda', 1, 3, '638a31b96c2bb.jpg'),
-(17, 'fish', 74.69, 'Fish with big head', 0, 3, '638a31df085e9.jpg');
+(13, 'idk', 324, 'asdasd', 1, 1, '6382e7c99ce06.png'),
+(15, 'BBC', 421, 'Very fun and relaxing device. Will massage stiff areas and loosen you up!', 1, 2, '6384237d1fe3e.jpg'),
+(16, 'something cool', 420, 'this is something cool, please purchase', 0, 1, '638425816eede.png'),
+(17, 'product ???', 10, 'here\'s another item for sale', 0, 1, '638425cc5fbfb.png'),
+(18, 'product 5?', 36, 'Hello There!', 0, 2, '6384261c427fd.png'),
+(19, 'product 6 test', 0, 'Is this for free?', 1, 1, '6384269b38255.png'),
+(21, 'asdsd', 11, 'as', 0, 1, '6385864342ca0.png'),
+(22, 'test mod', 5, 'test for modifying', 0, 1, '638d4a867ce38.jpg'),
+(23, 'Test Kit 02', 0, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 1, '638d8a1141e3a.png'),
+(25, 'Test Kit 03', 0, 'ersresr', 1, 1, '638d97c71ee02.png'),
+(26, 'Test Kit 05', 0, '21312', 1, 1, '638d97ef1f3eb.png');
 
 -- --------------------------------------------------------
 
@@ -137,22 +143,11 @@ INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is
 CREATE TABLE `review` (
   `review_id` int(5) NOT NULL,
   `product_id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
+  `order_id` int(5) NOT NULL,
   `comment` varchar(200) NOT NULL,
   `date` date NOT NULL,
   `rating` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `review`
---
-
-INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `comment`, `date`, `rating`) VALUES
-(6, 13, 6, 'Test Review 01', '2022-11-29', '2.5'),
-(7, 13, 6, 'Test Review 02', '2022-11-29', '4.5'),
-(8, 13, 6, 'test3', '2022-12-02', '0.5'),
-(10, 13, 2, 'did nothing', '2022-12-02', '1.5'),
-(11, 16, 2, 'good soup', '2022-12-02', '3');
 
 -- --------------------------------------------------------
 
@@ -164,15 +159,19 @@ CREATE TABLE `service_request` (
   `request_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `subject` varchar(50) NOT NULL,
-  `content` varchar(200) NOT NULL
+  `content` varchar(200) NOT NULL,
+  `reply` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `service_request`
 --
 
-INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`) VALUES
-(1, 6, 'Test Request', 'Test Content');
+INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`, `reply`) VALUES
+(1, 2, 'hey there', 'Your Reply: sdsds        |                    Admin Message: this is first test message', 'Replied'),
+(2, 2, 'test 2', 'this is the second message test', NULL),
+(3, 2, 'test 3?', 'test for alerts with messages!', NULL),
+(9, 2, 'a', 'a', NULL);
 
 -- --------------------------------------------------------
 
@@ -196,8 +195,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
 (1, 'sa', 'asd', '$2y$10$uURncNVL2K8rBfh0Bmn5uOhP07xBQ0F0jjCQFfzdoVmA0smYwWk/m', 'asd@sad', 5115151),
 (2, 'saq', 'sad', '$2y$10$cAxwRkWo6RfuI7y13pA8A.3eGgraL3te0XZEE8lDuE.IMxje.blmm', 'asdsa@sad.gay', 2147483647),
-(6, 'Andy Nguyen-Chao', 'test', '$2y$10$bIUE1aePvZzkvs9jO41siO/WAoRwI4B5M3D0MU7BuWHyvnO.U0bIW', 'son-ta@hotmail.fr', 2147483647),
-(7, 'Andy Nguyen-Chao', 'test1', '$2y$10$p2yzrfT74skiaUVZiZ64NOrsTj03RlT/XaUPau5KJBEt9yDFPpVNS', 'son-ta@hotmail.fr', 2147483647);
+(6, 'Andy Nguyen-Chao', 'test', '$2y$10$/aU7DfSllIBHNoHCAsvleOEVdL0sc76peqpnwV8iaCz8SWO3Gxnze', 'son-ta@hotmail.fr', 1231231234);
 
 -- --------------------------------------------------------
 
@@ -218,9 +216,16 @@ CREATE TABLE `user_address` (
 
 CREATE TABLE `wishlist` (
   `wishlist_id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL
+  `user_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
+(2, 2),
+(1, 6);
 
 --
 -- Indexes for dumped tables
@@ -249,8 +254,8 @@ ALTER TABLE `category`
 --
 ALTER TABLE `order_table`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_user_id` (`user_id`),
-  ADD KEY `order_product_id` (`product_id`);
+  ADD UNIQUE KEY `product_id` (`product_id`),
+  ADD KEY `order_user_id` (`user_id`);
 
 --
 -- Indexes for table `product`
@@ -265,7 +270,7 @@ ALTER TABLE `product`
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`),
   ADD KEY `review_product_id` (`product_id`),
-  ADD KEY `review_user_id` (`user_id`);
+  ADD KEY `review_order_id` (`order_id`);
 
 --
 -- Indexes for table `service_request`
@@ -292,8 +297,7 @@ ALTER TABLE `user_address`
 --
 ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`wishlist_id`),
-  ADD KEY `wishlist_user_id` (`user_id`),
-  ADD KEY `wishlist_product_id` (`product_id`);
+  ADD KEY `wishlist_user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -315,43 +319,43 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `service_request`
 --
 ALTER TABLE `service_request`
-  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -374,8 +378,8 @@ ALTER TABLE `product`
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `review_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `review_order_id` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`order_id`),
+  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `service_request`
@@ -394,7 +398,6 @@ ALTER TABLE `user_address`
 -- Constraints for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   ADD CONSTRAINT `wishlist_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 

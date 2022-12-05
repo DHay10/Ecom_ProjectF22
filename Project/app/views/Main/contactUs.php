@@ -76,7 +76,9 @@
                         <hr>
 
                         <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+
                             <p>team@martwall.com</p>
+
                         </li>
                         <hr>
                     </ul>

@@ -46,6 +46,8 @@
                         <a class="dropdown-item" href="/Main/aboutUs">About Us</a>
                         <a class="dropdown-item" href="/Main/faq">FAQ</a>
                         <a class="dropdown-item" href="/Main/contactUs">Contact Us</a>
+                        <a class="dropdown-item" href="/User/checkMessage">Messages</a>
+
                     </ul>
                 </li>
 

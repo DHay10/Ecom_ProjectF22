@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers;
-use app\models\Wishlist;
 
 class User extends \app\core\Controller {
 
@@ -18,11 +17,14 @@ class User extends \app\core\Controller {
 				$_SESSION['phone'] = $user->phone;
 
 				$wishlist = new \app\models\Wishlist();
-				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
-				if (!$wishlist) {
+				$checkWL = $wishlist->getByUserID($_SESSION['user_id']);
+				if (!$checkWL) {
 					$wishlist->user_id = $_SESSION['user_id'];
 					$wishlist->insert();
+					$wishlist->getByUserID($_SESSION['user_id']);
 				}
+				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+				$_SESSION['wishlist_id'] = $wishlist->wishlist_id;
 
 				header('location:/User/profile');
 			} else {
@@ -53,8 +55,8 @@ class User extends \app\core\Controller {
 		if(isset($_POST['action'])) {
 			if($_POST['password'] == $_POST['password_conf']) {
 				$user = new \app\models\User();
-				$check = $user->get($_POST['username']);
-				if(!$check) {
+				$checkUser = $user->get($_POST['username']);
+				if(!$checkUser) {
 					$user->username = $_POST['username'];
 					$user->name = $_POST['name'];
 					$user->email = $_POST['email'];
@@ -86,7 +88,9 @@ class User extends \app\core\Controller {
 
 	#[\app\filters\User]
 	public function wishlist() {
-		$this->view('User/wishlist');
+		$wishlist_items = new \app\models\Wishlist_Items();
+		$wishlist_items = $wishlist_items->getByWishlistID($_SESSION['wishlist_id']);
+		$this->view('User/wishlist', $wishlist_items);
 	}
 
 	#[\app\filters\User]
@@ -107,13 +111,69 @@ class User extends \app\core\Controller {
 	}
 
 	public function checkout() {
+
+
 		if(isset($_POST['action'])) {
+		$user = new \app\models\User();
+        $user = $user->getByID($_SESSION['user_id']);
+		$order = new \app\models\Order_table();
+		$order = $order->getAllOrder($user->user_id);
+		var_dump($order);
+		$checkout = new \app\models\Order_detail();
+		$checkout->order_id = $order->order_id;
+		$checkout->user_id = $user->user_id;
+
+		foreach ($data as $order){
+			$totalprice = $order->unit_price;
+			var_dump($totalprice);
+
+		}
+		//$checkout->total = 
 
 
 			
+		}else{
+			$this->view('User/cart');
 		}
 	}
 
+	public function checkMessage(){
+		
+		$message = new \app\models\Service_Request();
+		$message = $message->getByUserID($_SESSION['user_id']);
+		$this->view('User/checkMessage', $message);
+	}
+
+	public function messageDetail($request_id){ 
+		$user = new \app\models\User();
+		$request = new \app\models\Service_Request();
+		$request = $request->getById($request_id);
+		$user = $user->getById($request->user_id);
+		//var_dump($user);
+		
+		$this->view('User/messageDetail',  ['request'=>$request, 'user'=>$user]);
+	}
+
+	public function messageReply($request_id){
+
+
+		$user = new \app\models\User();
+		$request = new \app\models\Service_Request();
+		$request = $request->getById($request_id);
+		$user = $user->getById($request->user_id);
+		//var_dump($user);
+		$userMessage = $request->content;
+		$spacingReply = "Your Reply: ";
+		$spacingold = "        |                    Admin Message: ";
+		if(isset($_POST['action'])){
+			$request->content = $spacingReply . $_POST['content'] . $spacingold . $userMessage;
+			$request->reply = 'Replied';
+			$request->update();
+			header('location:/User/checkMessage');
+		}
+		$this->view('User/messageReply',  ['request'=>$request, 'user'=>$user]);
+	}
+	
 
 
 

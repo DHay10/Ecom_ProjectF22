@@ -16,6 +16,38 @@
         
         <div class='container mb-4'>
             <h2 class="h1-responsive font-weight-bold text-center my-4">Wishlist</h2>
+
+            <div class="row mb-4">
+                <?php
+                    foreach ($data as $item) {
+                        $product = new \app\models\Product();
+                        $product = $product->getProductbyId($item->product_id);
+                        echo "
+                        <div class='col'>
+                        <div class='card' style='width: 18rem;'>
+                            <img style='width:100%; aspect-ratio:1/1; object-fit:contain;' src='/images/$product->product_image' class='card-img-top' name='product_img_preview' id='product_img_preview' style='max-width:200px;max-height:200px'>
+                            
+                            <div class='card-body'>
+                                <div class='col-sm-10'>
+                                    <h5 class='card-title'>$product->product_name</h5>
+                                    <p>$$product->price</p>
+                                </div>
+                                <p class='card-text'>$product->description</p>
+                                <a href='/Product/userProductDetails/$product->product_id' class='btn btn-dark'>View Product</a>
+                                <a class='btn btn-danger' href='/Product/removeFromWishlist01/$item->product_id'>Remove</a>
+                            </div>
+                        </div>
+                        </div>";
+                    }
+                ?>
+                
+                <script>
+                    file = "" + "<?= $data->product_image ?>"
+                    if (file != "") {
+                        document.getElementById("product_img_preview").src = "/images/" + file;
+                    }
+                </script>
+            </div>
             
             <div class='row'>
                 <a class="btn btn-dark w-100" href="/User/profile" role="button">Back</a>
