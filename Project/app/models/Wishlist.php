@@ -14,7 +14,7 @@
         public function insert() {
             $SQL = "INSERT INTO wishlist(user_id) VALUES (:user_id)";
             $STMT = self::$_connection->prepare($SQL);
-		    $STMT->execute(['user_id'=>$_SESSION['user_id']]);
+		    $STMT->execute(['user_id'=>$this->user_id]);
         }
 
         public function addProduct($product_id) {

@@ -37,7 +37,6 @@
                         <select id="category_id" class="form-control" name="category_id" required>
                             <!-- Find which category to add -->
 
-                            <?php foreach ($data['category'] as $category) {   ?>
                             
                             <option value="<?= $category->category_id?>"><?= $category->category_name?></option>
                             <?php } ?>

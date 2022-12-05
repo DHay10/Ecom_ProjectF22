@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-class User extends \app\core\Model{
+class User extends \app\core\Model {
 	public function get($username){
 		$SQL = "SELECT * FROM user WHERE username=:username";
 		$STMT = self::$_connection->prepare($SQL);
@@ -25,8 +25,7 @@ class User extends \app\core\Model{
 						'username'=>$this->username,
 						'password_hash'=>$this->password_hash,
 						'email'=>$this->email,
-						'phone'=>$this->phone,
-						]);
+						'phone'=>$this->phone]);
 	}
 
 	public function updateProfile() {

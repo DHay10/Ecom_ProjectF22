@@ -46,6 +46,7 @@ class Product extends \app\core\Controller {
 	}
 
     // Add to wishlist
+    #[\app\filters\User]
     public function addToWishlist($product_id) {
         $wishlist = new \app\models\Wishlist();
         $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
@@ -53,6 +54,7 @@ class Product extends \app\core\Controller {
     }
 
     // Remove from wishlist
+    #[\app\filters\User]
     public function removeFromWishlist($product_id) {
         $wishlist = new \app\models\Wishlist();
         $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
@@ -61,6 +63,7 @@ class Product extends \app\core\Controller {
 
     // Review Product
     // Need to see if review and rate should be combined
+    #[\app\filters\User]
     public function reviewProduct($product_id) {
         if(isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -74,6 +77,7 @@ class Product extends \app\core\Controller {
     }
 
     // Modify Review
+    #[\app\filters\User]
     public function modifyReview($review_id) {
         if(isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -86,6 +90,7 @@ class Product extends \app\core\Controller {
     }
 
     // Catalog View
+    #[\app\filters\User]
     public function catalog() {
 		$product = new \app\models\Product();
         $products = $product->getAll();
@@ -117,8 +122,8 @@ class Product extends \app\core\Controller {
         }
     }
 
+    #[\app\filters\User]
     public function addToCart($product_id) {
-        
         $product = new \app\models\Product();
         $product = $product->getProductbyId($product_id);
         $user = new \app\models\User();
@@ -128,7 +133,7 @@ class Product extends \app\core\Controller {
         $order->user_id = $user->user_id;
         $order->unit_price = $product->price;
         $order->qty = $_POST['quantity'];
-        $order->total= $order->unit_Price*$order->qty;
+        $order->total= $product->price*$_POST['quantity'];
         $order->date = date("Y/m/d");
         $order->insert();
         //var_dump($order);
@@ -140,6 +145,7 @@ class Product extends \app\core\Controller {
     }
 
 
+    #[\app\filters\User]
     public function addReview($product_id) {
         if (isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -155,6 +161,7 @@ class Product extends \app\core\Controller {
         }
     }
 
+    #[\app\filters\User]
     public function editReview($review_id) {
         $review = new \app\models\Review();
         $review = $review->get($review_id);

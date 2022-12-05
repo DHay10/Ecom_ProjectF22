@@ -15,13 +15,9 @@
             $this->view('Main/faq');
         }
 
+        // Contact Us page
+        #[\app\filters\User]
         public function contactUs() {
-            $this->view('Main/contactUs');
-        }
-
-
-        // contact us page
-        public function sendMessage(){
             if(isset($_POST['action'])){
                 $user = new \app\models\User();
                 $user = $user->getById($_SESSION['user_id']);
@@ -30,9 +26,10 @@
                 $message->subject = $_POST['subject'];
                 $message->content = $_POST['content'];
                 $message->insert();
-                header('location:/Main/contactUs?message=Message has been sent!.');
+                header('location:/Main/contactUs?message=Message has been sent!');
+            } else {
+                $this->view('Main/contactUs');
             }
         }
-
 
 	}

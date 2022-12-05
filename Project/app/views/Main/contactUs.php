@@ -14,7 +14,6 @@
         <?php include 'app\views\includes\userHeader.php'; ?>
         <?php include 'app\views\includes\error.php'; ?>
 
-
         <main class="container mb-4">
 
             <!--Section heading-->
@@ -25,7 +24,7 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-md-9 mb-md-0 mb-5">
-                    <form id="contact-form" name="contact-form" action="/Main/sendMessage/" method="POST">
+                    <form id="contact-form" name="contact-form" action="" method="POST">
                         <!--Grid row-->
                         <div class="row">
                             <div class="col-md-12">

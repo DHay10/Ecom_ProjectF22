@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers;
+use app\models\Wishlist;
 
 class User extends \app\core\Controller {
 
@@ -15,11 +16,14 @@ class User extends \app\core\Controller {
 				$_SESSION['name'] = $user->name;
 				$_SESSION['email'] = $user->email;
 				$_SESSION['phone'] = $user->phone;
-				// $wishlist = new \app\models\Wishlist();
-				// if ($wishlist->getByUserID($user->user_id) == null) {
-				// 	$wishlist->user_id = $_SESSION['user_id'];
-				// 	$wishlist->insert();
-				// }
+
+				$wishlist = new \app\models\Wishlist();
+				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+				if (!$wishlist) {
+					$wishlist->user_id = $_SESSION['user_id'];
+					$wishlist->insert();
+				}
+
 				header('location:/User/profile');
 			} else {
 				header('location:/User/index?error=Wrong Username/Password Combination!');
@@ -29,6 +33,7 @@ class User extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\User]
 	public function profile() {
 		$user = new \app\models\User();
 		$user = $user->getByID($_SESSION['user_id']);
@@ -56,7 +61,6 @@ class User extends \app\core\Controller {
 					$user->phone = $_POST['phone'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$user->insert();
-					
 					header('location:/User/index');
 				} else {
 					header('location:/User/register?error=The username "'.$_POST['username'].'" is already in use. Select another.');
@@ -75,14 +79,17 @@ class User extends \app\core\Controller {
 		header('location:/User/index');
 	}
 
+	#[\app\filters\User]
 	public function orders() {
 		$this->view('User/orders');
 	}
 
+	#[\app\filters\User]
 	public function wishlist() {
 		$this->view('User/wishlist');
 	}
 
+	#[\app\filters\User]
 	public function cart() {
 		// $product = new \app\models\Product();
 		// $products = array();

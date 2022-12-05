@@ -24,7 +24,7 @@
                         echo "
                         <div class='col'>
                         <div class='card' style='width: 18rem;'>
-                            <img src='/images/$item->product_image' class='card-img-top' name='product_img_preview' id='product_img_preview' style='max-width:200px;max-height:200px'>
+                            <img style='width:100%; aspect-ratio:1/1; object-fit:contain;' src='/images/$item->product_image' class='card-img-top' name='product_img_preview' id='product_img_preview' style='max-width:200px;max-height:200px'>
                             
                             <div class='card-body'>
                                 <div class='col-sm-10'>
