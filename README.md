@@ -43,8 +43,8 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a user, I can remove products from my shopping cart | In Progress |
 | As a user, I can modify the quantities of products in my shopping cart | In Progress |
 | As a user, I can checkout |  |
-| As a user, I can add products to my Wish Lists | In Progress |
-| As a user, I can remove products from my Wish Lists | In Progress |
+| As a user, I can add products to my Wish Lists | Finished |
+| As a user, I can remove products from my Wish Lists | Finished |
 | As a user, I can leave a rating on a product | Finished |
 | As a user, I can write a review on a product | Finished |
 | As a user, I can modify the rating and review of a purchased product | Finished |

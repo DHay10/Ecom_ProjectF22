@@ -7,7 +7,6 @@ class User extends \app\core\Controller {
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
-			
 			$user = $user->get($_POST['username']);
 
 			if(password_verify($_POST['password'], $user->password_hash)) {
@@ -18,11 +17,14 @@ class User extends \app\core\Controller {
 				$_SESSION['phone'] = $user->phone;
 
 				$wishlist = new \app\models\Wishlist();
-				$check = $wishlist->getByUserID($_SESSION['user_id']);
-				// if (!$check) {
-				// 	$wishlist->user_id = $_SESSION['user_id'];
-				// 	$wishlist->insert();
-				// }
+				$checkWL = $wishlist->getByUserID($_SESSION['user_id']);
+				if (!$checkWL) {
+					$wishlist->user_id = $_SESSION['user_id'];
+					$wishlist->insert();
+					$wishlist->getByUserID($_SESSION['user_id']);
+				}
+				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+				$_SESSION['wishlist_id'] = $wishlist->wishlist_id;
 
 				header('location:/User/profile');
 			} else {
@@ -53,8 +55,8 @@ class User extends \app\core\Controller {
 		if(isset($_POST['action'])) {
 			if($_POST['password'] == $_POST['password_conf']) {
 				$user = new \app\models\User();
-				$check = $user->get($_POST['username']);
-				if(!$check) {
+				$checkUser = $user->get($_POST['username']);
+				if(!$checkUser) {
 					$user->username = $_POST['username'];
 					$user->name = $_POST['name'];
 					$user->email = $_POST['email'];
@@ -86,7 +88,9 @@ class User extends \app\core\Controller {
 
 	#[\app\filters\User]
 	public function wishlist() {
-		$this->view('User/wishlist');
+		$wishlist_items = new \app\models\Wishlist_Items();
+		$wishlist_items = $wishlist_items->getByWishlistID($_SESSION['wishlist_id']);
+		$this->view('User/wishlist', $wishlist_items);
 	}
 
 	#[\app\filters\User]
