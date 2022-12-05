@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            foreach ($data as $item)
+                            foreach ($data as $item) 
                                 echo"
                                 <tr>
                                     <td>$item->product_id</td>

@@ -84,9 +84,28 @@
                     <a href="/Product/addReview/<?=$data['product']->product_id?>" class="btn btn-dark" role="button" >Review</a>
                 </div>
 
-                <div class="col d-grid">
+                <?php 
+                if (isset($_SESSION['wishlist_id'])) {
+                    $wishlist_items = new \app\models\Wishlist_Items();
+                    if ($wishlist_items->getInstanceInWishlist($data['product']->product_id)) { 
+                ?>
+                    <div class="col d-grid">
+                        <a href="/Product/removeFromWishlist02/<?=$data['product']->product_id?>" class="btn btn-danger" role="button" >Remove From Wishlist</a>
+                    </div>
+                    
+                <?php } else { ?>
+                        <div class="col d-grid">
+                        <a href="/Product/addToWishlist/<?=$data['product']->product_id?>" class="btn btn-dark" role="button" >Add to Wishlist</a>
+                        </div>
+
+                <?php } } else { ?>
+                    <div class="col d-grid">
                     <a href="/Product/addToWishlist/<?=$data['product']->product_id?>" class="btn btn-dark" role="button" >Add to Wishlist</a>
-                </div>
+                    </div>
+                <?php } ?>
+                
+                
+                
             </div>
 
             <hr>

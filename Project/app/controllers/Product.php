@@ -48,17 +48,26 @@ class Product extends \app\core\Controller {
     // Add to wishlist
     #[\app\filters\User]
     public function addToWishlist($product_id) {
-        $wishlist = new \app\models\Wishlist();
-        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
-        $wishlist->addProduct($product_id);
+        $wishlist_items = new \app\models\Wishlist_Items();
+        $wishlist_items->wishlist_id = $_SESSION['wishlist_id'];
+        $wishlist_items->product_id = $product_id;
+        $wishlist_items->insert();
+        header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been added to your Wishlist.');
     }
 
     // Remove from wishlist
     #[\app\filters\User]
-    public function removeFromWishlist($product_id) {
-        $wishlist = new \app\models\Wishlist();
-        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
-        $wishlist->removeProduct($product_id);
+    public function removeFromWishlist01($product_id) {
+        $wishlist_items = new \app\models\Wishlist_Items();
+        $wishlist_items->delete($product_id);
+        header('location:/User/wishlist?message=Product as been removed from your Wishlist.');
+    }
+
+    #[\app\filters\User]
+    public function removeFromWishlist02($product_id) {
+        $wishlist_items = new \app\models\Wishlist_Items();
+        $wishlist_items->delete($product_id);
+        header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been removed from your Wishlist.');
     }
 
     // Review Product
