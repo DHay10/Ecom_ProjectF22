@@ -2,12 +2,13 @@
 	namespace app\controllers;
 	class Admin extends \app\core\Controller{
 		
-		// Dashboard
+		#[\app\filters\Admin]
 		public function index() {
 			$this->view('Admin/index');
 		}
 
 		// Send Email Page
+		#[\app\filters\Admin]
 		public function sendEmail() {
 			if(isset($_POST['action'])) {
 				
@@ -40,65 +41,83 @@
 		}
 
 		// Add Product
+		#[\app\filters\Admin]
 		public function addProduct() {
 			if(isset($_POST['action'])) {
 				$newProduct = new \app\models\Product();
 				$newProduct->product_name = $_POST['product_name'];
 				$newProduct->price = $_POST['price'];
 				$newProduct->description = $_POST['description'];
-				$newProduct->is_featured = $_POST['is_featured'];
+				if(isset($_POST['is_featured']) == "on"){
+					$newProduct->is_featured = 1;
+				}else{
+					$newProduct->is_featured = 0;
+				}
 				$newProduct->category_id = $_POST['category_id'];
 				$filename = $this->saveFile($_FILES['product_image']);
 				$newProduct->product_image = $filename;
-	
 				$newProduct->insert();
 				header('location:/Admin/productList');
 			} else {
-				$this->view('Admin/addProduct');
+				$category = new \app\models\Category();
+				$category = $category->getCategories();
+				$this->view('Admin/addProduct', $category);
 			}
 		}
 
-		
-	
-
 		// Edit Product
+		#[\app\filters\Admin]
 		public function modify($product_id) {
+			$product = new \app\models\Product();
+			$product = $product->getProductbyId($product_id);
+			$category = new \app\models\Category(); 
+			$category = $category->getcategories();
 			if(isset($_POST['action'])) {
-				$product = new \app\models\Product();
-				$product = product->get($product_id);
 				$product->product_name = $_POST['product_name'];
 				$product->price = $_POST['price'];
 				$product->description = $_POST['description'];
 				$product->category_id = $_POST['category_id'];
-
+				$filename = $this->saveFile($_FILES['profile_pic']);
+					if($filename){
+						//delete the old picture
+						unlink("images/$product->product_image");
+						//save the reference to the new one
+						$product->product_image = $filename;
+					}
 				$product->update();
-				header('location:/Admin/Dashboard');
+				header('location:/Admin/productList');
 			} else {
-				$this->view('Product/edit');
+				//$this->view('Product/details', ['category'=>$category, 'product'=>$product]);
 			}
 		}
 
 		// Remove Product
+		#[\app\filters\Admin]
 		public function delete($product_id) {
-			if(isset($_POST['action'])) {
-				$product = new \app\models\Product();
-				$product->product_id = $product_id;
-				
-				$product->delete();
-				header('location:/Admin/Dashboard');
-			} else {
-				$this->view('Product/remove');
-			}
+			$product = new \app\models\Product();
+			$product = $product->getProductbyId($product_id);
+			unlink("images/$product->product_image");
+
+			$product->product_id = $product_id;
+			
+			$product->delete();
+			header('location:/Admin/productList');
+	
+			// $product = new \app\models\Product();
+			// $product = $product->getProductbyId($product_id);
+
 		}
 		
 		// View Products List
-		public function viewProducts() {
+		#[\app\filters\Admin]
+		public function productList() {
 			$product = new \app\models\Product();
-			$products = $product->getAll();
-			$this->view('Admin/viewProducts', $products);
+			$product = $product->getAll();
+			$this->view('Admin/productList', $product);
 		}
 
 		// Track Sales
+		#[\app\filters\Admin]
 		public function trackSales($product_id) {
 			$product = new \app\models\Product();
 			$product = $product->get($product_id);
@@ -111,10 +130,30 @@
 		}
 
 		// View Orders List
+		#[\app\filters\Admin]
 		public function viewOrders() {
 			$order = new \app\models\Order();
 			$orders = $order->getAll();
 			$this->view('Admin/viewOrders', $orders);
 		}
+
+
+		//service request
+		#[\app\filters\Admin]
+		public function serviceRequests(){
+			$message = new \app\models\Service_Request();
+			$message = $message->getAll();
+			$this->view('Admin/serviceRequests', $message);
+		}
+
+		#[\app\filters\Admin]
+		public function deleteSE($request_id) {
+			$request = new \app\models\Service_Request();
+			$request = $request->getByID($request_id);
+			$request->request_id = $request_id;
+			$request->delete();
+			header('location:/Admin/serviceRequests');
+		}
+
 
 	}
