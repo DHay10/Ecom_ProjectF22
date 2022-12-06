@@ -173,8 +173,26 @@ class User extends \app\core\Controller {
 		}
 		$this->view('User/messageReply',  ['request'=>$request, 'user'=>$user]);
 	}
+
+
+	public function addAddress() {
+		if (isset($_POST['action'])) {
+
+		} else {
+			$this->view('User/addAddress');
+		}
+	}
 	
+	public function editAddress() {
+		if (isset($_POST['action'])) {
 
+		} else {
+			$this->view('User/editAddress');
+		}
+	}
 
-
+	public function removeAddress() {
+		$address = new \app\models\Address();
+		
+	}
 }
