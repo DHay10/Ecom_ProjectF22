@@ -18,14 +18,18 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Product
-                    </a>
+                    </a>                
 
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href="/Product/index">All</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Product/byCategory/1">Electronics</a>
-                        <a class="dropdown-item" href="/Product/byCategory/2">Toys</a>
-                        <a class="dropdown-item" href="/Product/byCategory/3">Food</a>
+                        <?php
+                        $category = new \app\models\Category();
+                        $categories = $category->getCategories();
+                        foreach ($categories as $category) {
+                            echo "<a class='dropdown-item' href='/Product/byCategory/$category->category_id'>$category->category_name</a>";
+                        }
+                        ?>
                     </ul>
                 </li>
 
@@ -46,8 +50,6 @@
                         <a class="dropdown-item" href="/Main/aboutUs">About Us</a>
                         <a class="dropdown-item" href="/Main/faq">FAQ</a>
                         <a class="dropdown-item" href="/Main/contactUs">Contact Us</a>
-                        <a class="dropdown-item" href="/User/checkMessage">Messages</a>
-
                     </ul>
                 </li>
 

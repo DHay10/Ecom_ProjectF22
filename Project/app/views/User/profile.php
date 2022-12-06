@@ -64,16 +64,18 @@
         <div class="container mb-4">
             <h3 class="h2-responsive font-weight-bold text-center my-4">Options</h3>
             
-            <div class="row">
-                <div class="col">
-                    <a class="btn btn-dark w-100" href="/User/orders" role="button">Orders</a>
+            <div class="row mb-3">
+                <div class="col d-grid">
+                    <a class="btn btn-dark" href="/User/orders" role="button">Orders</a>
                 </div>
 
-                <div class="col">
-                    <a class="btn btn-dark w-100" href="/User/wishlist" role="button">Wishlist</a>
+                <div class="col d-grid">
+                    <a class="btn btn-dark" href="/User/wishlist" role="button">Wishlist</a>
                 </div>
-                
-                
+
+                <div class="col d-grid">
+                    <a class="btn btn-dark" href="/User/checkMessage" role="button">Messages</a>
+                </div>
             </div>
 
         </div>
