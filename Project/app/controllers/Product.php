@@ -137,6 +137,7 @@ class Product extends \app\core\Controller {
         $product = $product->getProductbyId($product_id);
         $user = new \app\models\User();
         $user = $user->getByID($_SESSION['user_id']);
+
         $order = new \app\models\Order_table();
         $order->product_id = $product->product_id;
         $order->user_id = $user->user_id;

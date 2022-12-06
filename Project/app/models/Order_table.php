@@ -3,11 +3,14 @@ namespace app\models;
 
 class Order_table extends \app\core\Model {
 	public function insert(){
-        $SQL = "INSERT INTO order_table(order_id, user_id, total) VALUES (:order_id, :user_id)";
+        $SQL = "INSERT INTO order_table(product_id, user_id, unit_price, total, qty, date) VALUES (:product_id, :user_id, :unit_price, :total, :qty,:date)";
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['order_id' =>$this->order_id,
+        $STMT->execute(['product_id' =>$this->product_id,
                         'user_id' =>$this->user_id,
-                        'total' =>$this->total
+                        'unit_price' =>$this->unit_price,
+                        'total' =>$this->total,
+                        'qty' =>$this->qty,
+                        'date' =>$this->date,
                     ]);
     }
 
