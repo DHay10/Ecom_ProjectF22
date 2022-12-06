@@ -154,6 +154,20 @@ class Product extends \app\core\Controller {
         // header('location:/Product/userProductDetails/' . $product_id . '?message=Profile has been Updated!');
     }
 
+    public function removeFromCart($product_id){
+        $product = new \app\models\Product();
+        $product = $product->getProductbyId($product_id);
+        $user = new \app\models\User();
+        $user = $user->getByID($_SESSION['user_id']);
+
+        $order = new \app\models\Order_table();
+        $order = $order->getOrderbyId($product_id);
+        //var_dump($order);
+        $order->delete();
+        header('location:/User/cart');
+    }
+
+
 
     #[\app\filters\User]
     public function addReview($product_id) {

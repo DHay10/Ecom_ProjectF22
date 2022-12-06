@@ -64,7 +64,7 @@
                                 <h5 class="mb-0">$<?=$item->total?></h5>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                <a href="/Product/removeFromCart/<?= $product->product_id ?>>" class="text-danger">delete</a>
                             </div>
                             </div>
                         </div>

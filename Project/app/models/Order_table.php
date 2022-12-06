@@ -23,7 +23,18 @@ class Order_table extends \app\core\Model {
 		return $STMT->fetchAll();
     }
 
+    public function getOrderbyId($product_id){
+		$SQL = "SELECT * FROM order_table WHERE product_id=:product_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['product_id'=>$product_id]);
+		//run some code to return the results
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Order_table');
+		return $STMT->fetch();
+	}
 
-
-
+    public function delete(){
+		$SQL = "DELETE FROM order_table WHERE product_id=:product_id";
+			$STMT = self::$_connection->prepare($SQL);
+			$STMT->execute(['product_id'=>$this->product_id]);
+	}
 }
