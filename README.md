@@ -23,7 +23,7 @@ A prototype storefront web application to sell products where the Seller (Admin)
 
 | Features | Status |
 | :--- |:---:|
-| As a seller, I can login and logout (Not New) | Finished S A |
+| As a seller, I can login and logout (Not New) | Finished K |
 | As a seller, I can add products for sale | Finished S |
 | As a seller, I can modify products for sale | Finished S |
 | As a seller, I can remove products for sale | Finished S |
@@ -33,13 +33,13 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a seller, I can view client service requests on sales | Finished S |
 | As a seller, I can delete client service requests on sales | Finished S |
 | As a seller, I can respond to client service requests on sales | Finished S |
-| As a seller, I can showcase products in the 'Featured Section' | Finished A |
+| As a seller, I can showcase products in the 'Featured Section' | Finished K |
 | As a seller, I can send an email to all of registered users |  |
-| As a user, I can register, login, and logout (Not New) | Finished S |
+| As a user, I can register, login, and logout (Not New) | Finished K |
 | As a user, I can change my personal information | Finished A |
 | As a user, I can search the product catalog | Finished A |
 | As a user, I can view products by category | Finished A |
-| As a user, I can see product details / description | Finished S |
+| As a user, I can see product details / description | Finished K |
 | As a user, I can add products to my shopping cart | Finished A S|
 | As a user, I can remove products from my shopping cart | Finished A S |
 | As a user, I can modify the quantities of products in my shopping cart | Finished A S|
