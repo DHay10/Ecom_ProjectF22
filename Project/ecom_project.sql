@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 08:46 AM
+-- Generation Time: Dec 09, 2022 at 03:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -73,8 +73,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Electronics'),
-(2, 'Toys'),
-(3, 'Food');
+(2, 'Toys');
 
 -- --------------------------------------------------------
 
@@ -99,8 +98,8 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`order_id`, `product_id`, `user_id`, `unit_price`, `total`, `qty`, `tracking_info`, `date`, `is_shipped`) VALUES
-(1, 16, 2, 420, 0, 1, NULL, '2022-12-02', NULL),
-(2, 21, 2, 11, 0, 1, NULL, '2022-12-02', NULL);
+(6, 21, 2, 11, 33, 3, NULL, '2022-12-06', NULL),
+(7, 22, 2, 5, 25, 5, NULL, '2022-12-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -326,7 +325,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
