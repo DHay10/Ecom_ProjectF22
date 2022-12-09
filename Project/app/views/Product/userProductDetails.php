@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="col d-grid">
-                    <a class="btn btn-dark" role="button"  onclick="addToCart(<?=$data['product']->product_id?>);">Add to Cart</a>
+                    <a class="btn btn-dark" role="button" onclick="addToCart(<?=$data['product']->product_id?>);">Add to Cart</a>
                 </div>
             </div>
 
@@ -158,9 +158,6 @@
                     data: {quantity: $("#quantity").val()},
                     success:function(data){console.log(data)}})
                     alert('item has been added to cart');
-
-
-
         }
 
 

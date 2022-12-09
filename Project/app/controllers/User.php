@@ -1,21 +1,24 @@
 <?php
 namespace app\controllers;
+use app\models\Cart_Item;
 
 class User extends \app\core\Controller {
+
+	// ------- General Control -------
 
 	// User Login Page
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
 			$user = $user->get($_POST['username']);
-
+			// Password Validation
 			if(password_verify($_POST['password'], $user->password_hash)) {
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
 				$_SESSION['name'] = $user->name;
 				$_SESSION['email'] = $user->email;
 				$_SESSION['phone'] = $user->phone;
-
+				// Get Wishlist Instance
 				$wishlist = new \app\models\Wishlist();
 				$checkWL = $wishlist->getByUserID($_SESSION['user_id']);
 				if (!$checkWL) {
@@ -25,6 +28,16 @@ class User extends \app\core\Controller {
 				}
 				$wishlist = $wishlist->getByUserID($_SESSION['user_id']);
 				$_SESSION['wishlist_id'] = $wishlist->wishlist_id;
+				// Get Cart Instance
+				$cart = new \app\models\Cart();
+				$checkCart = $cart->getByUserID($_SESSION['user_id']);
+				if (!$checkCart) {
+					$cart->user_id = $_SESSION['user_id'];
+					$cart->insert();
+					$cart->getByUserID($_SESSION['user_id']);
+				}
+				$cart = $cart->getByUserID($_SESSION['user_id']);
+				$_SESSION['cart_id'] = $cart->cart_id;
 
 				header('location:/User/profile');
 			} else {
@@ -35,22 +48,13 @@ class User extends \app\core\Controller {
 		}
 	}
 
-	#[\app\filters\User]
-	public function profile() {
-		$user = new \app\models\User();
-		$user = $user->getByID($_SESSION['user_id']);
-		if (isset($_POST['action'])) {
-			$user->email = $_POST['email'];
-			$user->phone = $_POST['phone'];
-			$user->updateProfile();
-			$_SESSION['email'] = $user->email;
-			$_SESSION['phone'] = $user->phone;
-			header('location:/User/profile?message=Profile has been Updated!');
-		} else {
-			$this->view('User/profile');
-		}
+	// User Logout
+	public function logout() {
+		session_destroy();
+		header('location:/User/index');
 	}
 
+	// User Register Page
 	public function register(){
 		if(isset($_POST['action'])) {
 			if($_POST['password'] == $_POST['password_conf']) {
@@ -75,41 +79,40 @@ class User extends \app\core\Controller {
 		}
 	}
 
-	// User Logout
-	public function logout() {
-		session_destroy();
-		header('location:/User/index');
+	// User Profile Page
+	#[\app\filters\User]
+	public function profile() {
+		$user = new \app\models\User();
+		$user = $user->getByID($_SESSION['user_id']);
+		if (isset($_POST['action'])) {
+			$user->email = $_POST['email'];
+			$user->phone = $_POST['phone'];
+			$user->updateProfile();
+			$_SESSION['email'] = $user->email;
+			$_SESSION['phone'] = $user->phone;
+			header('location:/User/profile?message=Profile has been Updated!');
+		} else {
+			$this->view('User/profile');
+		}
 	}
 
+	// ------- Order Control -------
+
+	// Order History View
 	#[\app\filters\User]
 	public function orders() {
 		$this->view('User/orders');
 	}
 
-	#[\app\filters\User]
-	public function wishlist() {
-		$wishlist_items = new \app\models\Wishlist_Items();
-		$wishlist_items = $wishlist_items->getByWishlistID($_SESSION['wishlist_id']);
-		$this->view('User/wishlist', $wishlist_items);
-	}
-
+	// Cart View
 	#[\app\filters\User]
 	public function cart() {
-		// $product = new \app\models\Product();
-		// $products = array();
-		// foreach ($_SESSION['cart'] as $product_id) {
-		// 	$product = $product->getByID($product_id);
-		// 	array_push($products, $product);
-		// }
-
-		$user = new \app\models\User();
-        $user = $user->getByID($_SESSION['user_id']);
-		$order = new \app\models\Order_table();
-		$order = $order->getAllOrder($user->user_id);
-		//var_dump($order);
-		$this->view('User/cart', $order);
+		$cart_item = new \app\models\Cart_Item();
+		$cart_items = $cart_item->getAllByCartID();
+		$this->view('User/cart', $cart_items);
 	}
 
+	// Checkout Function
 	public function checkout() {
 
 
@@ -137,13 +140,26 @@ class User extends \app\core\Controller {
 		}
 	}
 
+	// Wishlist View
+	#[\app\filters\User]
+	public function wishlist() {
+		$wishlist_items = new \app\models\Wishlist_Items();
+		$wishlist_items = $wishlist_items->getByWishlistID($_SESSION['wishlist_id']);
+		$this->view('User/wishlist', $wishlist_items);
+	}
+
+	
+
+	
+
+	// Message List View
 	public function checkMessage(){
-		
 		$message = new \app\models\Service_Request();
 		$message = $message->getByUserID($_SESSION['user_id']);
 		$this->view('User/checkMessage', $message);
 	}
 
+	// Message Detail View
 	public function messageDetail($request_id){ 
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();
@@ -154,6 +170,7 @@ class User extends \app\core\Controller {
 		$this->view('User/messageDetail',  ['request'=>$request, 'user'=>$user]);
 	}
 
+	// Message Reply View
 	public function messageReply($request_id){
 
 

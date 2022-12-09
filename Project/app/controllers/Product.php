@@ -133,37 +133,33 @@ class Product extends \app\core\Controller {
 
     #[\app\filters\User]
     public function addToCart($product_id) {
-        $product = new \app\models\Product();
-        $product = $product->getProductbyId($product_id);
-        $user = new \app\models\User();
-        $user = $user->getByID($_SESSION['user_id']);
-
-        $order = new \app\models\Order_table();
-        $order->product_id = $product->product_id;
-        $order->user_id = $user->user_id;
-        $order->unit_price = $product->price;
-        $order->qty = $_POST['quantity'];
-        $order->total= $product->price*$_POST['quantity'];
-        $order->date = date("Y/m/d");
-        $order->insert();
-        //var_dump($order);
-
-        // var_dump($product);
-        // array_push($_SESSION['cart'], $product);
-        // var_dump($_SESSION['cart']);
-        // header('location:/Product/userProductDetails/' . $product_id . '?message=Profile has been Updated!');
+        $cart_item = new \app\models\Cart_Item();
+        $check = $cart_item->getProductInCart($product_id); 
+        if ($check) {
+            $cart_item = $cart_item->getProductInCart($product_id);
+            $cart_item->qty = (int) $cart_item->qty + $_POST['quantity'];
+            $cart_item->update(); 
+        } else {
+            $cart_item->cart_id = $_SESSION['cart_id'];
+            $cart_item->product_id = $product_id;
+            $cart_item->qty = $_POST['quantity'];
+            $cart_item->insert();   
+        }
+        header('location:/Product/userProductDetails/' . $product_id . '?message=Product(s) has been added to your Cart.');
     }
 
     public function removeFromCart($product_id){
-        $product = new \app\models\Product();
-        $product = $product->getProductbyId($product_id);
-        $user = new \app\models\User();
-        $user = $user->getByID($_SESSION['user_id']);
+        $cart_item = new \app\models\Cart_Item();
+        $cart_item->delete($product_id);
+        header('location:/User/cart?message=Product has been removed from cart');
+    }
 
-        $order = new \app\models\Order_table();
-        $order = $order->getOrderbyId($product_id);
-        //var_dump($order);
-        $order->delete();
+    public function cartUpdateQty($product_id) {
+        $cart_item = new \app\models\Cart_Item();
+        $cart_item = $cart_item->getByID($product_id);
+        $cart_item->qty = $_POST['quantity'];
+        // var_dump($cart_item->qty);
+        $cart_item->update();
         header('location:/User/cart');
     }
 
