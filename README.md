@@ -39,9 +39,9 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a user, I can change my personal information | Finished |
 | As a user, I can search the product catalog | Finished |
 | As a user, I can see product details / description | Finished |
-| As a user, I can add products to my shopping cart | In Progress |
-| As a user, I can remove products from my shopping cart | In Progress |
-| As a user, I can modify the quantities of products in my shopping cart | In Progress |
+| As a user, I can add products to my shopping cart | Finished |
+| As a user, I can remove products from my shopping cart | Finished |
+| As a user, I can modify the quantities of products in my shopping cart | Finished |
 | As a user, I can checkout |  |
 | As a user, I can add products to my Wish Lists | Finished |
 | As a user, I can remove products from my Wish Lists | Finished |
