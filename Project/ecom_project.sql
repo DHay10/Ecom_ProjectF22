@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 08:10 AM
+-- Generation Time: Dec 09, 2022 at 08:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,6 +55,44 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`admin_id`, `username`, `password_hash`) VALUES
 (1, 'admin', '$2y$10$dGUKTyPx8Szt5EJsp1paJeQ1f/GSl5OCsRcXToSOVLtpHT5/WXgi2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
+(3, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_item`
+--
+
+CREATE TABLE `cart_item` (
+  `cart_item_id` int(5) NOT NULL,
+  `cart_id` int(5) NOT NULL,
+  `product_id` int(5) NOT NULL,
+  `qty` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart_item`
+--
+
+INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `qty`) VALUES
+(6, 3, 29, 3);
 
 -- --------------------------------------------------------
 
@@ -176,6 +214,25 @@ CREATE TABLE `wishlist` (
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
 (4, 8);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist_items`
+--
+
+CREATE TABLE `wishlist_items` (
+  `wishlist_items_id` int(10) NOT NULL,
+  `wishlist_id` int(5) NOT NULL,
+  `product_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist_items`
+--
+
+INSERT INTO `wishlist_items` (`wishlist_items_id`, `wishlist_id`, `product_id`) VALUES
+(2, 4, 28);
+
 --
 -- Indexes for dumped tables
 --
@@ -191,6 +248,19 @@ ALTER TABLE `address`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `cart_user_id` (`user_id`);
+
+--
+-- Indexes for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`cart_item_id`);
 
 --
 -- Indexes for table `category`
@@ -234,6 +304,14 @@ ALTER TABLE `wishlist`
   ADD KEY `wishlist_user_id` (`user_id`);
 
 --
+-- Indexes for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  ADD PRIMARY KEY (`wishlist_items_id`),
+  ADD KEY `wishlist_items_wishlist_id` (`wishlist_id`),
+  ADD KEY `wishlist_items_product_id` (`product_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -248,6 +326,18 @@ ALTER TABLE `address`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -286,8 +376,20 @@ ALTER TABLE `wishlist`
   MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  MODIFY `wishlist_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `product`
@@ -313,6 +415,13 @@ ALTER TABLE `service_request`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  ADD CONSTRAINT `wishlist_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `wishlist_items_wishlist_id` FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist` (`wishlist_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
