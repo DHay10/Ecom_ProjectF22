@@ -38,11 +38,15 @@ A prototype storefront web application to sell products where the Seller (Admin)
 | As a user, I can register, login, and logout (Not New) | Finished S |
 | As a user, I can change my personal information | Finished A |
 | As a user, I can search the product catalog | Finished A |
+| As a user, I can view products by category | Finished A |
 | As a user, I can see product details / description | Finished S |
 | As a user, I can add products to my shopping cart | Finished A S|
 | As a user, I can remove products from my shopping cart | Finished A S |
 | As a user, I can modify the quantities of products in my shopping cart | Finished A S|
 | As a user, I can checkout |  |
+| As a user, I can send message for service request | Finised S |
+| As a user, I can reply to admin's reply for service request | Finised S |
+| As a user, I can view all messages for service request | Finised S |
 | As a user, I can add products to my Wish Lists | Finished A |
 | As a user, I can remove products from my Wish Lists | Finished A |
 | As a user, I can leave a rating on a product | Finished A |
