@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 03:54 AM
+-- Generation Time: Dec 09, 2022 at 04:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -142,12 +142,19 @@ INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is
 
 CREATE TABLE `review` (
   `review_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
   `product_id` int(5) NOT NULL,
-  `order_id` int(5) NOT NULL,
   `comment` varchar(200) NOT NULL,
   `date` date NOT NULL,
   `rating` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `user_id`, `product_id`, `comment`, `date`, `rating`) VALUES
+(1, 7, 15, '3inch', '2022-12-09', '4.5');
 
 -- --------------------------------------------------------
 
@@ -171,7 +178,7 @@ INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`, `r
 (1, 2, 'hey there', 'Your Reply: sdsds        |                    Admin Message: this is first test message', 'Replied'),
 (2, 2, 'test 2', 'this is the second message test', NULL),
 (3, 2, 'test 3?', 'test for alerts with messages!', NULL),
-(9, 2, 'a', 'a', NULL);
+(9, 2, 'a', 'Admin Reply: gay         |                    Your Message: a', 'Replied');
 
 -- --------------------------------------------------------
 
@@ -195,7 +202,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
 (1, 'sa', 'asd', '$2y$10$uURncNVL2K8rBfh0Bmn5uOhP07xBQ0F0jjCQFfzdoVmA0smYwWk/m', 'asd@sad', 5115151),
 (2, 'saq', 'sad', '$2y$10$cAxwRkWo6RfuI7y13pA8A.3eGgraL3te0XZEE8lDuE.IMxje.blmm', 'asdsa@sad.gay', 2147483647),
-(6, 'Andy Nguyen-Chao', 'test', '$2y$10$/aU7DfSllIBHNoHCAsvleOEVdL0sc76peqpnwV8iaCz8SWO3Gxnze', 'son-ta@hotmail.fr', 1231231234);
+(6, 'Andy Nguyen-Chao', 'test', '$2y$10$/aU7DfSllIBHNoHCAsvleOEVdL0sc76peqpnwV8iaCz8SWO3Gxnze', 'son-ta@hotmail.fr', 1231231234),
+(7, 'testname', 'test1', '$2y$10$n2skIsyUhfQWGvr5ClWy1.XsL82Fk/pVJHA/RClnj0Oiilqzq442u', 'test@test.com', 1231231235);
 
 -- --------------------------------------------------------
 
@@ -225,7 +233,20 @@ CREATE TABLE `wishlist` (
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
 (2, 2),
-(1, 6);
+(1, 6),
+(3, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist_items`
+--
+
+CREATE TABLE `wishlist_items` (
+  `wishlist_items_id` int(10) NOT NULL,
+  `wishlist_id` int(5) NOT NULL,
+  `product_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -270,7 +291,7 @@ ALTER TABLE `product`
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`),
   ADD KEY `review_product_id` (`product_id`),
-  ADD KEY `review_order_id` (`order_id`);
+  ADD KEY `review_user_id` (`user_id`);
 
 --
 -- Indexes for table `service_request`
@@ -298,6 +319,14 @@ ALTER TABLE `user_address`
 ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`wishlist_id`),
   ADD KEY `wishlist_user_id` (`user_id`);
+
+--
+-- Indexes for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  ADD PRIMARY KEY (`wishlist_items_id`),
+  ADD KEY `wishlist_items_wishlist_id` (`wishlist_id`),
+  ADD KEY `wishlist_items_product_id` (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -337,7 +366,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `service_request`
@@ -349,13 +378,19 @@ ALTER TABLE `service_request`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  MODIFY `wishlist_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -378,8 +413,8 @@ ALTER TABLE `product`
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `review_order_id` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`order_id`),
-  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  ADD CONSTRAINT `review_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `review_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `service_request`
@@ -399,6 +434,13 @@ ALTER TABLE `user_address`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `wishlist_items`
+--
+ALTER TABLE `wishlist_items`
+  ADD CONSTRAINT `wishlist_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `wishlist_items_wishlist_id` FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist` (`wishlist_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

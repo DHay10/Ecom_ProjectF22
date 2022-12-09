@@ -14,8 +14,7 @@
         <?php include 'app\views\includes\userHeader.php'; ?>
         <?php include 'app\views\includes\error.php'; ?>
 
-        <main class="container mb-4">
-
+        <div class="container mb-4">
             <!--Section heading-->
             <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
             <!--Section description-->
@@ -48,16 +47,9 @@
                         <!--Grid row-->
 
                         <div class="text-center text-md-right">
-                        <button class="btn btn-dark w-50" type="submit" name="action">Send</a>
+                            <button class="btn btn-dark w-50" type="submit" name="action">Send</a>
                         </div>
-
-                    <div class="text-center text-md-right">
-                        <a class="btn btn-success w-50" onclick="alert('message sent!')">Send</a>
-                    </div>
-                    <div class="status"></div>
-
                     </form>
-
                 </div>
                 <!--Grid column-->
 
@@ -87,9 +79,6 @@
 
             </div>
         <!--Section: Contact v.2-->
-    </main>
-
-
-
+        </div>
     </body>
 </html>

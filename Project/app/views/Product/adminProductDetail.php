@@ -77,9 +77,8 @@
                 </div>
             
                 <div class="text-center text-md-right">
-                <button type="submit" class="btn btn-dark" name="action">Edit test</button>
-                    <a class="btn btn-primary" href="/Admin/modify/<?=$data['product']->product_id?>">Edit</a>
                     <a class="btn btn-primary" href='/Admin/productList/'>Back</a>
+                    <button type="submit" class="btn btn-dark" name="action">Edit</button>
                 </div>
             </form>
 

@@ -65,14 +65,15 @@ class Product extends \app\core\Model {
 	}
 
 	public function update() {
-		$SQL = "UPDATE product SET product_name=:product_name,  price=:price, description=:description, is_featured:is_featured, category_id=:category_id, product_image:product_image WHERE product_id=:product_id";
+		$SQL = "UPDATE product SET product_name=:product_name, price=:price, description=:description, is_featured=:is_featured, category_id=:category_id, product_image=:product_image WHERE product_id=:product_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['product_name' =>$this->product_name,
-						'price' =>$this->price,
-						'description' =>$this->description,
-						'is_featured' =>$this->is_featured,
-						'category_id' =>$this->category_id,	
-						'product_image' =>$this->product_image]);
+		$STMT->execute(['product_id'=>$this->product_id,
+						'product_name'=>$this->product_name,
+						'price'=>$this->price,
+						'description'=>$this->description,
+						'is_featured'=>$this->is_featured,
+						'category_id'=>$this->category_id,	
+						'product_image'=>$this->product_image]);
 
 	}
 
