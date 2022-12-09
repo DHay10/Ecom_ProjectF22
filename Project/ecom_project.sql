@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 04:24 AM
+-- Generation Time: Dec 09, 2022 at 07:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -59,6 +59,46 @@ INSERT INTO `admin` (`admin_id`, `username`, `password_hash`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
+(1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_item`
+--
+
+CREATE TABLE `cart_item` (
+  `cart_item_id` int(5) NOT NULL,
+  `cart_id` int(5) NOT NULL,
+  `product_id` int(5) NOT NULL,
+  `qty` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart_item`
+--
+
+INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `qty`) VALUES
+(1, 1, 15, 15),
+(2, 1, 16, 2),
+(3, 1, 21, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -74,32 +114,6 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Electronics'),
 (2, 'Toys');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_table`
---
-
-CREATE TABLE `order_table` (
-  `order_id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `unit_price` int(10) NOT NULL,
-  `total` int(10) NOT NULL,
-  `qty` int(4) NOT NULL,
-  `tracking_info` varchar(100) DEFAULT NULL,
-  `date` date NOT NULL,
-  `is_shipped` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `order_table`
---
-
-INSERT INTO `order_table` (`order_id`, `product_id`, `user_id`, `unit_price`, `total`, `qty`, `tracking_info`, `date`, `is_shipped`) VALUES
-(6, 21, 2, 11, 33, 3, NULL, '2022-12-06', NULL),
-(7, 22, 2, 5, 25, 5, NULL, '2022-12-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -208,17 +222,6 @@ INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `ph
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_address`
---
-
-CREATE TABLE `user_address` (
-  `user_id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `wishlist`
 --
 
@@ -265,18 +268,23 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `cart_user_id` (`user_id`);
+
+--
+-- Indexes for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`cart_item_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `order_table`
---
-ALTER TABLE `order_table`
-  ADD PRIMARY KEY (`order_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD KEY `order_user_id` (`user_id`);
 
 --
 -- Indexes for table `product`
@@ -305,13 +313,6 @@ ALTER TABLE `service_request`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `user_address`
---
-ALTER TABLE `user_address`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `address_id` (`address_id`);
 
 --
 -- Indexes for table `wishlist`
@@ -345,16 +346,22 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `order_table`
---
-ALTER TABLE `order_table`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -397,11 +404,10 @@ ALTER TABLE `wishlist_items`
 --
 
 --
--- Constraints for table `order_table`
+-- Constraints for table `cart`
 --
-ALTER TABLE `order_table`
-  ADD CONSTRAINT `order_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `order_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `product`
@@ -421,13 +427,6 @@ ALTER TABLE `review`
 --
 ALTER TABLE `service_request`
   ADD CONSTRAINT `service_request_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `user_address`
---
-ALTER TABLE `user_address`
-  ADD CONSTRAINT `address_id` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`),
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `wishlist`
