@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 07:29 AM
+-- Generation Time: Dec 09, 2022 at 08:10 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -59,46 +59,6 @@ INSERT INTO `admin` (`admin_id`, `username`, `password_hash`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `cart_id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
-(1, 7);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart_item`
---
-
-CREATE TABLE `cart_item` (
-  `cart_item_id` int(5) NOT NULL,
-  `cart_id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL,
-  `qty` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart_item`
---
-
-INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `qty`) VALUES
-(1, 1, 15, 15),
-(2, 1, 16, 2),
-(3, 1, 21, 3);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `category`
 --
 
@@ -136,17 +96,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
-(13, 'idk', 324, 'asdasd', 1, 1, '6382e7c99ce06.png'),
-(15, 'BBC', 421, 'Very fun and relaxing device. Will massage stiff areas and loosen you up!', 1, 2, '6384237d1fe3e.jpg'),
-(16, 'something cool', 420, 'this is something cool, please purchase', 0, 1, '638425816eede.png'),
-(17, 'product ???', 10, 'here\'s another item for sale', 0, 1, '638425cc5fbfb.png'),
-(18, 'product 5?', 36, 'Hello There!', 0, 2, '6384261c427fd.png'),
-(19, 'product 6 test', 0, 'Is this for free?', 1, 1, '6384269b38255.png'),
-(21, 'asdsd', 11, 'as', 0, 1, '6385864342ca0.png'),
-(22, 'test mod', 5, 'test for modifying', 0, 1, '638d4a867ce38.jpg'),
-(23, 'Test Kit 02', 0, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 1, '638d8a1141e3a.png'),
-(25, 'Test Kit 03', 0, 'ersresr', 1, 1, '638d97c71ee02.png'),
-(26, 'Test Kit 05', 0, '21312', 1, 1, '638d97ef1f3eb.png');
+(27, 'Circuit Board', 125, 'circuit board for tech stuff', 1, 1, '6392db4cdd60f.jpg'),
+(28, 'Light Bulb', 12, 'let it there be light', 0, 1, '6392dbb0dd07c.jpg'),
+(29, 'Bakugan', 35, 'drago', 1, 2, '6392de4db132d.jpg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +120,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `user_id`, `product_id`, `comment`, `date`, `rating`) VALUES
-(1, 7, 15, '3inch', '2022-12-09', '4.5');
+(2, 8, 29, 'the new Netflix series sucks', '2022-12-09', '1.5');
 
 -- --------------------------------------------------------
 
@@ -183,16 +135,6 @@ CREATE TABLE `service_request` (
   `content` varchar(200) NOT NULL,
   `reply` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `service_request`
---
-
-INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`, `reply`) VALUES
-(1, 2, 'hey there', 'Your Reply: sdsds        |                    Admin Message: this is first test message', 'Replied'),
-(2, 2, 'test 2', 'this is the second message test', NULL),
-(3, 2, 'test 3?', 'test for alerts with messages!', NULL),
-(9, 2, 'a', 'Admin Reply: gay         |                    Your Message: a', 'Replied');
 
 -- --------------------------------------------------------
 
@@ -214,10 +156,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
-(1, 'sa', 'asd', '$2y$10$uURncNVL2K8rBfh0Bmn5uOhP07xBQ0F0jjCQFfzdoVmA0smYwWk/m', 'asd@sad', 5115151),
-(2, 'saq', 'sad', '$2y$10$cAxwRkWo6RfuI7y13pA8A.3eGgraL3te0XZEE8lDuE.IMxje.blmm', 'asdsa@sad.gay', 2147483647),
-(6, 'Andy Nguyen-Chao', 'test', '$2y$10$/aU7DfSllIBHNoHCAsvleOEVdL0sc76peqpnwV8iaCz8SWO3Gxnze', 'son-ta@hotmail.fr', 1231231234),
-(7, 'testname', 'test1', '$2y$10$n2skIsyUhfQWGvr5ClWy1.XsL82Fk/pVJHA/RClnj0Oiilqzq442u', 'test@test.com', 1231231235);
+(8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -235,21 +174,7 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
-(2, 2),
-(1, 6),
-(3, 7);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wishlist_items`
---
-
-CREATE TABLE `wishlist_items` (
-  `wishlist_items_id` int(10) NOT NULL,
-  `wishlist_id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(4, 8);
 
 --
 -- Indexes for dumped tables
@@ -266,19 +191,6 @@ ALTER TABLE `address`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `cart_user_id` (`user_id`);
-
---
--- Indexes for table `cart_item`
---
-ALTER TABLE `cart_item`
-  ADD PRIMARY KEY (`cart_item_id`);
 
 --
 -- Indexes for table `category`
@@ -322,14 +234,6 @@ ALTER TABLE `wishlist`
   ADD KEY `wishlist_user_id` (`user_id`);
 
 --
--- Indexes for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  ADD PRIMARY KEY (`wishlist_items_id`),
-  ADD KEY `wishlist_items_wishlist_id` (`wishlist_id`),
-  ADD KEY `wishlist_items_product_id` (`product_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -346,18 +250,6 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `cart_item`
---
-ALTER TABLE `cart_item`
-  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -367,13 +259,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `service_request`
@@ -385,29 +277,17 @@ ALTER TABLE `service_request`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  MODIFY `wishlist_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `product`
@@ -433,13 +313,6 @@ ALTER TABLE `service_request`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `wishlist_items`
---
-ALTER TABLE `wishlist_items`
-  ADD CONSTRAINT `wishlist_items_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `wishlist_items_wishlist_id` FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist` (`wishlist_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

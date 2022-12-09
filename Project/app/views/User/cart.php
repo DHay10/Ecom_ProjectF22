@@ -26,36 +26,38 @@
                             $product = new \app\models\product();
                             $product = $product->getProductbyId($item->product_id);
                         ?>
-                        <div class="card rounded-3 mb-4">
-                            <div class="card-body p-4">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img style="width:100%; aspect-ratio:1/1; object-fit:contain;" src="/images/<?=$product->product_image?>" class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                    </div>
-
-                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2"><?=$product->product_name?></p>
-                                        <p><?=$product->description?></p>
-                                    </div>
-
-                                    <form action="/Product/cartUpdateQty/<?=$item->cart_item_id?>" method="post">
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <input id="form1" change="updateCart(<?=$item->cart_item_id?>)"min="0" id="quantity" name="quantity" value="<?=$item->qty?>" type="number" class="form-control form-control-sm" />
+                        <form action="/Product/cartUpdateQty/<?=$item->cart_item_id?>" method="post">
+                            <div class="card rounded-3 mb-4">
+                                <div class="card-body p-4">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img style="width:100%; aspect-ratio:1/1; object-fit:contain;" src="/images/<?=$product->product_image?>" class="img-fluid rounded-3" alt="Cotton T-shirt">
                                         </div>
+
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <p class="lead fw-normal mb-2"><?=$product->product_name?></p>
+                                            <p><?=$product->description?></p>
+                                        </div>
+
                                         
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <p class="lead fw-normal mb-2">Total:</p>
-                                            <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
-                                        </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <input id="form1" change="updateCart(<?=$item->cart_item_id?>)"min="0" id="quantity" name="quantity" value="<?=$item->qty?>" type="number" class="form-control form-control-sm" />
+                                            </div>
+                                            
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <p class="lead fw-normal mb-2">Total:</p>
+                                                <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
+                                            </div>
 
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a class="btn btn-danger" href="/Product/removeFromCart/<?=$item->product_id?>">Delete</a>
-                                            <button name="action" type="submit" class="btn btn-dark">Update</button>
-                                        </div>
-                                    </form>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a class="btn btn-danger" href="/Product/removeFromCart/<?=$item->product_id?>">Delete</a>
+                                                <button name="action" type="submit" class="btn btn-dark">Update</button>
+                                            </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <?php } ?>
                     <!-- <button type="submit" class="btn btn-dark" name="action">Checkout</button> -->
                     </div>
