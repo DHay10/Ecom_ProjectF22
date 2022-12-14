@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 08:17 AM
+-- Generation Time: Dec 14, 2022 at 06:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,7 +72,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
-(3, 8);
+(3, 8),
+(4, 9);
 
 -- --------------------------------------------------------
 
@@ -84,15 +85,18 @@ CREATE TABLE `cart_item` (
   `cart_item_id` int(5) NOT NULL,
   `cart_id` int(5) NOT NULL,
   `product_id` int(5) NOT NULL,
-  `qty` int(5) NOT NULL
+  `qty` int(5) NOT NULL,
+  `status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart_item`
 --
 
-INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `qty`) VALUES
-(6, 3, 29, 3);
+INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `qty`, `status`) VALUES
+(26, 4, 28, 3, 'Paid'),
+(27, 4, 27, 6, 'Paid'),
+(28, 4, 29, 5, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
-(8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647);
+(8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647),
+(9, 'Saqliyan Islam', 'saq', '$2y$10$6zj8Jw0.wfsHy2yNkHmOMeky.uLMDs73/ROV2E9lhkQ57.B2U4ou2', 'saq1@gmail.com', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -212,7 +217,8 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
-(4, 8);
+(4, 8),
+(5, 9);
 
 -- --------------------------------------------------------
 
@@ -331,13 +337,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -367,13 +373,13 @@ ALTER TABLE `service_request`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlist_items`
