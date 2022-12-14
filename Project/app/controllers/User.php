@@ -123,15 +123,16 @@ class User extends \app\core\Controller {
 			foreach($cart_items as $item) {
 				$product = new \app\models\Product();
 				$product = $product->getProductbyId($item->product_id);
-				$total += $product->price * $item->qty;
+				$total += (double) ($product->price * $item->qty);
 			}
 
 			$order = new \app\models\Order();
 			$order->user_id = $_SESSION['user_id'];
 			$order->total = $total;
-			$order->date = date();
+			$order->date = date("y-m-d");
 			$order->status = 'Paid';
 			$order->address = $_POST['address'];
+			var_dump($order);
 			$order->insert();
 
 			foreach($cart_items as $item) {
@@ -144,7 +145,7 @@ class User extends \app\core\Controller {
 				$order_item->qty = $item->qty;
 				$order_item->insert();
 			}
-			
+			header('location:/User/orders?message=Order has been paid!');
 		} else {
 			$this->view('User/checkout');
 		}

@@ -4,13 +4,13 @@ namespace app\models;
 class Order extends \app\core\Model {
 
     public function insert() {
-        $SQL = "INSERT INTO order(user_id, total, date, status, address) VALUES (:user_id, :total, :date, :status, :address)";
+        $SQL = "INSERT INTO order(user_id, total, date, address, status) VALUES (:user_id, :total, :date, :address, :status)";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['user_id'=>$this->user_id,
                         'total'=>$this->total,
                         'date'=>$this->date,
-                        'total'=>$this->status,
-                        'total'=>$this->adress]);
+                        'address'=>$this->address,
+                        'status'=>$this->status]);
     }
 
     public function getByUserID($user_id) {

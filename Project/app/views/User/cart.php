@@ -16,7 +16,7 @@
 
         <section class="h-100" style="background-color: #eee;">
             <div class="container h-100 py-5">
-                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100 mb-4">
                     <div class="col-10">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
@@ -59,10 +59,30 @@
                             </div>
                         </form>
                         <?php } ?>
-                    <!-- <button type="submit" class="btn btn-dark" name="action">Checkout</button> -->
+                        
+                    
                     </div>
                 </div>
+
+                <?php
+                    if ($data) {
+                ?>
+                    <div class="row mb-4">
+                        <div class="col d-grid">
+                            <a class="btn btn-dark" href="/User/checkout" name="action">Checkout</a>
+                        </div>
+                    </div>
+                <?php
+                    } else {
+                ?>
+                    <p class="lead text-center">
+                        There Are No Items in your Cart Right Now
+                    </p>
+                <?php
+                    }
+                ?>
             </div>
+
         </section>
     </body>
 
