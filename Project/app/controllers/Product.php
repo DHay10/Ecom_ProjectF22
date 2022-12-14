@@ -65,6 +65,85 @@ class Product extends \app\core\Controller {
         $this->view('Product/catalog', $products);
     }
 
+    public function byCategory($category_id) {
+        $category = new \app\models\Category();
+        $category = $category->getByID($category_id);
+        $product = new \app\models\Product();
+        $products = $product->getByCategory($category_id);
 
+        $this->view('Product/byCategory', ['category'=>$category, 'products'=>$products]);
+    }
+
+    public function searchByName() {
+        if(isset($_POST['search'])) {
+            if (!$_POST['search']=="") {
+                $product = new \app\models\Product();
+                $search = $_POST['search'];
+                $search = ltrim($search);
+                $search = rtrim($search);
+                $products = $product->searchByName($search);
+                $this->view('Product/byName', ['products'=>$products, 'search'=>$search]);
+            } else {
+                header('location:/Product/index');
+            }
+            
+        }
+    }
+
+    #[\app\filters\User]
+    public function addToCart($product_id) {
+        $cart_item = new \app\models\Cart_Item();
+        $check = $cart_item->getProductInCart($product_id); 
+        // if ($check) {
+        //     $cart_item = $cart_item->getProductInCart($product_id);
+        //     $cart_item->qty = (int) $cart_item->qty + $_POST['quantity'];
+        //     $cart_item->update(); 
+        // } else {
+            $cart_item->cart_id = $_SESSION['cart_id'];
+            $cart_item->product_id = $product_id;
+            $cart_item->qty = $_POST['quantity'];
+            $cart_item->status = "in_cart";
+            $cart_item->insert();   
+        //}
+        header('location:/Product/userProductDetails/' . $product_id . '?message=Product(s) has been added to your Cart.');
+    }
+
+    public function removeFromCart($product_id){
+        $cart_item = new \app\models\Cart_Item();
+        $cart_item->delete($product_id);
+        header('location:/User/cart?message=Product has been removed from cart');
+    }
+
+    public function cartUpdateQty($product_id) {
+        $cart_item = new \app\models\Cart_Item();
+        $cart_item = $cart_item->getByID($product_id);
+        $cart_item->qty = $_POST['quantity'];
+        // var_dump($cart_item->qty);
+        $cart_item->update();
+        header('location:/User/cart');
+    }
+
+    //goes to checkoutpage
+    public function goToCheckout() {
+
+        //header('location:/User/checkoutPage');
+        $this->view('User/checkoutPage');
+    }
+
+    #[\app\filters\User]
+    public function addReview($product_id) {
+        if (isset($_POST['action'])) {
+            $review = new \app\models\Review();
+            $review->user_id = $_SESSION['user_id'];
+            $review->product_id = $product_id;
+            $review->comment = $_POST['comment'];
+            $review->date = date('Y-m-d H:i:s');
+            $review->rating = $_POST['rating'];
+            $review->insert();
+            header('location:/Product/userProductDetails/' . $product_id);
+        } else {
+            $this->view('Product/addReview');
+        }
+    }
 
 }
