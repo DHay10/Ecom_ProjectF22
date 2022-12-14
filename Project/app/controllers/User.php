@@ -113,31 +113,63 @@ class User extends \app\core\Controller {
 	}
 
 	// Checkout Function
+	#[\app\filters\User]
 	public function checkout() {
+		if (isset($_POST['action'])) {
+			$cart_item = new \app\models\Cart_Item();
+			$cart_items = $cart_item->getAllByCartID();
+			
+			$total = 0;
+			foreach($cart_items as $item) {
+				$product = new \app\models\Product();
+				$product = $product->getProductbyId($item->product_id);
+				$total += $product->price * $item->qty;
+			}
 
+			$order = new \app\models\Order();
+			$order->user_id = $_SESSION['user_id'];
+			$order->total = $total;
+			$order->date = date();
+			$order->status = 'Paid';
+			$order->address = $_POST['address'];
+			$order->insert();
 
-		if(isset($_POST['action'])) {
-		$user = new \app\models\User();
-        $user = $user->getByID($_SESSION['user_id']);
-		$order = new \app\models\Order_table();
-		$order = $order->getAllOrder($user->user_id);
-		var_dump($order);
-		$checkout = new \app\models\Order_detail();
-		$checkout->order_id = $order->order_id;
-		$checkout->user_id = $user->user_id;
-
-		foreach ($data as $order){
-			$totalprice = $order->unit_price;
-			var_dump($totalprice);
-
+			foreach($cart_items as $item) {
+				$order_item = new \app\models\Order_Item();
+				$order_item->order_id = $order->order_id;
+				$order_item->product_id = $item->product_id;
+				$product = new \app\models\Product();
+				$product = $product->getProductbyId($item->product_id);
+				$order_item->unit_price = $product->price;
+				$order_item->qty = $item->qty;
+				$order_item->insert();
+			}
+			
+		} else {
+			$this->view('User/checkout');
 		}
-		//$checkout->total = 
+		// if(isset($_POST['action'])) {
+		// $user = new \app\models\User();
+        // $user = $user->getByID($_SESSION['user_id']);
+		// $order = new \app\models\Order_table();
+		// $order = $order->getAllOrder($user->user_id);
+		// var_dump($order);
+		// $checkout = new \app\models\Order_detail();
+		// $checkout->order_id = $order->order_id;
+		// $checkout->user_id = $user->user_id;
+
+		// foreach ($data as $order){
+		// 	$totalprice = $order->unit_price;
+		// 	var_dump($totalprice);
+
+		// }
+		// //$checkout->total = 
 
 
 			
-		}else{
-			$this->view('User/cart');
-		}
+		// }else{
+		// 	$this->view('User/cart');
+		// }
 	}
 
 	// Wishlist View
@@ -147,10 +179,6 @@ class User extends \app\core\Controller {
 		$wishlist_items = $wishlist_items->getByWishlistID($_SESSION['wishlist_id']);
 		$this->view('User/wishlist', $wishlist_items);
 	}
-
-	
-
-	
 
 	// Message List View
 	public function checkMessage(){
@@ -172,7 +200,6 @@ class User extends \app\core\Controller {
 
 	// Message Reply View
 	public function messageReply($request_id){
-
 
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();

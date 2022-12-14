@@ -28,6 +28,4 @@ class Order_Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
-
-
 }
