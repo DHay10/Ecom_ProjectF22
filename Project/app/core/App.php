@@ -5,6 +5,18 @@ class App{
 	private $controller = 'Main';
 	private $method = 'index';
 
+	public function getRequest(){
+		$request = ['get'=>[], 'post'=>[]];
+		foreach($_GET as $key=>$value){
+			$request['get'][$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+		}
+		$post = [];
+		foreach ($_POST as $key => $value) {
+			$request['post'][$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+		}
+		return $request;
+	}
+
 	public function __construct(){
 		//echo $_GET['url'];
 		//TODO: replace this echo with the routing algorithm
@@ -16,7 +28,7 @@ class App{
 
 		if(isset($url[0])){
 			if(file_exists('app/controllers/' . $url[0] . '.php')){
-				$this->controller = $url[0]; //$this refers to the current object
+				$this->controller = $url[0];
 			}
 			unset($url[0]);
 		}
