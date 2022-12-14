@@ -9,70 +9,29 @@ class Product extends \app\core\Controller {
 		$this->view('Product/index', $products);
 	}
 	
-    // Product Detail Page for admin
+    // Product Detail Page
 	public function details($product_id) {
 		$product = new \app\models\Product();
-        $category = new \app\models\Category();
-        $product = $product->getProductbyId($product_id);
-        $category = $category->getCategories();
-        if (isset($_POST['action'])) {
-            $product->product_name = $_POST['product_name'];
-            $product->price = $_POST['price'];
-            $product->description = $_POST['description'];
-            $product->category_id = $_POST['category_id'];
-            $filename = $this->saveFile($_FILES['product_image']);
-                if($filename){
-                    //delete the old picture
-                    unlink("images/$product->product_image");
-                    //save the reference to the new one
-                    $product->product_image = $filename;
-                }
-            $product->update();
-            //echo"hi";
-            header('location:/Admin/productList');
-        }
-        $this->view('Product/adminProductDetail',  ['category'=>$category, 'product'=>$product]);
-	}
-
-    // Product Detail Page for user
-	public function userProductDetails($product_id) {
-		$product = new \app\models\Product();
-        $product = $product->getProductbyId($product_id);
-        $category = new \app\models\Category();
-        $category = $category->getByID($product->category_id);
-        $review = new \app\models\Review();
-        $reviews = $review->getAllByProductID($product_id); 
-        $this->view('Product/userProductDetails', ['product'=>$product, 'category'=>$category, 'reviews'=>$reviews]);
+        $product = $product->get($product_id);
+        $this->view('Product/details', $product);
 	}
 
     // Add to wishlist
-    #[\app\filters\User]
     public function addToWishlist($product_id) {
-        $wishlist_items = new \app\models\Wishlist_Items();
-        $wishlist_items->wishlist_id = $_SESSION['wishlist_id'];
-        $wishlist_items->product_id = $product_id;
-        $wishlist_items->insert();
-        header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been added to your Wishlist.');
+        $wishlist = new \app\models\Wishlist();
+        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+        $wishlist->addProduct($product_id);
     }
 
     // Remove from wishlist
-    #[\app\filters\User]
-    public function removeFromWishlist01($product_id) {
-        $wishlist_items = new \app\models\Wishlist_Items();
-        $wishlist_items->delete($product_id);
-        header('location:/User/wishlist?message=Product as been removed from your Wishlist.');
-    }
-
-    #[\app\filters\User]
-    public function removeFromWishlist02($product_id) {
-        $wishlist_items = new \app\models\Wishlist_Items();
-        $wishlist_items->delete($product_id);
-        header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been removed from your Wishlist.');
+    public function removeFromWishlist($product_id) {
+        $wishlist = new \app\models\Wishlist();
+        $wishlist = $wishlist->getByUserID($_SESSION['user_id']);
+        $wishlist->removeProduct($product_id);
     }
 
     // Review Product
     // Need to see if review and rate should be combined
-    #[\app\filters\User]
     public function reviewProduct($product_id) {
         if(isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -86,7 +45,6 @@ class Product extends \app\core\Controller {
     }
 
     // Modify Review
-    #[\app\filters\User]
     public function modifyReview($review_id) {
         if(isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -99,7 +57,6 @@ class Product extends \app\core\Controller {
     }
 
     // Catalog View
-    #[\app\filters\User]
     public function catalog() {
 		$product = new \app\models\Product();
         $products = $product->getAll();
@@ -187,6 +144,32 @@ class Product extends \app\core\Controller {
         }
     }
 
+    // Product Detail Page for user
+	public function userProductDetails($product_id) {
+		$product = new \app\models\Product();
+        $product = $product->getProductbyId($product_id);
+        $category = new \app\models\Category();
+        $category = $category->getByID($product->category_id);
+        $review = new \app\models\Review();
+        $reviews = $review->getAllByProductID($product_id); 
+        $this->view('Product/userProductDetails', ['product'=>$product, 'category'=>$category, 'reviews'=>$reviews]);
+	}
+
+    // Remove from wishlist
+    #[\app\filters\User]
+    public function removeFromWishlist01($product_id) {
+        $wishlist_items = new \app\models\Wishlist_Items();
+        $wishlist_items->delete($product_id);
+        header('location:/User/wishlist?message=Product as been removed from your Wishlist.');
+    }
+
+    #[\app\filters\User]
+    public function removeFromWishlist02($product_id) {
+        $wishlist_items = new \app\models\Wishlist_Items();
+        $wishlist_items->delete($product_id);
+        header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been removed from your Wishlist.');
+    }
+
     #[\app\filters\User]
     public function editReview($review_id) {
         $review = new \app\models\Review();
@@ -200,4 +183,5 @@ class Product extends \app\core\Controller {
             $this->view('Product/editReview', $review);
         }
     }
+
 }
