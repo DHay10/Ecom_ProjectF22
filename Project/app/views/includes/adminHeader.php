@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Order List</a>
+                    <a class="nav-link" href="/Admin/orders">Order List</a>
                 </li>
 
                 <li class="nav-item">

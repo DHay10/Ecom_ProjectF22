@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Shopping Cart</title>
+        <title>Order History</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,15 +11,15 @@
     </head>
 
     <body>
-        <?php include 'app\views\includes\userHeader.php'; ?>
+        <?php include 'app\views\includes\adminHeader.php'; ?>
         <?php include 'app\views\includes\error.php'; ?>
-
+        
         <section class="h-100" style="background-color: #eee;">
             <div class="container h-100 py-5">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-10">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+                            <h3 class="fw-normal mb-0 text-black">Customer Orders</h3>
                         </div>
 
                         <?php foreach ($data as $item) { 
@@ -45,28 +45,18 @@
                                             </div>
                                             
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                <p class="lead fw-normal mb-2">Total:</p>
+                                                <p class="lead fw-normal mb-2">Total spent:</p>
                                                 <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
-                                            </div>
-
-                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a class="btn btn-danger" href="/Product/removeFromCart/<?=$item->product_id?>">Delete</a>
-                                                <button name="action" type="submit" class="btn btn-dark">Update</button>
-                                            </div>
-                                        
+                                            </div>                                        
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <?php } ?>
-                    <!-- <button type="submit" class="btn btn-dark" name="action">Checkout</button> -->
-                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a class="btn btn-dark" href="/Product/goToCheckout/">Checkout</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </section>
     </body>
-
 </html>
