@@ -183,5 +183,11 @@
 			header('location:/Admin/serviceRequests');
 		}
 
+		public function orders() {
+			$cart_item = new \app\models\Cart_Item();
+			$cart_items = $cart_item->getAllByCartIDstatusPaidAdmin();
+			$this->view('Admin/orders', $cart_items);
+		}
+
 
 	}

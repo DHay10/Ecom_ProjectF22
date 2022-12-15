@@ -3,9 +3,6 @@ namespace app\controllers;
 
 class User extends \app\core\Controller {
 
-	// ------- General Control -------
-
-	// User Login Page
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
@@ -37,7 +34,6 @@ class User extends \app\core\Controller {
 				}
 				$cart = $cart->getByUserID($_SESSION['user_id']);
 				$_SESSION['cart_id'] = $cart->cart_id;
-
 				header('location:/User/profile');
 			} else {
 				header('location:/User/index?error=Wrong Username/Password Combination!');
@@ -46,25 +42,25 @@ class User extends \app\core\Controller {
 			$this->view('User/index');
 		}
 	}
-
 	// User Logout
 	public function logout() {
 		session_destroy();
 		header('location:/User/index');
 	}
 
-	// User Register Page
+
 	public function register(){
 		if(isset($_POST['action'])) {
-			if($_POST['password'] == $_POST['password_conf']) {
+			if($_POST['password'] == $_POST['password_confirm']) {
 				$user = new \app\models\User();
-				$checkUser = $user->get($_POST['username']);
-				if(!$checkUser) {
-					$user->username = $_POST['username'];
+				$check = $user->get($_POST['username']);
+				if(!$check) {
 					$user->name = $_POST['name'];
+					$user->username = $_POST['username'];
 					$user->email = $_POST['email'];
 					$user->phone = $_POST['phone'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
 					$user->insert();
 					header('location:/User/index');
 				} else {
@@ -100,20 +96,22 @@ class User extends \app\core\Controller {
 	// Order History View
 	#[\app\filters\User]
 	public function orders() {
-		$this->view('User/orders');
+		$cart_item = new \app\models\Cart_Item();
+		$cart_items = $cart_item->getAllByCartIDstatusPaid();
+		$this->view('User/orders', $cart_items);
 	}
 
 	// Cart View
 	#[\app\filters\User]
 	public function cart() {
 		$cart_item = new \app\models\Cart_Item();
-		$cart_items = $cart_item->getAllByCartID();
+		$cart_items = $cart_item->getAllByCartIDstatus();
 		$this->view('User/cart', $cart_items);
 	}
 
 	// Checkout Function
-	#[\app\filters\User]
 	public function checkout() {
+
 		if (isset($_POST['action'])) {
 			$cart_item = new \app\models\Cart_Item();
 			$cart_items = $cart_item->getAllByCartID();
@@ -162,6 +160,10 @@ class User extends \app\core\Controller {
 		$this->view('User/wishlist', $wishlist_items);
 	}
 
+	
+
+	
+
 	// Message List View
 	public function checkMessage(){
 		$message = new \app\models\Service_Request();
@@ -182,6 +184,7 @@ class User extends \app\core\Controller {
 
 	// Message Reply View
 	public function messageReply($request_id){
+
 
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();
