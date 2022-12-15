@@ -46,7 +46,7 @@
                                             
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                 <p class="lead fw-normal mb-2">Total:</p>
-                                                <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
+                                                <h5 class="mb-0">$<?php echo (double)$product->price*(double)$item->qty?></h5>
                                             </div>
 
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">

@@ -1,7 +1,7 @@
 <?php
 namespace app\core;
 
-class Model{
+class Model {
 	protected static $_connection;
 
 	public function __construct(){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 08:17 AM
+-- Generation Time: Dec 15, 2022 at 05:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,7 +72,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
-(3, 8);
+(3, 8),
+(4, 9);
 
 -- --------------------------------------------------------
 
@@ -116,13 +117,42 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_item`
+--
+
+CREATE TABLE `order_item` (
+  `order_item_id` int(8) NOT NULL,
+  `order_id` int(5) NOT NULL,
+  `product_id` int(5) NOT NULL,
+  `unit_price` double(8,2) NOT NULL,
+  `qty` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_table`
+--
+
+CREATE TABLE `order_table` (
+  `order_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `total` double(8,2) NOT NULL,
+  `date` date NOT NULL,
+  `status` varchar(25) NOT NULL,
+  `address` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
   `product_id` int(5) NOT NULL,
   `product_name` varchar(20) NOT NULL,
-  `price` int(5) NOT NULL,
+  `price` double(8,2) NOT NULL,
   `description` text NOT NULL,
   `is_featured` tinyint(1) NOT NULL,
   `category_id` int(5) NOT NULL,
@@ -134,9 +164,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is_featured`, `category_id`, `product_image`) VALUES
-(27, 'Circuit Board', 125, 'circuit board for tech stuff', 1, 1, '6392db4cdd60f.jpg'),
-(28, 'Light Bulb', 12, 'let it there be light', 0, 1, '6392dbb0dd07c.jpg'),
-(29, 'Bakugan', 35, 'drago', 1, 2, '6392de4db132d.jpg');
+(27, 'Circuit Board', 125.00, 'circuit board for tech stuff', 1, 1, '6392db4cdd60f.jpg'),
+(28, 'Light Bulb', 12.00, 'let it there be light', 0, 1, '6392dbb0dd07c.jpg'),
+(29, 'Bakugan', 35.00, 'drago', 1, 2, '6392de4db132d.jpg'),
+(30, 'Lego Kit', 50.32, 'Lorem Ipsum', 1, 2, '639a9370aedf1.jpg');
 
 -- --------------------------------------------------------
 
@@ -194,7 +225,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
-(8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647);
+(8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647),
+(9, 'Test Name', 'test', '$2y$10$6fWYk2MCTRKhVRhQendsaefXVfUbrPnS7FqqXyoPoWNTOtfQsSa6a', 'test@test.com', 1231231234);
 
 -- --------------------------------------------------------
 
@@ -212,7 +244,8 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
-(4, 8);
+(4, 8),
+(5, 9);
 
 -- --------------------------------------------------------
 
@@ -267,6 +300,20 @@ ALTER TABLE `cart_item`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_item_product_id` (`product_id`),
+  ADD KEY `order_item_order_id` (`order_id`);
+
+--
+-- Indexes for table `order_table`
+--
+ALTER TABLE `order_table`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -331,13 +378,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -346,10 +393,22 @@ ALTER TABLE `category`
   MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `order_item`
+--
+ALTER TABLE `order_item`
+  MODIFY `order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `order_table`
+--
+ALTER TABLE `order_table`
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -367,13 +426,13 @@ ALTER TABLE `service_request`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlist_items`
@@ -390,6 +449,13 @@ ALTER TABLE `wishlist_items`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `order_item_order_id` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`order_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_item_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `product`
