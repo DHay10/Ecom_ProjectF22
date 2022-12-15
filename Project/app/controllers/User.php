@@ -152,28 +152,6 @@ class User extends \app\core\Controller {
 		} else {
 			$this->view('User/checkout');
 		}
-		// if(isset($_POST['action'])) {
-		// $user = new \app\models\User();
-        // $user = $user->getByID($_SESSION['user_id']);
-		// $order = new \app\models\Order_table();
-		// $order = $order->getAllOrder($user->user_id);
-		// var_dump($order);
-		// $checkout = new \app\models\Order_detail();
-		// $checkout->order_id = $order->order_id;
-		// $checkout->user_id = $user->user_id;
-
-		// foreach ($data as $order){
-		// 	$totalprice = $order->unit_price;
-		// 	var_dump($totalprice);
-
-		// }
-		// //$checkout->total = 
-
-
-			
-		// }else{
-		// 	$this->view('User/cart');
-		// }
 	}
 
 	// Wishlist View
