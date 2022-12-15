@@ -112,16 +112,44 @@ class User extends \app\core\Controller {
 	// Checkout Function
 	public function checkout() {
 
-        $cart_item = new \app\models\Cart_Item();
-        $cart_item = $cart_item->getAllByCartIDstatus();
-		foreach ($cart_item as $item){
-			$item->status = "Paid";
-			$item->updateCartItemStatus();
+		if (isset($_POST['action'])) {
+			$cart_item = new \app\models\Cart_Item();
+			$cart_items = $cart_item->getAllByCartID();
+			
+			$total = 0.0;
+			foreach($cart_items as $item) {
+				$product = new \app\models\Product();
+				$product = $product->getProductbyId($item->product_id);
+				$qty = (double) $item->qty;
+				$price = $product->price;
+				$total += ($qty * $price);
+			}
+
+			$order = new \app\models\Order();
+			$order->user_id = $_SESSION['user_id'];
+			$order->total = $total;
+			$order->date = date("y-m-d");
+			$order->status = 'Paid';
+			$order->address = $_POST['address'];
+			$order_id = $order->insert();
+			var_dump($order_id);
+
+			foreach($cart_items as $item) {
+				$order_item = new \app\models\Order_Item();
+				$order_item->order_id = $order_id;
+				$order_item->product_id = $item->product_id;
+				$product = new \app\models\Product();
+				$product = $product->getProductbyId($item->product_id);
+				$order_item->unit_price = $product->price;
+				$order_item->qty = $item->qty;
+				$order_item->insert();
+				$item->deleteFromCart();
+			}
+			
+			header('location:/User/orders?message=Order has been paid!');
+		} else {
+			$this->view('User/checkout');
 		}
-        
-        //var_dump($cart_item);
-        //$cart_item->updateCartItemStatus();
-        header('location:/User/cart');
 	}
 
 	// Wishlist View

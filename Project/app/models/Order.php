@@ -1,20 +1,23 @@
 <?php
 namespace app\models;
+use mysqli;
 
 class Order extends \app\core\Model {
 
     public function insert() {
-        $SQL = "INSERT INTO order(user_id, total, date, status, address) VALUES (:user_id, :total, :date, :status, :address)";
+        $SQL = "INSERT INTO order_table(user_id, total, date, status, address) 
+                        VALUES (:user_id, :total, :date, :status, :address)";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['user_id'=>$this->user_id,
                         'total'=>$this->total,
                         'date'=>$this->date,
-                        'total'=>$this->status,
-                        'total'=>$this->adress]);
+                        'status'=>$this->status,
+                        'address'=>$this->address]);
+        return self::$_connection->lastInsertID();
     }
 
     public function getByUserID($user_id) {
-        $SQL = "SELECT * FROM order WHERE user_id=:user_id";
+        $SQL = "SELECT * FROM order_table WHERE user_id=:user_id";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['user_id'=>$user_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Order');
@@ -22,7 +25,7 @@ class Order extends \app\core\Model {
     }
 
     public function getAll() {
-        $SQL = "SELECT * FROM order";
+        $SQL = "SELECT * FROM order_table";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute();
         $STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Order');

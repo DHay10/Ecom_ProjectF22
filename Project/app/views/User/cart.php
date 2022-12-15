@@ -16,7 +16,7 @@
 
         <section class="h-100" style="background-color: #eee;">
             <div class="container h-100 py-5">
-                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100 mb-4">
                     <div class="col-10">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
@@ -46,7 +46,7 @@
                                             
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                 <p class="lead fw-normal mb-2">Total:</p>
-                                                <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
+                                                <h5 class="mb-0">$<?php echo (double)$product->price*(double)$item->qty?></h5>
                                             </div>
 
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -59,13 +59,28 @@
                             </div>
                         </form>
                         <?php } ?>
-                    <!-- <button type="submit" class="btn btn-dark" name="action">Checkout</button> -->
-                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a class="btn btn-dark" href="/Product/goToCheckout/">Checkout</a>
-                        </div>
                     </div>
                 </div>
+
+                <?php
+                    if ($data) {
+                ?>
+                    <div class="row mb-4">
+                        <div class="col d-grid">
+                            <a class="btn btn-dark" href="/User/checkout" name="action">Checkout</a>
+                        </div>
+                    </div>
+                <?php
+                    } else {
+                ?>
+                    <p class="lead text-center">
+                        There Are No Items in your Cart Right Now
+                    </p>
+                <?php
+                    }
+                ?>
             </div>
+
         </section>
     </body>
 

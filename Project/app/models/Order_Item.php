@@ -4,7 +4,7 @@ namespace app\models;
 class Order_Item extends \app\core\Model {
 
     public function insert() {
-        $SQL = "INSERT INTO order_item(order_id, product_id, unit_price, qty) VALUES (:order_id, :product_id, :unit_price :qty)";
+        $SQL = "INSERT INTO order_item(order_id, product_id, unit_price, qty) VALUES (:order_id, :product_id, :unit_price, :qty)";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['order_id'=>$this->order_id,
                         'product_id'=>$this->product_id,

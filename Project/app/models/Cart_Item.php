@@ -85,4 +85,9 @@ class Cart_Item extends \app\core\Model {
                         'product_id'=>$product_id]);
     }
 
+    public function deleteFromCart() {
+        $SQL = "DELETE FROM cart_item WHERE cart_item_id=:cart_item_id";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['cart_item_id'=>$this->cart_item_id]);
+    }
 }
