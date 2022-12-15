@@ -21,12 +21,25 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="fw-normal mb-0 text-black">Previous Orders</h3>
                         </div>
+                    </div>
+                </div>
 
-                        <?php foreach ($data as $item) { 
-                            $product = new \app\models\product();
-                            $product = $product->getProductbyId($item->product_id);
-                        ?>
-                        <form action="/Product/cartUpdateQty/<?=$item->cart_item_id?>" method="post">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <?php foreach ($data as $order) { ?>
+                        <h4>Order ID: <?=$order->order_id?></h4>
+                        <h4>Date: <?=$order->date?></h4>
+                        <h4>Total: $<?=$order->total?></h4>
+                        <h4>Status: <?=$order->status?></h4>
+                        <div class="container">
+                            <?php 
+                            $order_item = new \app\models\Order_Item();
+                            $order_items = $order_item->getAllByOrderID($order->order_id);
+                            foreach ($order_items as $item) {
+                                $product = new \app\models\Product();
+                                $product = $product->getProductbyId($item->product_id);    
+                            ?>
+
                             <div class="card rounded-3 mb-4">
                                 <div class="card-body p-4">
                                     <div class="row d-flex justify-content-between align-items-center">
@@ -41,19 +54,22 @@
 
                                         
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                <input id="form1" change="updateCart(<?=$item->cart_item_id?>)"min="0" id="quantity" name="quantity" value="<?=$item->qty?>" type="number" class="form-control form-control-sm" />
+                                                <input id="form1" change="updateCart(<?=$item->cart_item_id?>)"min="0" id="quantity" name="quantity" value="<?=$item->qty?>" type="number" class="form-control form-control-sm" disabled/>
                                             </div>
                                             
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                 <p class="lead fw-normal mb-2">Total:</p>
-                                                <h5 class="mb-0">$<?php echo (int)$product->price*(int)$item->qty?></h5>
-                                            </div>                                        
+                                                <h5 class="mb-0">$<?=$item->unit_price*$item->qty?></h5>
+                                            </div>
+                                        
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            
+                            <?php } ?>
+                        </div>
                         <?php } ?>
-
+                        
                     </div>
                 </div>
             </div>

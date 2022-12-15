@@ -96,16 +96,16 @@ class User extends \app\core\Controller {
 	// Order History View
 	#[\app\filters\User]
 	public function orders() {
-		$cart_item = new \app\models\Cart_Item();
-		$cart_items = $cart_item->getAllByCartIDstatusPaid();
-		$this->view('User/orders', $cart_items);
+		$order = new \app\models\Order();
+		$orders = $order->getByUserID($_SESSION['user_id']);
+		$this->view('User/orders', $orders);
 	}
 
 	// Cart View
 	#[\app\filters\User]
 	public function cart() {
 		$cart_item = new \app\models\Cart_Item();
-		$cart_items = $cart_item->getAllByCartIDstatus();
+		$cart_items = $cart_item->getAllByCartID();
 		$this->view('User/cart', $cart_items);
 	}
 

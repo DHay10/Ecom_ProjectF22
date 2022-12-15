@@ -95,18 +95,19 @@ class Product extends \app\core\Controller {
     #[\app\filters\User]
     public function addToCart($product_id) {
         $cart_item = new \app\models\Cart_Item();
-        $check = $cart_item->getProductInCart($product_id); 
-        // if ($check) {
-        //     $cart_item = $cart_item->getProductInCart($product_id);
-        //     $cart_item->qty = (int) $cart_item->qty + $_POST['quantity'];
-        //     $cart_item->update(); 
-        // } else {
+        $check = $cart_item->getProductInCart($product_id);
+
+        if ($check) {
+            $cart_item = $cart_item->getProductInCart($product_id);
+            $cart_item->qty = (int) $cart_item->qty + $_POST['quantity'];
+            $cart_item->update(); 
+        } else {
             $cart_item->cart_id = $_SESSION['cart_id'];
             $cart_item->product_id = $product_id;
             $cart_item->qty = $_POST['quantity'];
-            $cart_item->status = "in_cart";
-            $cart_item->insert();   
-        //}
+            $cart_item->insert();
+        }
+
         header('location:/Product/userProductDetails/' . $product_id . '?message=Product(s) has been added to your Cart.');
     }
 
@@ -123,13 +124,6 @@ class Product extends \app\core\Controller {
         // var_dump($cart_item->qty);
         $cart_item->update();
         header('location:/User/cart');
-    }
-
-    //goes to checkoutpage
-    public function goToCheckout() {
-
-        //header('location:/User/checkoutPage');
-        $this->view('User/checkoutPage');
     }
 
     #[\app\filters\User]
