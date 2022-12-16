@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 05:13 AM
+-- Generation Time: Dec 16, 2022 at 04:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -73,7 +73,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
 (3, 8),
-(4, 9);
+(4, 9),
+(5, 10);
 
 -- --------------------------------------------------------
 
@@ -128,6 +129,17 @@ CREATE TABLE `order_item` (
   `qty` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `order_item`
+--
+
+INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `unit_price`, `qty`) VALUES
+(18, 17, 27, 125.00, 4),
+(19, 17, 28, 12.00, 1),
+(20, 18, 29, 35.00, 1),
+(21, 18, 30, 50.32, 2),
+(22, 19, 28, 12.00, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +154,15 @@ CREATE TABLE `order_table` (
   `status` varchar(25) NOT NULL,
   `address` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_table`
+--
+
+INSERT INTO `order_table` (`order_id`, `user_id`, `total`, `date`, `status`, `address`) VALUES
+(17, 9, 512.00, '2022-12-15', 'Completed', '8310 Avenue Christophe-Colomb Apt. 203'),
+(18, 9, 135.64, '2022-12-15', 'Processing', 'waea'),
+(19, 10, 12.00, '2022-12-16', 'Paid', '1234 Main St');
 
 -- --------------------------------------------------------
 
@@ -167,7 +188,7 @@ INSERT INTO `product` (`product_id`, `product_name`, `price`, `description`, `is
 (27, 'Circuit Board', 125.00, 'circuit board for tech stuff', 1, 1, '6392db4cdd60f.jpg'),
 (28, 'Light Bulb', 12.00, 'let it there be light', 0, 1, '6392dbb0dd07c.jpg'),
 (29, 'Bakugan', 35.00, 'drago', 1, 2, '6392de4db132d.jpg'),
-(30, 'Lego Kit', 50.32, 'Lorem Ipsum', 1, 2, '639a9370aedf1.jpg');
+(30, 'Lego Kit', 50.32, 'Lorem Ips', 1, 2, '639a9370aedf1.jpg');
 
 -- --------------------------------------------------------
 
@@ -205,6 +226,13 @@ CREATE TABLE `service_request` (
   `reply` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `service_request`
+--
+
+INSERT INTO `service_request` (`request_id`, `user_id`, `subject`, `content`, `reply`) VALUES
+(10, 9, 'Test Subject 01', 'Test Message', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -226,7 +254,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `name`, `username`, `password_hash`, `email`, `phone`) VALUES
 (8, 'Neutron', 'Jimmy', '$2y$10$oi33pUejfFbSogLLz5GGcOSnIQcin8zvsc6zl.KkRWzQRyaO39hQa', 'Jimmy@neutron.com', 2147483647),
-(9, 'Test Name', 'test', '$2y$10$6fWYk2MCTRKhVRhQendsaefXVfUbrPnS7FqqXyoPoWNTOtfQsSa6a', 'test@test.com', 1231231234);
+(9, 'Test Name', 'test', '$2y$10$6fWYk2MCTRKhVRhQendsaefXVfUbrPnS7FqqXyoPoWNTOtfQsSa6a', 'test@test.com', 1231231234),
+(10, 'Andy Nguyen-Chao', 'dhay10', '$2y$10$9Fyh0V266SE79wsKbRpI/eOmROON4axzPrPm.bKTpeS8PkIKQYlHm', 'son-ta@hotmail.fr', 1231231234);
 
 -- --------------------------------------------------------
 
@@ -245,7 +274,8 @@ CREATE TABLE `wishlist` (
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`) VALUES
 (4, 8),
-(5, 9);
+(5, 9),
+(6, 10);
 
 -- --------------------------------------------------------
 
@@ -264,7 +294,9 @@ CREATE TABLE `wishlist_items` (
 --
 
 INSERT INTO `wishlist_items` (`wishlist_items_id`, `wishlist_id`, `product_id`) VALUES
-(2, 4, 28);
+(2, 4, 28),
+(5, 6, 27),
+(6, 6, 30);
 
 --
 -- Indexes for dumped tables
@@ -378,13 +410,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cart_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cart_item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -396,13 +428,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -420,25 +452,25 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `service_request`
 --
 ALTER TABLE `service_request`
-  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `wishlist_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `wishlist_items`
 --
 ALTER TABLE `wishlist_items`
-  MODIFY `wishlist_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `wishlist_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
