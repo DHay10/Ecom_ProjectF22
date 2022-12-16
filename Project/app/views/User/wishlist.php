@@ -16,7 +16,15 @@
         
         <div class='container mb-4'>
             <h2 class="h1-responsive font-weight-bold text-center my-4">Wishlist</h2>
-
+                <?php 
+                    if (!$data) {
+                        echo "
+                        <p class='lead text-center'>
+                        There Are No Items in your Wishlist Right Now
+                        </p>
+                        ";
+                    }
+                ?>
             <div class="row mb-4">
                 <?php
                     foreach ($data as $item) {
@@ -49,8 +57,10 @@
                 </script>
             </div>
             
-            <div class='row'>
-                <a class="btn btn-dark w-100" href="/User/profile" role="button">Back</a>
+            <div class='row mb-4 text-center'>
+                <div class="col">
+                    <a class="btn btn-dark w-50" href="/User/profile" role="button">Back</a>
+                </div>
             </div>
 
         </div>

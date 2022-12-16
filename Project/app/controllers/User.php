@@ -3,6 +3,7 @@ namespace app\controllers;
 
 class User extends \app\core\Controller {
 
+	// User Login
 	public function index() {
 		if(isset($_POST['action'])) {
 			$user = new \app\models\User();
@@ -42,16 +43,17 @@ class User extends \app\core\Controller {
 			$this->view('User/index');
 		}
 	}
+
 	// User Logout
 	public function logout() {
 		session_destroy();
-		header('location:/User/index');
+		header('location:/User/index?message=Successfully Logged Out');
 	}
 
-
+	// User Register
 	public function register(){
 		if(isset($_POST['action'])) {
-			if($_POST['password'] == $_POST['password_confirm']) {
+			if($_POST['password'] == $_POST['password_conf']) {
 				$user = new \app\models\User();
 				$check = $user->get($_POST['username']);
 				if(!$check) {
@@ -60,9 +62,8 @@ class User extends \app\core\Controller {
 					$user->email = $_POST['email'];
 					$user->phone = $_POST['phone'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
 					$user->insert();
-					header('location:/User/index');
+					header('location:/User/index?message=Successfully Registered');
 				} else {
 					header('location:/User/register?error=The username "'.$_POST['username'].'" is already in use. Select another.');
 				}
@@ -160,10 +161,6 @@ class User extends \app\core\Controller {
 		$this->view('User/wishlist', $wishlist_items);
 	}
 
-	
-
-	
-
 	// Message List View
 	public function checkMessage(){
 		$message = new \app\models\Service_Request();
@@ -184,13 +181,10 @@ class User extends \app\core\Controller {
 
 	// Message Reply View
 	public function messageReply($request_id){
-
-
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();
 		$request = $request->getById($request_id);
 		$user = $user->getById($request->user_id);
-		//var_dump($user);
 		$userMessage = $request->content;
 		$spacingReply = "Your Reply: ";
 		$spacingold = "        |                    Admin Message: ";
@@ -204,24 +198,24 @@ class User extends \app\core\Controller {
 	}
 
 
-	public function addAddress() {
-		if (isset($_POST['action'])) {
+	// public function addAddress() {
+	// 	if (isset($_POST['action'])) {
 
-		} else {
-			$this->view('User/addAddress');
-		}
-	}
+	// 	} else {
+	// 		$this->view('User/addAddress');
+	// 	}
+	// }
 	
-	public function editAddress() {
-		if (isset($_POST['action'])) {
+	// public function editAddress() {
+	// 	if (isset($_POST['action'])) {
 
-		} else {
-			$this->view('User/editAddress');
-		}
-	}
+	// 	} else {
+	// 		$this->view('User/editAddress');
+	// 	}
+	// }
 
-	public function removeAddress() {
-		$address = new \app\models\Address();
+	// public function removeAddress() {
+	// 	$address = new \app\models\Address();
 		
-	}
+	// }
 }

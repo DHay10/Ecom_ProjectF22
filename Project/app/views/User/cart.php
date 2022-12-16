@@ -65,9 +65,9 @@
                 <?php
                     if ($data) {
                 ?>
-                    <div class="row mb-4">
-                        <div class="col d-grid">
-                            <a class="btn btn-dark" href="/User/checkout" name="action">Checkout</a>
+                    <div class="row mb-4 text-center">
+                        <div class="col">
+                            <a class="btn btn-dark w-50" href="/User/checkout" name="action">Checkout</a>
                         </div>
                     </div>
                 <?php

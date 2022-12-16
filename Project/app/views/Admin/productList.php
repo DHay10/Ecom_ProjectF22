@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Dashboard</title>
+        <title>Product List</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,45 +11,42 @@
     </head>
 
     <body>
-    <?php include 'app\views\includes\adminHeader.php'; ?>
-        <div class="main">
+        <?php include 'app\views\includes\adminHeader.php'; ?>
 
         <div class="container mt-5">
-        <h1>Product List</h1>
             <div class="table-responsive">
-                <h5></h5>
-
-                <table class="table table-striped">
-                    <thead>
-                        <th>Product Id</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Action<th>
+                <h2 class="h1-responsive font-weight-bold text-center my-4">Product List</h2>
+                
+                <table class="table table-light table-bordered table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Product Id</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Action</th>
+                        </tr>
                     </thead>
-                    <tbody>
+
+                    <tbody class="table-group-divider">
                         <?php
                             foreach ($data as $item) 
                                 echo"
                                 <tr>
-                                    <td>$item->product_id</td>
+                                    <th scope='row'>$item->product_id</th>
                                     <td>$item->product_name</td>
                                     <td>$item->price</td>
                                     <td>
-                                        <a href='/Product/details/$item->product_id'>Details</a> -
-                                        <a href='/Admin/delete/$item->product_id'>Delete</a>
+                                        <a class='btn btn-dark' href='/Product/details/$item->product_id'>Details</a>
+                                        <a class='btn btn-dark' href='/Admin/delete/$item->product_id'>Delete</a>
                                     </td>
                                 </tr>
-                                
                                 ";
-
-                                
-
                         ?>
                     </tbody>
                 </table>
+
             </div>
         </div>
-        
     </body>
 
 </html>

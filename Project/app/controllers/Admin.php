@@ -2,19 +2,10 @@
 namespace app\controllers;
 class Admin extends \app\core\Controller{
 	
+	// Dashboard Page
 	#[\app\filters\Admin]
 	public function index() {
 		$this->view('Admin/index');
-	}
-
-	// Send Email Page
-	#[\app\filters\Admin]
-	public function sendEmail() {
-		if(isset($_POST['action'])) {
-			
-		} else {
-			$this->view('Admin/sendEmail');
-		}
 	}
 
 	// Admin Login Page
@@ -35,9 +26,10 @@ class Admin extends \app\core\Controller{
 	}
 
 	// Admin Logout
+	#[\app\filters\Admin]
 	public function logout() {
 		session_destroy();
-		header('location:/Admin/login');
+		header('location:/Admin/login?message=Successfully Logged Out');
 	}
 
 	// Add Product
@@ -65,47 +57,15 @@ class Admin extends \app\core\Controller{
 		}
 	}
 
-	// Edit Product
-	#[\app\filters\Admin]
-	public function modify($product_id) {
-		$product = new \app\models\Product();
-		$product = $product->getProductbyId($product_id);
-		$category = new \app\models\Category(); 
-		$category = $category->getcategories();
-		if(isset($_POST['action'])) {
-			$product->product_name = $_POST['product_name'];
-			$product->price = $_POST['price'];
-			$product->description = $_POST['description'];
-			$product->category_id = $_POST['category_id'];
-			$filename = $this->saveFile($_FILES['profile_pic']);
-				if($filename){
-					//delete the old picture
-					unlink("images/$product->product_image");
-					//save the reference to the new one
-					$product->product_image = $filename;
-				}
-			$product->update();
-			header('location:/Admin/productList');
-		} else {
-			//$this->view('Product/details', ['category'=>$category, 'product'=>$product]);
-		}
-	}
-
 	// Remove Product
 	#[\app\filters\Admin]
 	public function delete($product_id) {
 		$product = new \app\models\Product();
 		$product = $product->getProductbyId($product_id);
 		unlink("images/$product->product_image");
-
 		$product->product_id = $product_id;
-		
 		$product->delete();
 		header('location:/Admin/productList');
-
-		// $product = new \app\models\Product();
-		// $product = $product->getProductbyId($product_id);
-
 	}
 	
 	// View Products List
@@ -114,19 +74,6 @@ class Admin extends \app\core\Controller{
 		$product = new \app\models\Product();
 		$product = $product->getAll();
 		$this->view('Admin/productList', $product);
-	}
-
-	// Track Sales
-	#[\app\filters\Admin]
-	public function trackSales($product_id) {
-		$product = new \app\models\Product();
-		$product = $product->get($product_id);
-
-		$order = new \app\models\Order();
-		$orders = $order->getAll();
-
-		// !TODO
-		$this->view('Admin/trackSales');
 	}
 
 	// View Orders List
@@ -138,6 +85,7 @@ class Admin extends \app\core\Controller{
 	}
 
 	// Update Order Status
+	#[\app\filters\Admin]
 	public function updateOrderStatus($order_id) {
 		$order = new \app\models\Order();
 		$order = $order->getByID($order_id);
@@ -156,8 +104,15 @@ class Admin extends \app\core\Controller{
 		header('location:/Admin/viewOrders?message=Order has been Updated Successfully');
 	}
 
+	// View Order Details
+	#[\app\filters\Admin]
+	public function orderDetails($order_id) {
+		$order = new \app\models\Order();
+		$order = $order->getByID($order_id);
+		$this->view('Admin/orderDetails', $order);
+	}
 
-	//service request
+	// Service request List
 	#[\app\filters\Admin]
 	public function serviceRequests(){
 		$message = new \app\models\Service_Request();
@@ -165,6 +120,8 @@ class Admin extends \app\core\Controller{
 		$this->view('Admin/serviceRequests', $message);
 	}
 
+	// Service request Detail
+	#[\app\filters\Admin]
 	public function SeDetail($request_id){
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();
@@ -175,6 +132,8 @@ class Admin extends \app\core\Controller{
 		$this->view('Admin/SeDetail',  ['request'=>$request, 'user'=>$user]);
 	}
 
+	// Service request Reply
+	#[\app\filters\Admin]
 	public function SeReply($request_id){
 		$user = new \app\models\User();
 		$request = new \app\models\Service_Request();
@@ -193,6 +152,7 @@ class Admin extends \app\core\Controller{
 		$this->view('Admin/SeReply',  ['request'=>$request, 'user'=>$user]);
 	}
 
+	// Service Request Delete
 	#[\app\filters\Admin]
 	public function deleteSE($request_id) {
 		$request = new \app\models\Service_Request();
@@ -201,6 +161,4 @@ class Admin extends \app\core\Controller{
 		$request->delete();
 		header('location:/Admin/serviceRequests');
 	}
-
-
 }

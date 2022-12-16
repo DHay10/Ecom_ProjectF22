@@ -9,98 +9,107 @@
         <title>Product Details</title>
     </head>
     <body>
+        <?php include 'app\views\includes\adminHeader.php'; ?>
+        <?php include 'app\views\includes\error.php'; ?>
 
-    <?php include 'app\views\includes\adminHeader.php'; ?>
         <div class="container mt-5">
-        <h2 class="h1-responsive font-weight-bold text-center">detail</h2>
+            <h2 class="h1-responsive font-weight-bold text-center">Product Detail</h2>
             
             <form action='' method='post' enctype='multipart/form-data'>
                 <div class="row mb-3">
-                    <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
-                    <div class="col-sm-10">
-                        <input type="text"  class="form-control" id="product_name" name="product_name" value="<?=$data['product']->product_name?>" >
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text"  class="form-control" id="product_name" name="product_name" placeholder="Name" value="<?=$data['product']->product_name?>">
+                            <label for=""product_name" class="col-sm-2 col-form-label">Product Name</label>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label for="product_price" class="col-sm-2 col-form-label">Price</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" min="0.01" step="0.01" id="price" name="price" value="<?=$data['product']->price?>" >
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" min="0.01" step="0.01" id="price" name="price" value="<?=$data['product']->price?>" >
+                            <label for="product_price" class="col-sm-2 col-form-label">Price</label>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label for="product_cate" class="col-sm-2 col-form-label">Category</label>
-                    <div class="col-sm-10">
-
-                        <!-- <input id="category_id" type="number" class="form-control" min="0.01" step="0.01" name="category_id" value="<?=$data['product']->category_id?>" readonly disabled> -->
-                        <select id="category_id" class="form-control" name="category_id" required>
-                            <!-- Find which category to add -->
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <select id="category_id" class="form-control" name="category_id" required>
 
                             <?php foreach ($data['category'] as $category) {   ?>
-                                <option value="<?= $category->category_id?>"><?= $category->category_name?></option>
+                                <option value="<?=$category->category_id?>"><?= $category->category_name?></option>
                             <?php } ?>
 
-
-                        </select>
-
-
+                            </select>
+                            <label for="product_cate" class="col-sm-2 col-form-label">Category</label>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label for="product_desc" class="col-sm-2 col-form-label">Description:</label>
-                    <div class="col-sm-10">
-                        <textarea type="text" id="description" name="description" rows="2" class="form-control md-textarea" ><?=$data['product']->description?></textarea>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <textarea type="text" id="description" name="description" rows="2" class="form-control md-textarea" style="height: 20em"><?=$data['product']->description?></textarea>
+                            <label for="product_desc" class="col-sm-2 col-form-label">Description</label>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-sm-2 col-form-label">
-                    
-                    <label class="col-sm-2 col-form-label" for="gridCheck">
-                        is Featured:
-                    </label>
-                    <div class="col-sm-10">
-                        <input class="form-check-input" name="is_featured" type="checkbox" id="is_featured">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" name="is_featured" type="checkbox" id="is_featured" <?php if ($data['product']->is_featured)
+                                echo 'checked';?>>
+                            <label>
+                                Is Featured?
+                            </label>
+                        </div>
                     </div>
-                        
-
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Product Image:</label>
-                    <div class="col-sm-10">
-                        <input type="file" name="product_image" id="product_image"/>
-                        <img id='product_img_preview' src='' style="max-width:200px;max-height:200px" />
+                    <div class="col">
+                        <label for="product_image" class="form-label">Product Image</label>
+                        <input class="form-control" type="file" name="product_image" id="product_image"/>
                     </div>
                 </div>
             
-                <div class="text-center text-md-right">
-                    <a class="btn btn-primary" href='/Admin/productList/'>Back</a>
-                    <button type="submit" class="btn btn-dark" name="action">Edit</button>
+
+                <div class="row mb-3 text-center">
+                    <div class="col">
+                        <img id='product_img_preview' src='' style="max-width:200px;max-height:200px" />
+                    </div>
+                </div>
+
+                <div class="row text-center mb-3">
+                    <div class="col">
+                        <a class="btn btn-danger w-100" href='/Admin/productList'>Back</a>
+                    </div>
+
+                    <div class="col">
+                        <button type="submit" class="btn btn-dark w-100" name="action">Edit</button> 
+                    </div>
                 </div>
             </form>
-
-            <script>
-                product_image.onchange = evt => {
-                const [file] = product_image.files
-                if (file) {
-                    product_img_preview.src = URL.createObjectURL(file)
-                    }
-                }   
-            </script>
         </div>
-
-
-        <!-- image does not load properly -->
-        <script>
-            file = "" + "<?= $data['product']->product_image ?>"
-            if (file != "") {
-                document.getElementById("product_img_preview").src = "/images/" + file;
-            }
-        </script>
-        
-        
     </body>
+
+    <script>
+        file = "" + "<?= $data['product']->product_image ?>"
+        if (file != "") {
+            document.getElementById("product_img_preview").src = "/images/" + file;
+        }
+    </script>
+
+    <script>
+        product_image.onchange = evt => {
+        const [file] = product_image.files
+        if (file) {
+            product_img_preview.src = URL.createObjectURL(file)
+            }
+        }   
+    </script>
 </html>

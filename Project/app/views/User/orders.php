@@ -23,15 +23,37 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr>
 
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col">
+                        <?php 
+                            if (!$data) {
+                                echo "
+                                <p class='lead text-center'>
+                                    You don't have any Orders made
+                                </p>
+                                ";
+                            }
+                        ?>
                         <?php foreach ($data as $order) { ?>
-                        <h4>Order ID: <?=$order->order_id?></h4>
-                        <h4>Date: <?=$order->date?></h4>
-                        <h4>Total: $<?=$order->total?></h4>
-                        <h4>Status: <?=$order->status?></h4>
+                        
                         <div class="container">
+                        <div class="row mb-4 text-center">
+                            <div class="col">
+                                <h4>Order ID: <?=$order->order_id?></h4>
+                            </div>
+                            <div class="col">
+                                <h4>Date: <?=$order->date?></h4>
+                            </div>
+                            <div class="col">
+                                <h4>Total: $<?=$order->total?></h4>
+                            </div>
+                            <div class="col">
+                                <h4>Status: <?=$order->status?></h4>
+                            </div>
+                        </div>
                             <?php 
                             $order_item = new \app\models\Order_Item();
                             $order_items = $order_item->getAllByOrderID($order->order_id);
@@ -68,6 +90,7 @@
                             
                             <?php } ?>
                         </div>
+                        <hr>
                         <?php } ?>
                         
                     </div>

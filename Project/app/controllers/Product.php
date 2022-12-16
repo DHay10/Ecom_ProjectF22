@@ -22,14 +22,11 @@ class Product extends \app\core\Controller {
             $product->category_id = $_POST['category_id'];
             $filename = $this->saveFile($_FILES['product_image']);
                 if($filename){
-                    //delete the old picture
                     unlink("images/$product->product_image");
-                    //save the reference to the new one
                     $product->product_image = $filename;
                 }
             $product->update();
-            //echo"hi";
-            header('location:/Admin/productList');
+            header('location:/Product/details/' . $product_id . '?message= Edit Successful');
         }
         $this->view('Product/adminProductDetail',  ['category'=>$category, 'product'=>$product]);
 	}
@@ -42,7 +39,6 @@ class Product extends \app\core\Controller {
     }
 
     // Review Product
-    // Need to see if review and rate should be combined
     public function reviewProduct($product_id) {
         if(isset($_POST['action'])) {
             $review = new \app\models\Review();
@@ -67,6 +63,7 @@ class Product extends \app\core\Controller {
         }
     }
 
+    // Search by Category
     public function byCategory($category_id) {
         $category = new \app\models\Category();
         $category = $category->getByID($category_id);
@@ -76,6 +73,7 @@ class Product extends \app\core\Controller {
         $this->view('Product/byCategory', ['category'=>$category, 'products'=>$products]);
     }
 
+    // Search by Name
     public function searchByName() {
         if(isset($_POST['search'])) {
             if (!$_POST['search']=="") {
@@ -92,6 +90,7 @@ class Product extends \app\core\Controller {
         }
     }
 
+    // Add to Cart
     #[\app\filters\User]
     public function addToCart($product_id) {
         $cart_item = new \app\models\Cart_Item();
@@ -111,12 +110,16 @@ class Product extends \app\core\Controller {
         header('location:/Product/userProductDetails/' . $product_id . '?message=Product(s) has been added to your Cart.');
     }
 
+    // Remove From Cart
+    #[\app\filters\User]
     public function removeFromCart($product_id){
         $cart_item = new \app\models\Cart_Item();
         $cart_item->delete($product_id);
         header('location:/User/cart?message=Product has been removed from cart');
     }
 
+    // Update Product Qty
+    #[\app\filters\User]
     public function cartUpdateQty($product_id) {
         $cart_item = new \app\models\Cart_Item();
         $cart_item = $cart_item->getByID($product_id);
@@ -126,6 +129,7 @@ class Product extends \app\core\Controller {
         header('location:/User/cart');
     }
 
+    // Add a Review
     #[\app\filters\User]
     public function addReview($product_id) {
         if (isset($_POST['action'])) {
@@ -143,6 +147,7 @@ class Product extends \app\core\Controller {
     }
 
     // Product Detail Page for user
+    #[\app\filters\User]
 	public function userProductDetails($product_id) {
 		$product = new \app\models\Product();
         $product = $product->getProductbyId($product_id);
@@ -163,7 +168,7 @@ class Product extends \app\core\Controller {
         header('location:/Product/userProductDetails/' . $product_id . '?message=Product as been added to your Wishlist.');
     }
 
-    // Remove from wishlist
+    // Remove from wishlist in list
     #[\app\filters\User]
     public function removeFromWishlist01($product_id) {
         $wishlist_items = new \app\models\Wishlist_Items();
@@ -171,6 +176,7 @@ class Product extends \app\core\Controller {
         header('location:/User/wishlist?message=Product as been removed from your Wishlist.');
     }
 
+    // Remove from wishlist in product details
     #[\app\filters\User]
     public function removeFromWishlist02($product_id) {
         $wishlist_items = new \app\models\Wishlist_Items();
@@ -186,6 +192,7 @@ class Product extends \app\core\Controller {
         $this->view('Product/catalog', $products);
     }
 
+    // Edit Review
     #[\app\filters\User]
     public function editReview($review_id) {
         $review = new \app\models\Review();
